@@ -1,44 +1,44 @@
 # README
 
 # fleamarket_sample DB設計
-## Categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string|null: false|
 ### Association
-- has_many :Items
-## Favoritesテーブル
+- has_many :items
+## favoritesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
-|item_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
-## Commentsテーブル
+## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|reference|null: false, foreign_key: true|
-|item_id|reference|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|item_id|references|null: false, foreign_key: true|
 |comment|text|null: false|
 |created_at|timestamp|null: false|
 ### Association
 - belongs_to :user
 - belongs_to :item
-## Sending_destination テーブル
+## sending_destinations テーブル
 |Column|Type|Options|
 |------|----|-------|
 |destination_first_name|string|null: false|
-|destination_familly_name|string|null: false|
+|destination_family_name|string|null: false|
 |destination_first_name_kana|string|null: false|
-|destination_familly_name_kana|string|null: false|
+|destination_family_name_kana|string|null: false|
 |post_code|integer(7)|null: false|
 |prefecture_code|integer|null: false|
 |city|string|null:false|
 |house_number|string|null:false|
 |building_name|string| |
-|phone_number|integer|unique:|true|
+|phone_number|integer|unique:true|
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -68,7 +68,7 @@
 |item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
-## Profilesテーブル
+## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |first_name|string|null: false|
@@ -96,11 +96,11 @@
 |size_id|reference|null: false, foreign_key: true|
 |preparation_day|references|null: false, foreign_key: true|
 |postage_type|references|null: false, foreign_key: true|
-|item_image_id|references|null: false, foreign_key: true|
+|item_img_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
 |trading_status|enum|null: false|
 |seller_id|references|null: false, foreign_key: true|
-|buyer|reference|foreign_key: true|
+|buyer|references|foreign_key: true|
 |deal_close_date|timestamp|
 ### Association
 - has_many :comments, dependent: :destroy
@@ -134,7 +134,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |provider|string|null: false|
-|uld|string|null: false, unique: true|
+|uid|string|null: false, unique: true|
 |token|text| |
 |user_id|references|null: false, foreign_key: true|
 ### Association
@@ -156,12 +156,11 @@
 |list|text|null:false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
-- belongs_to
+- belongs_to :user
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |card_number|integer|null:false, unique: true|
-|card_number|integer|null:false|
 |expiration_year|integer|null:false|
 |expiration_month|integer|null:false|
 |security_code|integer|null:false|
