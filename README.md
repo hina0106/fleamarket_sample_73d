@@ -1,6 +1,8 @@
 # README
 
 # fleamarket_sample DB設計
+
+
 ## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -8,6 +10,8 @@
 |ancestry|string|null: false|
 ### Association
 - has_many :items
+
+
 ## favoritesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -16,6 +20,8 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -26,6 +32,8 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+
 ## sending_destinations テーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -43,6 +51,8 @@
 ### Association
 - belongs_to :user
 - Gem：jp_prefectureを使用して都道府県コードを取得
+
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -61,6 +71,8 @@
 - has_one :sns_authentication, dependent: :destroy
 - has_one :sending_destination, dependent: :destroy
 - has_one :credit_card, dependent: :destroy
+
+
 ## item_imgsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -68,6 +80,8 @@
 |item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
+
+
 ## profilesテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -83,6 +97,8 @@
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+
 ## itemテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -117,12 +133,16 @@
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - Gem：jp_prefectureを使用して都道府県コードを取得
+
+
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|
 ### Association
 - has_many :items
+
+
 ## pointsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -130,6 +150,8 @@
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+
 ## sns_authentications テーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -139,6 +161,8 @@
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+
 ## user_evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -150,6 +174,8 @@
 - belongs_to_active_hash:evaluation
 - belongs_to :user
 - belongs_to :item
+
+
 ## todo_listsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -157,6 +183,8 @@
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+
+
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
