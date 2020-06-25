@@ -6,5 +6,7 @@
 @import "config/font-style";
 
 @import "mixins/vendor_prefix";
-
+@import "modules/header";
 @import "modules/items";
+@import "modules/app_banner";
+@import "modules/footer";
