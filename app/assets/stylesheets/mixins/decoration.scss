@@ -1,0 +1,23 @@
+@mixin title_line() {
+  &:after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    transform: translate(-50%);
+    background-color: $light_blue;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
+}
+@mixin img_title() {
+  color: $white;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+@mixin icon_hover(){
+  &:hover {
+    background-color: $white;
+    opacity: 0.6;
+    border-radius: 6px;
+  }
+}
