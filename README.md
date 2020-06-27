@@ -139,7 +139,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|
+|name|string|null: false|
 ### Association
 - has_many :items
 
@@ -147,7 +147,7 @@
 ## pointsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|point|integer||
+|point|integer|null: false|
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
