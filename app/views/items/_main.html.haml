@@ -1,0 +1,112 @@
+.main
+  .main__visuals
+    .visuals
+      %h2.visuals__content
+        人生を変えるフリマアプリ
+      %p.visuals__content2
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .visuals__btns
+        = link_to '#', class: "visuals__btns__link" do
+          = image_tag "/assets/apple_app.png", class: "btn app"
+        = link_to '#', class: "visuals__btns__link" do
+          = image_tag "/assets/btn_googleplay.png", class: "btn goo"
+  .main__intro
+    %h2.main__intro__title
+      FURIMAが選ばれる3つの理由
+    .main__intro__lists
+      .intro__list
+        .intro__list__picture
+          .picture__num
+            1
+          = image_tag "/assets/freemarketsample1.jpeg"
+        %h3.intro__list__text
+          ３分
+          %span.intro__list__text--black ですぐに出品
+        %p.intro__list__text2 スマホで入力するだけで簡単に出品できる！
+      .intro__list
+        .intro__list__picture
+          .picture__num
+            2
+          = image_tag "/assets/simple.jpeg"
+        %h3.intro__list__text
+          シンプル
+          %span.intro__list__text--black で使いやすい
+        %p.intro__list__text2 めんどくさい入力は必要なく、検索も購入もスムーズ！
+      .intro__list
+        .intro__list__picture
+          .picture__num
+            3
+          = image_tag "/assets/coffee.jpeg"
+        %h3.intro__list__text
+          手数料
+          %span.intro__list__text--black 業界最安
+        %p.intro__list__text2 最大3%でお得に出品&購入！
+  .main__middle
+    .middle__title
+      %h2.middle__title__sub
+        会員数日本一位
+      %p.middle__title__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .middle__title__btn
+        = link_to '#', class: "middle__title__btn__link" do
+          = image_tag "/assets/apple_app.png", class: "btn app"
+        = link_to '#', class: "middle__title__btn__link" do
+          = image_tag "/assets/btn_googleplay.png", class: "btn goo"
+  .main__features
+    %h2.main__features__head
+      FURIMAの特徴
+    .main__features__items
+      .item
+        .item__img
+          = image_tag "/assets/fleamarketsample1.svg", class: "img"
+        %h3.item__subtitle
+          簡単に売り買いできる
+        %p.item__detail
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      .item
+        .item__img
+          = image_tag "/assets/fleamarketsample2.svg", class: "img"
+        %h3.item__subtitle
+          売上金は即日振込みに対応
+        %p.item__detail
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      .item
+        .item__img
+          = image_tag "/assets/fleamarketsample3.svg", class: "img"
+        %h3.item__subtitle
+          様々な支払いに対応
+        %p.item__detail
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+  .main__contents
+    %h2.main__contents__head
+      ピックアップカテゴリー
+    .products
+      .products__head
+        = link_to '#' do
+          %h3.products__head__title
+            新規投稿商品
+      .products__lists
+        = render partial: 'main_item'
+  .main__contents
+    %h2.main__contents__head
+      ピックアップブランド
+    .products
+      .products__head
+        = link_to '#' do
+          %h3.products__head__title
+            アーカイバ
+      .products__head
+      .products__lists
+        = render partial: 'main_item'
+  .main__purchaseBtn
+    = link_to '#' do
+      .purchaseBtn
+        %span.purchaseBtn__text
+          出品する
+        = icon('fa', 'camera' ,class: 'purchaseBtn__icon')

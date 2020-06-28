@@ -1,0 +1,294 @@
+.main {
+  padding-bottom: 80px;
+  background-color: $lightGray;
+  &__visuals{
+    width: 100%;
+    height: 560px;
+    background-image: image-url("/assets/ok.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    @include flexbox();
+    align-items: center;
+    .visuals{
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 35px 0 0 0;
+      @include imgTitle();
+      &__content{
+        font-size: 60px;
+        line-height: 1.2;
+      }
+      &__content2{
+        font-size: 18px;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
+      }
+      &__btns {
+        @include flexbox();
+        margin-top: 24px;
+        &__link {
+          @include btnAppGoo();
+        }
+      }
+    }
+  }
+
+  &__intro{
+    padding: 60px 20px;
+    &__title{
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      @include titleLine();
+    }
+    &__lists{
+      text-align: center;
+      @include flexbox();
+      max-width: 1020px;
+      width: 100%;
+      margin: 0 auto;
+      .intro__list{
+        width: 30%;
+        margin: 16px 5% 0 0;
+        text-align: left;
+        @include flexbox();
+        flex-direction: column;
+        align-items: center;
+        &__picture{
+          position: relative;
+          margin-bottom: 20px;
+          .picture__num{
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 4%;
+            font-size: 30px;
+            text-align: center;
+            margin: 0 5px 0 0;
+            padding: 10px 20px;
+            background-color: $lightBlue;
+            color: $white;
+          }
+          img{
+            width: 306px;
+            vertical-align: bottom;
+            height: 306px;
+          }
+        }
+        &__text{
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 50px;
+          margin: 0 0 0 2px;
+          color: $lightBlue;
+          &--black{
+            color: $black;
+          }
+        }
+        &__text2{
+          font-size: 18px;
+          line-height: 1.5;
+          margin: 16px 0 0;
+        }
+      }
+    }
+  }
+
+  &__middle{
+    background-image: url(/assets/tekitou.jpg);
+    background-position: bottom right;
+    height: 400px;
+    background-size: cover;
+    @include flexbox();
+    align-items: center;
+    .middle__title{
+      @include imgTitle();
+      text-align: left;
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      &__sub{
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      &__text{
+        font-size: 18px;
+        margin: 20px 0 30px;
+        line-height: 1.5;
+      }
+      &__btn{
+        @include flexbox();
+        &__link{
+          @include btnAppGoo();
+        }
+      }
+    }
+  }
+  &__features {
+    width: 100%;
+    height: 100%;
+    padding: 60px 100px;
+    background-color: $white;
+    &__head {
+      font-size: 27px;
+      font-weight: bold;
+      text-align: center;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+      position: relative;
+      @include titleLine();
+    }
+    &__items {
+      max-width: calc(1040px + 20px);
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      @include flexbox();
+      flex-wrap: wrap;
+      .item {
+        @include flexbox();
+        flex-direction: column;
+        width: calc(1 / 3 * 100%);
+        text-align: center;
+        padding: 0 20px;
+        &__img {
+          width: 70%;
+          margin: 0 auto;
+          line-height: 120px;
+          display: block;
+          display: block;
+          text-align: center;
+          .img {
+            width: 100%;
+            line-height: 120px;
+            vertical-align: bottom;
+          }
+        }
+        &__subtitle {
+          font-weight: bold;
+          font-size: 19px;
+          margin: 38px 0 10px 0;
+        }
+        &__detail {
+          font-size: 17px;
+          font-weight: 200;
+          text-align: left;
+          margin: 0 0 40px 0;
+        }
+      }
+    }
+  }
+  &__contents {
+    width: 100%;
+    height: 100%;
+    padding: 80px 0 25px 0;
+    background-color: $lightGray;
+    &__head {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .products {
+      width: 100%;
+      height: 100%;
+      &__head {
+        text-align: center;
+        font-size: 24px;
+        text-decoration: none;
+        &__title {
+          color: $lightBlue;
+          font-weight: bold;
+        }
+      }
+      &__lists {
+        width: 780px;
+        @include flexbox();
+        justify-content: space-around;
+        margin: 24px auto 0;
+        .product {
+          width: 220px;
+          display: inline-block;
+          text-align: center;
+          &__img {
+            width: 220px;
+            height: 150px;
+            margin: 0;
+            overflow: hidden;
+            margin: 0;
+            position: relative;
+            .img {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              object-fit: cover;
+            }
+          }
+          &__body {
+            background-color: white;
+            color: $lightBlack;
+            padding: 16px;
+            text-align: left;
+            font-size: 16px;
+            &__name {
+              line-height: 1.5;
+            }
+            ul {
+              @include flexbox();
+              align-items: center;
+              justify-content: space-between;
+              list-style: none;
+              line-height: 1.5;
+            }
+            p {
+              font-size: 10px;
+            }
+          }
+          &:hover {
+            background-color: $white;
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+  .purchaseBtn {
+    width: 120px;
+    height: 120px;
+    background-color: $lightBlue;
+    text-align: center;
+    border-radius: 4%;
+    bottom: 32px;
+    right: 32px;
+    position: fixed;
+    padding: 15px;
+    color: $white;
+    text-align: center;
+    z-index: 10;
+    &__text {
+      display: block;
+      font-size: 18px;
+      text-decoration: none;
+      margin-bottom: 5px;
+    }
+    &__icon {
+      font-size: 55px;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

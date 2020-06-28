@@ -1,0 +1,28 @@
+@mixin titleLine() {
+  &:after {
+    content: "";
+    width: 70px;
+    height: 4px;
+    transform: translate(-50%);
+    background-color: $lightBlue;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+  }
+}
+@mixin imgTitle() {
+  color: $white;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+@mixin btnAppGoo {
+  width: 180px;
+  margin-right: 10px;
+  .btn {
+    width:180px;
+    &:hover {
+      background-color: $white;
+      opacity: 0.6;
+      border-radius: 6px;
+    }
+  }
+}
