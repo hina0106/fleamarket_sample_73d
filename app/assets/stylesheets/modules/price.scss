@@ -3,6 +3,10 @@ html{
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
 }
 
+.sell-header {
+  background-color: $light_gray;
+}
+
 img {
   vertical-align: middle;
   box-sizing: border-box;
@@ -329,6 +333,7 @@ img {
     box-sizing: border-box;
     padding: 40px 0px;
     text-align: center;
+    background-color: #f8f8f8;
     nav{
       box-sizing: border-box;
       .clearfix{
