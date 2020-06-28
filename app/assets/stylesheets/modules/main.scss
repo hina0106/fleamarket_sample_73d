@@ -1,10 +1,10 @@
 .main {
   padding-bottom: 80px;
-  background-color: $light_gray;
-  .main__visuals{
+  background-color: $lightGray;
+  &__visuals{
     width: 100%;
     height: 560px;
-    background-image: url(/assets/ok.jpg);
+    background-image: image-url("/assets/ok.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -12,46 +12,34 @@
     padding: 0 60px;
     @include flexbox();
     align-items: center;
-    .contents{
+    .visuals{
       max-width: 1280px;
       width: 100%;
       margin: 0 auto;
       padding: 35px 0 0 0;
-      @include img_title();
-      .main__visuals--content{
+      @include imgTitle();
+      &__content{
         font-size: 60px;
         line-height: 1.2;
       }
-      .main__visuals--content2{
+      &__content2{
         font-size: 18px;
         line-height: 1.77778;
         margin: 16px 0 0 0;
       }
-      .main__visuals--content__btn{
+      &__btns {
         @include flexbox();
-        margin: 24px 0 0 0;
-        .main__visuals--content__btna{
-          width: 180px;
-          img{
-            width:180px;
-            @include icon_hover();
-          }
-        }
-        .main__visuals--content__btng{
-          width: 180px;
-          margin-left: 20px;
-          img{
-            width: 180px;
-            @include icon_hover();
-          }
+        margin-top: 24px;
+        &__link {
+          @include btnAppGoo();
         }
       }
     }
   }
 
-  .title{
+  &__intro{
     padding: 60px 20px;
-    .title__sub{
+    &__title{
       text-align: center;
       font-size: 26px;
       line-height: 1.4;
@@ -59,25 +47,25 @@
       margin-bottom: 25px;
       padding-bottom: 15px;
       position: relative;
-      @include title_line();
+      @include titleLine();
     }
-    .title__list{
+    &__lists{
       text-align: center;
       @include flexbox();
       max-width: 1020px;
       width: 100%;
       margin: 0 auto;
-      .title__list1{
+      .intro__list{
         width: 30%;
         margin: 16px 5% 0 0;
         text-align: left;
         @include flexbox();
         flex-direction: column;
         align-items: center;
-        .title__list1--picture{
+        &__picture{
           position: relative;
           margin-bottom: 20px;
-          .title__list1--picture__num{
+          .picture__num{
             display: inline-block;
             position: absolute;
             top: 0;
@@ -87,7 +75,7 @@
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: $light_blue;
+            background-color: $lightBlue;
             color: $white;
           }
           img{
@@ -96,62 +84,17 @@
             height: 306px;
           }
         }
-        .title__list1--text{
+        &__text{
           font-weight: bold;
           font-size: 24px;
           line-height: 50px;
           margin: 0 0 0 2px;
-          color: $light_blue;
-          .a{
+          color: $lightBlue;
+          &--black{
             color: $black;
           }
         }
-        .title__list1--text2{
-          font-size: 18px;
-          line-height: 1.5;
-          margin: 16px 0 0;
-        }
-      }
-      .title__list1{
-        width: 30%;
-        margin: 16px 5% 0 0;
-        text-align: left;
-        @include flexbox();
-        flex-direction: column;
-        align-items: center;
-        .title__list1--picture{
-          position: relative;
-          margin-bottom: 20px;
-          .title__list1--picture__num{
-            display: inline-block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-radius: 4%;
-            font-size: 30px;
-            text-align: center;
-            margin: 0 5px 0 0;
-            padding: 10px 20px;
-            background-color: $light_blue;
-            color:$white;
-          }
-          img{
-            width: 306px;
-            vertical-align: bottom;
-            height: 306px;
-          }
-        }
-        .title__list1--text3{
-          font-weight: bold;
-          font-size: 24px;
-          line-height: 50px;
-          margin: 0 0 0 2px;
-          color: $black;
-        }
-        span{
-          color:$light_blue ;
-        }
-        .title__list1--text2{
+        &__text2{
           font-size: 18px;
           line-height: 1.5;
           margin: 16px 0 0;
@@ -160,7 +103,7 @@
     }
   }
 
-  .middle{
+  &__middle{
     background-image: url(/assets/tekitou.jpg);
     background-position: bottom right;
     height: 400px;
@@ -168,37 +111,25 @@
     @include flexbox();
     align-items: center;
     .middle__title{
-      @include img_title();
+      @include imgTitle();
       text-align: left;
       max-width: 1040px;
       width: 100%;
       margin: 0 auto;
-      .middle__title--sub{
+      &__sub{
         font-size: 27px;
         font-weight: bold;
         line-height: 1.4;
       }
-      .middle__title--text{
+      &__text{
         font-size: 18px;
         margin: 20px 0 30px;
         line-height: 1.5;
       }
-      .middle__title--btn{
+      &__btn{
         @include flexbox();
-        & img {
-          @include icon_hover();
-        }
-        .middle__title--btna{
-          margin-right: 10px;
-          img{
-            width: 180px;
-          }
-        }
-        .middle__title--btng{
-          margin-right: 10px;
-          img{
-            width: 180px;
-          }
+        &__link{
+          @include btnAppGoo();
         }
       }
     }
@@ -208,16 +139,16 @@
     height: 100%;
     padding: 60px 100px;
     background-color: $white;
-    .head {
+    &__head {
       font-size: 27px;
       font-weight: bold;
       text-align: center;
       padding-bottom: 15px;
       margin-bottom: 25px;
       position: relative;
-      @include title_line();
+      @include titleLine();
     }
-    .items {
+    &__items {
       max-width: calc(1040px + 20px);
       width: 100%;
       height: 100%;
@@ -261,8 +192,8 @@
     width: 100%;
     height: 100%;
     padding: 80px 0 25px 0;
-    background-color: $light_gray;
-    .head {
+    background-color: $lightGray;
+    &__head {
       font-size: 28px;
       font-weight: bold;
       text-align: center;
@@ -275,7 +206,7 @@
         font-size: 24px;
         text-decoration: none;
         &__title {
-          color: $light_blue;
+          color: $lightBlue;
           font-weight: bold;
         }
       }
@@ -308,11 +239,11 @@
           }
           &__body {
             background-color: white;
-            color: $light_black;
+            color: $lightBlack;
             padding: 16px;
             text-align: left;
             font-size: 16px;
-            .name {
+            &__name {
               line-height: 1.5;
             }
             ul {
@@ -337,7 +268,7 @@
   .purchaseBtn {
     width: 120px;
     height: 120px;
-    background-color: $light_blue;
+    background-color: $lightBlue;
     text-align: center;
     border-radius: 4%;
     bottom: 32px;

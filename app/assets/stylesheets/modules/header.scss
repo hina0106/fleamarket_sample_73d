@@ -60,10 +60,10 @@
         list-style: none;
       }
       & a {
-        color: $light_black;
+        color: $lightBlack;
         text-decoration: none;
         &:hover {
-          color:$light_orange;
+          color:$lightOrange;
         }
       }
       &__listsLeft {

@@ -5,7 +5,7 @@
   background-size: cover;
   background-position: center;
   &__inner {
-    @include img_title();
+    @include imgTitle();
     text-align: center;
     &__title {
       font-size: 24px;
@@ -20,16 +20,8 @@
       @include flexbox();
       justify-content: center;
       margin: 20px auto 0;
-      & a {
-        &:first-child {
-          margin-right: 10px;
-        }
-        & img {
-          width: 180px;
-          vertical-align: bottom;
-          border: 0;
-          @include icon_hover();
-        }
+      &__link {
+        @include btnAppGoo();
       }
     }
   }

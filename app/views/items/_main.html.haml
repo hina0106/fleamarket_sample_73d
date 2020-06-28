@@ -1,67 +1,67 @@
 .main
   .main__visuals
-    .contents
-      %h2.main__visuals--content
+    .visuals
+      %h2.visuals__content
         人生を変えるフリマアプリ
-      %p.main__visuals--content2
+      %p.visuals__content2
         FURIMAはだれでもかんたんに出品・購入できる
         %br
         フリマアプリです
-        .main__visuals--content__btn
-          %a.main__visuals--content__btna{href:'#'}
-            %img{src: "/assets/apple_app.png"}/
-          %a.main__visuals--content__btng{href:'#'}
-            %img{src: "/assets/btn_googleplay.png"}/
-  .title
-    %h2.title__sub
+      .visuals__btns
+        = link_to '#', class: "visuals__btns__link" do
+          = image_tag "/assets/apple_app.png", class: "btn app"
+        = link_to '#', class: "visuals__btns__link" do
+          = image_tag "/assets/btn_googleplay.png", class: "btn goo"
+  .main__intro
+    %h2.main__intro__title
       FURIMAが選ばれる3つの理由
-    .title__list
-      .title__list1
-        .title__list1--picture
-          .title__list1--picture__num
+    .main__intro__lists
+      .intro__list
+        .intro__list__picture
+          .picture__num
             1
-          %img{src: "/assets/freemarketsample1.jpeg"}/
-        %h3.title__list1--text
+          = image_tag "/assets/freemarketsample1.jpeg"
+        %h3.intro__list__text
           ３分
-          %span.a ですぐに出品
-        %p.title__list1--text2 スマホで入力するだけで簡単に出品できる！
-      .title__list1
-        .title__list1--picture
-          .title__list1--picture__num
+          %span.intro__list__text--black ですぐに出品
+        %p.intro__list__text2 スマホで入力するだけで簡単に出品できる！
+      .intro__list
+        .intro__list__picture
+          .picture__num
             2
-          %img{src: "/assets/simple.jpeg"}/
-        %h3.title__list1--text
+          = image_tag "/assets/simple.jpeg"
+        %h3.intro__list__text
           シンプル
-          %span.a で使いやすい
-        %p.title__list1--text2 めんどくさい入力は必要なく、検索も購入もスムーズ！
-      .title__list1
-        .title__list1--picture
-          .title__list1--picture__num
+          %span.intro__list__text--black で使いやすい
+        %p.intro__list__text2 めんどくさい入力は必要なく、検索も購入もスムーズ！
+      .intro__list
+        .intro__list__picture
+          .picture__num
             3
-          %img{src: "/assets/coffee.jpeg"}/
-        %h3.title__list1--text3
+          = image_tag "/assets/coffee.jpeg"
+        %h3.intro__list__text
           手数料
-          %span 業界最安
-        %p.title__list1--text2 最大3%でお得に出品&購入！
-  .middle
+          %span.intro__list__text--black 業界最安
+        %p.intro__list__text2 最大3%でお得に出品&購入！
+  .main__middle
     .middle__title
-      %h2.middle__title--sub
+      %h2.middle__title__sub
         会員数日本一位
-      %p.middle__title--text
+      %p.middle__title__text
         FURIMAは、フリマアプリで最も人気。
         %br
         出品・購入回数も業界最多です！
         %br
         ほしかったあの商品に出会えるかもしれません。
-      .middle__title--btn
-        %a.middle__title--btna{href:'#'}
-          %img{src: "/assets/apple_app.png"}/
-        %a.middle__title--btng{href:'#'}
-          %img{src: "/assets/btn_googleplay.png"}/
+      .middle__title__btn
+        = link_to '#', class: "middle__title__btn__link" do
+          = image_tag "/assets/apple_app.png", class: "btn app"
+        = link_to '#', class: "middle__title__btn__link" do
+          = image_tag "/assets/btn_googleplay.png", class: "btn goo"
   .main__features
-    %h2.head
+    %h2.main__features__head
       FURIMAの特徴
-    .items
+    .main__features__items
       .item
         .item__img
           = image_tag "/assets/fleamarketsample1.svg", class: "img"
@@ -84,7 +84,7 @@
         %p.item__detail
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
   .main__contents
-    %h2.head
+    %h2.main__contents__head
       ピックアップカテゴリー
     .products
       .products__head
@@ -94,7 +94,7 @@
       .products__lists
         = render partial: 'main_item'
   .main__contents
-    %h2.head
+    %h2.main__contents__head
       ピックアップブランド
     .products
       .products__head

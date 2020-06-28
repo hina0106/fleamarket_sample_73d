@@ -3,7 +3,7 @@
     %h2.appBanner__inner__title だれでもかんたん、人生を変えるフリマアプリ
     %p.appBanner__inner__text 今すぐ無料ダウンロード！
     .appBanner__inner__icon
-      %a.appBanner__inner__icona{href:'#'}
-        %img{src: "/assets/apple_app.png"}/
-      %a.appBanner__inner__icong{href:'#'}
-        %img{src: "/assets/btn_googleplay.png"}/
+      = link_to '#', class: "appBanner__inner__icon__link" do
+        = image_tag "/assets/apple_app.png", class: "btn app"
+      = link_to '#', class: "appBanner__inner__icon__link" do
+        = image_tag "/assets/btn_googleplay.png", class: "btn goo"
