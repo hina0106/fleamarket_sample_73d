@@ -34,9 +34,10 @@
               %span.sell-title__require
                 必須
           .sell-collection_select
-            -#= f.label :category_id, {class: 'sell-collection_select__label'} do
-              = f.select :category_id, @category_parent, :id, :name, {prompt: "選択して下さい"},{ class: 'sell-collection_select__input', id: 'category-select', required: "required"}
-              %i.fas.fa-chevron-down
+            = f.select :budget_d, [["--", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]]
+            -# = f.label :category_id, {class: 'sell-collection_select__label'} do
+              -# = f.collection_select :category_id, @category_parent, :id, :name, {prompt: "選択して下さい"},{ class: 'sell-collection_select__input', id: 'category-select', required: "required"}
+            %i.fas.fa-chevron-down
           .error-messages#error-category
 
           .sell-title
@@ -45,9 +46,10 @@
               %span.sell-title__require
                 必須
           .sell-collection_select
+            = f.select :budget_d, [["--", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
             -#= f.label :condition_id, {class: 'sell-collection_select__label'} do
-              = f.collection_select :condition_id, Condition.all, :id, :condition, {prompt: '選択して下さい'},{ class: 'sell-collection_select__input', id: 'condition-select', required: "required"}
-              %i.fas.fa-angle-down
+              -#= f.collection_select :condition_id, Condition.all, :id, :condition, {prompt: '選択して下さい'},{ class: 'sell-collection_select__input', id: 'condition-select', required: "required"}
+            %i.fas.fa-chevron-down
           .error-messages#error-condition
 
     -# 配送部分
