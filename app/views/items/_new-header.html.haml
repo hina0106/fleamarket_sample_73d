@@ -1,10 +1,10 @@
 .sell
   %header.sell-header
     = link_to root_path do
-      = image_tag 'logo.png', alt: 'FURIMA', height: '49', width: '185'
+      = image_tag 'material_2/logo.png', alt: 'FURIMA', height: '49', width: '185'
   %main
     %section.sell-container
-      = form_with model: @item do |f|
+      = form_with model: @post do |f|
 
         -# 画像部分
         .sell-container__content
