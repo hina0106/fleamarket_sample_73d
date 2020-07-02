@@ -1,0 +1,61 @@
+<h2>住所情報登録</h2>
+
+<%= form_for @sending_destination do |f| %>
+  <%= render "devise/shared/error_messages", resource: @sending_destination %>
+
+  <div class="field">
+    <%= f.label :名字 %><br />
+    <%= f.text_field :destination_family_name%>
+  </div>
+
+  <div class="field">
+    <%= f.label :名前 %><br />
+    <%= f.text_field :destination_first_name%>
+  </div>
+
+  <div class="field">
+    <%= f.label :名字（カナ） %><br />
+    <%= f.text_field :destination_family_name_kana%>
+  </div>
+
+  <div class="field">
+    <%= f.label :名前（カナ） %><br />
+    <%= f.text_field :destination_first_name_kana%>
+  </div>
+
+  <div class="field">
+    <%= f.label :郵便番号 %><br />
+    <%= f.text_field :post_code%>
+  </div>
+
+  <div class="field">
+    <%= f.label :都道府県 %><br />
+    <%= f.text_field :prefecture_code%>
+  </div>
+
+  <div class="field">
+    <%= f.label :市町村区 %><br />
+    <%= f.text_field :city%>
+  </div>
+
+  <div class="field">
+    <%= f.label :番地 %><br />
+    <%= f.text_field :house_number%>
+  </div>
+
+  <div class="field">
+    <%= f.label :マンション名・パート名 %><br />
+    <%= f.text_field :building_name%>
+  </div>
+
+  <div class="field">
+    <%= f.label :電話番号 %><br />
+    <%= f.text_field :phone_number%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
