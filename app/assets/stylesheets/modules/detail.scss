@@ -1,3 +1,11 @@
+.error-messages{
+  color: #ff0211;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+
 .sell-title{
   align-items: center;
   margin: 0!important;
@@ -43,6 +51,7 @@
     display: inline-block;
     position: relative;
     width: 100%;
+    height: 45px;
     .fas.fa-chevron-down{
       box-sizing: border-box;
       pointer-events: none;
