@@ -1,0 +1,14 @@
+%h2 住所情報登録
+= form_for @sendingDestination do |f|
+  = render "devise/shared/error_messages", resource: @sendingDestination
+  .field
+    = f.label :post_code
+    %br/
+    = f.text_field :post_code
+  .field
+    = f.label :city
+    %br/
+    = f.text_field :city
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"
