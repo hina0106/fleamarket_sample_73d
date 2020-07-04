@@ -34,30 +34,18 @@
             = link_to 'もどる', root_path, class: 'submit-btn__return-btn'
           .attention-box
             %p
-              禁止されている
-              = link_to '行為', '#', target: '_blank'
-              および
-              = link_to '出品物', '#', target: '_blank'
-              を必ずご確認ください。
-              = link_to '偽ブランド品', '#', target: '_blank'
-              や
-              = link_to '盗品物', '#', target: '_blank'
-              などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして
-              = link_to '加盟店規約', '#', target: '_blank'
-              に同意したことになります。
+              禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物
+              などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。
 
   %footer.sell-footer
     %nav
       %ul.clearfix
         %li
-          = link_to '#' do
-            プライバシーポリシー
+          プライバシーポリシー
         %li
-          = link_to '#' do
-            メルカリ利用規約
+          利用規約
         %li
-          = link_to '#' do
-            特定商取引に関する表記
+          特定商取引に関する表記
     = link_to root_path, class: 'footer__logo' do
       = image_tag 'material_2/logo.png', alt: 'mercari', height: '65', width: '150'
     %p
