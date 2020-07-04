@@ -68,9 +68,6 @@
                 必須
           .sell-collection_select
             = f.select :budget_d, [["選択してください", 0],["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]], {} ,{class: 'sell-collection_select__label'}
-            -#= f.label :deliverycost_id, {class: 'sell-collection_select__label'} do
-              -#= f.collection_select :deliverycost_id, Deliverycost.all, :id, :payer, {prompt: '選択して下さい'},{ class: 'sell-collection_select__input', id: 'deliverycost-select', required: "required"}
-              %i.fas.fa-angre-down
           .error-messages#error-deliverycost
 
           .sell-title
