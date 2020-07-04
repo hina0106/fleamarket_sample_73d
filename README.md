@@ -7,7 +7,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|ancestry|string|null: false|
+|ancestry|string|
 ### Association
 - has_many :items
 
@@ -46,7 +46,7 @@
 |city|string|null:false|
 |house_number|string|null:false|
 |building_name|string| |
-|phone_number|integer|unique:true|
+|phone_number|string|unique:true|
 |user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -63,8 +63,6 @@
 |family_name|string|null: false|
 |first_name_kana|string|null: false|
 |family_name_kana|string|null: false|
-|birth_year|date|null: false|
-|birth_month|date|null: false|
 |birth_day|date|null: false|
 
 ### Association
@@ -95,7 +93,7 @@
 |------|----|-------|
 |introduction|text| |
 |avatar|string| |
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -106,19 +104,17 @@
 |name|string|null: false|
 |introduction|text|null: false|
 |price|integer|null: false|
-|brand_id|references|foreign_key: true|
+|brand|references|foreign_key: true|
 |item_condition_id|references|null: false,foreign_key: true|
 |postage_payer_id|references|null: false,foreign_key: true|
 |prefecture_code|integer|null: false|
 |size_id|reference|null: false, foreign_key: true|
 |preparation_day|references|null: false, foreign_key: true|
 |postage_type|references|null: false, foreign_key: true|
-|item_img_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
 |trading_status|enum|null: false|
 |seller_id|references|null: false, foreign_key: true|
 |buyer|references|foreign_key: true|
-|deal_close_date|timestamp|
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites
@@ -167,9 +163,9 @@
 ## user_evaluationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
-|evaluation_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
+|evaluation|references|null: false, foreign_key: true|
 |review|text|null: false|
 ### Association
 - belongs_to_active_hash:evaluation
@@ -189,10 +185,9 @@
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_number|integer|null:false, unique: true|
+|payjp|references|null:false|
 |expiration_year|integer|null:false|
 |expiration_month|integer|null:false|
-|security_code|integer|null:false|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
