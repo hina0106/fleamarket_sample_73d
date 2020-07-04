@@ -15,8 +15,8 @@
 ## favoritesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -25,10 +25,9 @@
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
-|item_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 |comment|text|null: false|
-|created_at|timestamp|null: false|
 ### Association
 - belongs_to :user
 - belongs_to :item
@@ -47,7 +46,7 @@
 |house_number|string|null:false|
 |building_name|string| |
 |phone_number|string|unique:true|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - Gem：jp_prefectureを使用して都道府県コードを取得
@@ -105,15 +104,15 @@
 |introduction|text|null: false|
 |price|integer|null: false|
 |brand|references|foreign_key: true|
-|item_condition_id|references|null: false,foreign_key: true|
-|postage_payer_id|references|null: false,foreign_key: true|
+|item_condition|references|null: false,foreign_key: true|
+|postage_payer|references|null: false,foreign_key: true|
 |prefecture_code|integer|null: false|
-|size_id|reference|null: false, foreign_key: true|
+|size|reference|null: false, foreign_key: true|
 |preparation_day|references|null: false, foreign_key: true|
 |postage_type|references|null: false, foreign_key: true|
-|category_id|references|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
 |trading_status|enum|null: false|
-|seller_id|references|null: false, foreign_key: true|
+|seller|references|null: false, foreign_key: true|
 |buyer|references|foreign_key: true|
 ### Association
 - has_many :comments, dependent: :destroy
@@ -144,7 +143,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |point|integer|null: false|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -155,7 +154,7 @@
 |provider|string|null: false|
 |uid|string|null: false, unique: true|
 |token|text| |
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
@@ -177,7 +176,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |list|text|null:false|
-|user_id|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 
