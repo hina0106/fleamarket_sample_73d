@@ -41,5 +41,5 @@
     %br/
     = f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
   .actions
-    = f.submit "Sign up"
+    = f.submit "Next"
 = render "devise/shared/links"
