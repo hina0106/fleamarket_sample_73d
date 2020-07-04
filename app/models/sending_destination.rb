@@ -1,5 +1,5 @@
 class SendingDestination < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, optional: true
 
   validates :destination_first_name,
             :destination_family_name,
