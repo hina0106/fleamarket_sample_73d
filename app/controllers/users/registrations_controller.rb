@@ -26,13 +26,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def newSendingDestination
-    
+    @sendingDestination = SendingDestination.new
   end
 
   def createSendingDestination
-    
+    @user = User.new(session["devise.regist_data"]["user"])
+
+    # 2ページ目で入力した住所情報のバリデーションチェック
+    @sendingDestination = SendingDestination.new(sendingDestinationParams)
+    unless @sendingDestination.valid?
+      flash.now[:alert] = @sendingDestination.errors.full_messages
+      render :newSendingDestination and return
+    end
+
+    # バリデーションチェックが完了した情報と、sessionで保持していた情報とあわせ、ユーザー情報として保存する
+    @user.build_sending_destination(@sendingDestination.attributes)
+    @user.save
+
+    # sessionを削除する
+    session["devise.regist_data"]["user"].clear
+    # ログインする
+    sign_in(:user, @user)
   end
 
+  protected
+
+  def sendingDestinationParams
+    params.require(:sendingDestination).permit(:destination_first_name, :destination_family_name, :destination_first_name_kana, :destination_family_name_kana, :post_code, :prefecture_code, :city, :house_number, :building_name, :phone_number)
+  end
   # GET /resource/edit
   # def edit
   #   super
