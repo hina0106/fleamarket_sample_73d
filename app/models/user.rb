@@ -4,4 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :sending_destination, dependent: :destroy
+
+  validates :nickname,
+            :birthday, presence: true
+  validates :email, uniqueness: true
+  devise :validatable, password_length: 7..128
+  validates :first_name,
+            :family_name,
+            :first_name_kana,
+            :family_name_kana, presence: true,
+            format: {
+              with: /[^ -~｡-ﾟ]+/
+            }
 end
