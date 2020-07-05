@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: fleamarket_sample_73d_production
-  username: fleamarket_sample_73d
-  password: <%= ENV['FLEAMARKET_SAMPLE_73D_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= Rails.application.credentials.db[:database_password] %>
+  socket: /var/lib/mysql/mysql.sock
