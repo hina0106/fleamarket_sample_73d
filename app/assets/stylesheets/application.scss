@@ -3,9 +3,10 @@
 
 @import "config/reset";
 @import "config/colors";
-@import "config/font-style";
+@import "config/base";
 
 @import "mixins/vendor_prefix";
+@import "mixins/decoration";
 
 @import "modules/items";
 @import "modules/price";
