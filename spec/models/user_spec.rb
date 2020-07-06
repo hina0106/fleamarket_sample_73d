@@ -94,34 +94,50 @@ describe User do
 
     # 14
     it " first_nameが全角であれば登録できること " do
+      user = build(:user, first_name: "あ")
+      expect(user).to be_valid
     end
 
     # 15
     it " family_nameが全角であれば登録できること " do
+      user = build(:user, family_name: "あ")
+      expect(user).to be_valid
     end
 
     # 16
     it " first_name_kanaが全角であれば登録できること " do
+      user = build(:user, first_name_kana: "あ")
+      expect(user).to be_valid
     end
 
     # 17
     it " family_name_kanaが全角であれば登録できること " do
+      user = build(:user, family_name_kana: "あ")
+      expect(user).to be_valid
     end
 
     # 18
     it " first_nameが全角以外であれば登録できないこと " do
+      user = build(:user, first_name: "a")
+      expect(user).to_not be_valid
     end
 
     # 19
     it " family_nameが全角以外であれば登録できないこと " do
+      user = build(:user, family_name: "a")
+      expect(user).to_not be_valid
     end
 
     # 20
     it " first_name_kanaが全角以外であれば登録できないこと " do
+      user = build(:user, first_name_kana: "a")
+      expect(user).to_not be_valid
     end
 
     # 21
     it " family_name_kanaが全角以外であれば登録できないこと " do
+      user = build(:user, family_name_kana: "a")
+      expect(user).to_not be_valid
     end
   end
 end
