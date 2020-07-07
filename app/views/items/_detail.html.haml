@@ -1,0 +1,89 @@
+.sell
+  .sell-container
+    .sell-container__content
+      = form_with model: @post do |f|
+        .sell-title
+          %h3.sell-title__text
+            商品名
+            %span.sell-title__require
+              必須
+        = f.text_field :name, {class:'sell-container__content__name', required: "required", maxlength: '40', placeholder: '商品名（必須 40文字まで)'}
+        .error-messages#error-name
+
+        .sell-title
+          %h3.sell-title__text
+            商品の説明
+            %span.sell-title__require
+              必須
+        = f.text_area :text,{class: 'sell-container__content__description', required: "required", rows: '7', maxlength: '1000', placeholder: '商品説明'}
+        -# placeholderでtems_helperを呼び出す
+        .sell-container__content__word-count
+          %span#word-count
+            0
+          &#47;1000
+        .error-messages#error-text
+
+    -# 詳細部分
+    .sell-container__content
+      = form_with model: @post do |f|
+        %h3.sell-sub-head 商品の詳細
+        .sell-container__content__details
+          .sell-title
+            %h3.sell-title__text
+              カテゴリー
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-category
+
+          .sell-title
+            %h3.sell-title__text
+              商品の状態
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-condition
+
+          .sell-title
+            %h3.sell-title__text
+              商品の状態
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-condition
+
+    -# 配送部分
+    .sell-container__content
+      = form_with model: @post do |f|
+        %h3.sell-sub-head
+          %p 配送について
+        .sell-container__content__delivery
+          .sell-title
+            %h3.sell-title__text
+              配送料の負担
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.select :budget_d, [["選択してください", 0],["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]], {} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-deliverycost
+
+          .sell-title
+            %h3.sell-title__text
+              発送元の地域
+              %span.sell-title__require
+                必須
+        .sell-collection_select
+          = f.select :budget_d, [["選択してください", 0],["1~2日で発送", 1],["2~3日で発送", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+        .error-messages#error-pref
+
+        .sell-title
+          %h3.sell-title__text
+            発送までの日数
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+        .error-messages#error-delivery_days
