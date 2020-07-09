@@ -26,7 +26,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def newSendingDestination
-    @sendingDestination = SendingDestination.new
   end
 
   def createSendingDestination
