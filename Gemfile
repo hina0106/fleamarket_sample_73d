@@ -74,3 +74,7 @@ gem 'haml-rails'
 gem 'font-awesome-sass'
 gem 'sqlite3', '~> 1.3.6'
 gem 'active_hash'
+
+# s3に画像アップロード
+gem "aws-sdk-s3", require: false
+gem 'mini_magick'
