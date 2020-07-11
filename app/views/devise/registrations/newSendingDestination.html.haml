@@ -20,19 +20,19 @@
   .field
     = f.label :郵便番号
     %br/
-    = f.text_field :post_code
+    = f.text_field :post_code, id: 'postcode'
   .field
     = f.label :都道府県
     %br/
-    = f.text_field :prefecture_code
+    = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'address_prefecture_code', include_blank: '都道府県'
   .field
     = f.label :市区町村
     %br/
-    = f.text_field :city
+    = f.text_field :city, id:'address_city'
   .field
     = f.label :番地
     %br/
-    = f.text_field :house_number
+    = f.text_field :house_number, id: 'address_street'
   .field
     = f.label :建物名
     %br/
