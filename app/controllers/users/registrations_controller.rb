@@ -24,9 +24,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @sendingDestination = @user.build_sending_destination
     render :newSendingDestination
   end
-  
-  def newSendingDestination
-  end
 
   def createSendingDestination
     @user = User.new(session["devise.regist_data"]["user"])

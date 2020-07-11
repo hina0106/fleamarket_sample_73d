@@ -10,4 +10,5 @@ class SendingDestination < ApplicationRecord
             :city,
             :house_number,
             presence: true
+  validates :phone_number, uniqueness: true
 end

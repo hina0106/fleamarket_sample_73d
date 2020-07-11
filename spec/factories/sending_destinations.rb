@@ -9,6 +9,7 @@ FactoryBot.define do
     prefecture_code               {"00"}
     city                          {"テスト市"}
     house_number                  {"0000000000"}
+    user
   end
 
 end
