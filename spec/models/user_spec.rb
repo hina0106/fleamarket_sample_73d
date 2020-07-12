@@ -4,8 +4,7 @@ describe User do
 
     # 1
     it "nickname、email、password、password_confirmation、first_name、family_name、first_name_kana、family_name_kana、birthdayが存在すれば登録できること" do
-      user = build(:user)
-      expect(user).to be_valid
+      expect(build(:user)).to be_valid
     end
 
     # 2

@@ -63,5 +63,13 @@ describe SendingDestination do
       expect(sendingDestination.errors[:house_number]).to include("can't be blank")
     end
 
+    # 11
+    it "重複したphone_numberが存在する場合登録できないこと" do
+      user = create(:user)
+      another_user = build(:user, phone_number: user.phone_number)
+      another_user.valid?
+      expect(another_user.errors[:phone_number]).to include("has already been taken")
+    end
+
   end
 end

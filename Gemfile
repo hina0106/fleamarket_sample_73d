@@ -66,6 +66,7 @@ group :test do
   # gem 'chromedriver-helper'
   gem 'webdrivers', '~> 4.0'
   gem 'faker', "~> 2.8"
+  gem 'faker-japanese'
 end
 
 group :production do

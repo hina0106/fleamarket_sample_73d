@@ -7,27 +7,24 @@ describe Users::RegistrationsController do
     request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
-  describe 'GET #new' do
+  describe '#new' do
     it "new.html.erbに遷移すること" do
       get :new
       expect(response).to render_template :new
     end
   end
 
-  describe 'POST #create' do
+  describe '#create' do
     it "@sendingDestinationに正しい値が入っていること" do
       
     end
-  end
-
-  describe 'GET #newSendingDestination' do
     it "newSendingDestination.html.erbに遷移すること" do
       get :newSendingDestination
       expect(response).to render_template :newSendingDestination
     end
   end
 
-  describe 'POST #createSendingDestination' do
+  describe '#createSendingDestination' do
     let(:params) { { user_id: user.id, sending_destination: attributes_for(:sending_destination) } }
     it "@userに正しい値が入っていること" do
       
