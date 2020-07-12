@@ -4,7 +4,7 @@ class SendingDestination < ApplicationRecord
   include JpPrefecture
   jp_prefecture :prefecture_code
 
-  # postal_codeからprefecture_nameに変換
+  # post_codeからprefecture_nameに変換
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
   end
@@ -23,4 +23,8 @@ class SendingDestination < ApplicationRecord
             :house_number,
             presence: true
   validates :phone_number, uniqueness: true
+  validates :phone_number,
+            format: {
+              with: /\A\d+\d+\d+\z/
+            }
 end
