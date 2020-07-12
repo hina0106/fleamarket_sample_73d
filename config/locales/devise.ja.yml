@@ -25,6 +25,12 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+        nickname: ニックネーム
+        family_name: お名前(姓)(全角)
+        first_name: お名前(名)(全角)
+        family_name_kana: お名前カナ(姓)(全角)
+        first_name_kana: お名前カナ(名)(全角)
+        birthday: 生年月日
     models:
       user: ユーザ
   devise:

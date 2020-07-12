@@ -1,44 +1,44 @@
-%h2 住所情報登録
+%h2 発送元・お届け先住所
 = form_for @sendingDestination do |f|
   = render "devise/shared/error_messages", resource: @sendingDestination
   .field
-    = f.label :送付先名字
+    = f.label :destination_first_name
     %br/
     = f.text_field :destination_first_name
   .field
-    = f.label :送付先名前
+    = f.label :destination_family_name
     %br/
     = f.text_field :destination_family_name
   .field
-    = f.label :送付先名字（カナ）
+    = f.label :destination_first_name_kana
     %br/
     = f.text_field :destination_first_name_kana
   .field
-    = f.label :送付先名前（カナ）
+    = f.label :destination_family_name_kana
     %br/
     = f.text_field :destination_family_name_kana
   .field
-    = f.label :郵便番号
+    = f.label :post_code
     %br/
     = f.text_field :post_code, id: 'postcode'
   .field
-    = f.label :都道府県
+    = f.label :prefecture_code
     %br/
     = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'address_prefecture_code', include_blank: '都道府県'
   .field
-    = f.label :市区町村
+    = f.label :city
     %br/
     = f.text_field :city, id:'address_city'
   .field
-    = f.label :番地
+    = f.label :house_number
     %br/
     = f.text_field :house_number, id: 'address_street'
   .field
-    = f.label :建物名
+    = f.label :building_name
     %br/
     = f.text_field :building_name
   .field
-    = f.label :携帯番号
+    = f.label :phone_number
     %br/
     = f.text_field :phone_number
   .actions
