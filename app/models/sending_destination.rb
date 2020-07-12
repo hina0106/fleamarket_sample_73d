@@ -26,5 +26,6 @@ class SendingDestination < ApplicationRecord
             format: {
               with: /\A\d+\d+\d+\z/
             }
-  validates_uniqueness_of :phone_number, :allow_blank
+  validates_uniqueness_of :phone_number,
+                          allow_nil: true
 end
