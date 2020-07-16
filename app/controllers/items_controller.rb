@@ -20,6 +20,10 @@ class ItemsController < ApplicationController
     #子カテゴリーに紐付く孫カテゴリーの配列を取得
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
