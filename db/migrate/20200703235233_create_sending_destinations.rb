@@ -15,6 +15,5 @@ class CreateSendingDestinations < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :sending_destinations, :phone_number, unique: true
   end
 end

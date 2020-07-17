@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2020_07_03_235233) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["phone_number"], name: "index_sending_destinations_on_phone_number", unique: true
     t.index ["user_id"], name: "index_sending_destinations_on_user_id"
   end
 

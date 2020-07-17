@@ -11,7 +11,7 @@ FactoryBot.define do
     post_code                     {"0000000"}
     prefecture_code               {"00"}
     city                          {Faker::Address.city}
-    house_number                  {"0000000000"}
+    house_number                  {"0"}
     user
   end
 

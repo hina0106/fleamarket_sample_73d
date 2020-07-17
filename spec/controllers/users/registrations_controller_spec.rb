@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe Users::RegistrationsController do
   let(:user) { FactoryBot.create(:user) }
+  let(:sending_destination) { FactoryBot.create(:sending_destination) }
+  let(:build_user) { FactoryBot.build(:user) }
 
   setup do
     request.env["devise.mapping"] = Devise.mappings[:user]
@@ -15,8 +17,13 @@ describe Users::RegistrationsController do
   end
 
   describe '#create' do
-    it "@sendingDestinationに正しい値が入っていること" do
-      
+    it "@userに期待した値が入っていること" do
+      post :create, params: {user:  build_user.attributes}
+      expect(assigns(:user)) == build_user
+    end
+    it "@userに期待した値が入っていない場合create.html.hamlにリダイレクトすること" do
+    end
+    it "@sendingDestinationに期待した値が入っていること" do
     end
     it "newSendingDestination.html.erbに遷移すること" do
       get :newSendingDestination
@@ -25,16 +32,30 @@ describe Users::RegistrationsController do
   end
 
   describe '#createSendingDestination' do
-    let(:params) { { user_id: user.id, sending_destination: attributes_for(:sending_destination) } }
-    it "@userに正しい値が入っていること" do
-      
+    context '保存に成功した場合' do
+      # let(:params) { { user_id: user.id, sending_destination: attributes_for(:sending_destination) } }
+      # subject {
+      #   post :createSendingDestination,
+      #   params: params
+      # }
+      it "userを保存すること" do
+        # expect{ subject }.to change(User, :count).by(1)
+      end
+      it "sendingDestinationを保存すること" do
+        # expect{ subject }.to change(SendingDestination, :count).by(1)
+      end
+      it "createSendingDestination.html.erbに遷移すること" do
+        subject
+        # expect(response).to render_template :newSendingDestination
+      end  
     end
-    it "@sendingDestinationに正しい値が入っていること" do
-      
-    end
-    it "createSendingDestination.html.erbに遷移すること" do
-      # post :createSendingDestination, params: params
-      # expect(response).to render_template :createSendingDestination
+    context '保存に失敗した場合' do
+      it "userを保存しないこと" do
+      end
+      it "sendingDestinationを保存しないこと" do
+      end
+      it "sending_destinations_pathにリダイレクトすること" do
+      end  
     end
   end
 

@@ -4,11 +4,11 @@
   .field
     = f.label :nickname
     %br/
-    = f.text_field :nickname, autofocus: true
+    = f.text_field :nickname, autofocus: true, value: 'aaaaaa'
   .field
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+    = f.email_field :email, autofocus: true, autocomplete: "email", value: 'aa@aaaa'
   .field
     = f.label :password
     - if @minimum_password_length
@@ -23,19 +23,19 @@
   .field
     = f.label :family_name
     %br/
-    = f.text_field :family_name, autofocus: true
+    = f.text_field :family_name, autofocus: true, value: 'あ'
   .field
     = f.label :first_name
     %br/
-    = f.text_field :first_name, autofocus: true
+    = f.text_field :first_name, autofocus: true, value: 'あ'
   .field
     = f.label :family_name_kana
     %br/
-    = f.text_field :family_name_kana, autofocus: true
+    = f.text_field :family_name_kana, autofocus: true, value: 'あ'
   .field
     = f.label :first_name_kana
     %br/
-    = f.text_field :first_name_kana, autofocus: true
+    = f.text_field :first_name_kana, autofocus: true, value: 'あ'
   .field
     = f.label :birthday
     %br/

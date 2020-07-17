@@ -4,23 +4,23 @@
   .field
     = f.label :destination_first_name
     %br/
-    = f.text_field :destination_first_name
+    = f.text_field :destination_first_name, value: 'あ'
   .field
     = f.label :destination_family_name
     %br/
-    = f.text_field :destination_family_name
+    = f.text_field :destination_family_name, value: 'あ'
   .field
     = f.label :destination_first_name_kana
     %br/
-    = f.text_field :destination_first_name_kana
+    = f.text_field :destination_first_name_kana, value: 'あ'
   .field
     = f.label :destination_family_name_kana
     %br/
-    = f.text_field :destination_family_name_kana
+    = f.text_field :destination_family_name_kana, value: 'あ'
   .field
     = f.label :post_code
     %br/
-    = f.text_field :post_code, id: 'postcode'
+    = f.text_field :post_code, id: 'postcode', value: '6330003'
   .field
     = f.label :prefecture_code
     %br/
@@ -32,7 +32,7 @@
   .field
     = f.label :house_number
     %br/
-    = f.text_field :house_number, id: 'address_street'
+    = f.text_field :house_number, id: 'address_street', value: '1'
   .field
     = f.label :building_name
     %br/

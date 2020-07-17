@@ -22,10 +22,4 @@ class SendingDestination < ApplicationRecord
             :city,
             :house_number,
             presence: true
-  validates :phone_number,
-            format: {
-              with: /\A\d+\d+\d+\z/
-            }
-  validates_uniqueness_of :phone_number,
-                          allow_nil: true
 end
