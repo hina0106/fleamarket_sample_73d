@@ -1,45 +1,74 @@
-%h2 Sign up
-= form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :nickname
-    %br/
-    = f.text_field :nickname, autofocus: true, value: 'aaaaaa'
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email", value: 'aa@aaaa'
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .field
-    = f.label :family_name
-    %br/
-    = f.text_field :family_name, autofocus: true, value: 'あ'
-  .field
-    = f.label :first_name
-    %br/
-    = f.text_field :first_name, autofocus: true, value: 'あ'
-  .field
-    = f.label :family_name_kana
-    %br/
-    = f.text_field :family_name_kana, autofocus: true, value: 'あ'
-  .field
-    = f.label :first_name_kana
-    %br/
-    = f.text_field :first_name_kana, autofocus: true, value: 'あ'
-  .field
-    = f.label :birthday
-    %br/
-    = f.date_select :birthday, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
-  .actions
-    = f.submit "Next"
-= render "devise/shared/links"
+.userContainer
+  %header.userContainer__userHeader
+    .userHeader
+      .userHeader__logo
+        = link_to '#' do
+          = image_tag 'material/logo.png'
+      .userHeader__progressBar
+        %ol
+          %li.progressBar
+            %p.progressBar__cap.user#p_active 会員情報
+            .progressBar__status#status_active
+            .progressBar__bar
+          %li.progressBar
+            %p お届け先住所
+            .progressBar__status
+            .progressBar__bar
+          %li.progressBar
+            %p.progressBar__cap.finish 完了
+            .progressBar__status
+  .userContainer__userMain
+    %h2.userContainer__userMain__title 会員情報入力
+    .userMain
+      = form_for(@user, url: user_registration_path) do |f|
+        = render "devise/shared/error_messages", resource: @user
+        .userMain__formGroup
+          = f.label :nickname, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          = f.text_field :nickname, class: 'userMain__formGroup--input', autofocus: true, placeholder: "例)沖矢昴"
+        .userMain__formGroup
+          = f.label :email, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          = f.email_field :email, class: 'userMain__formGroup--input', autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
+        .userMain__formGroup
+          = f.label :password, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          = f.password_field :password, class: 'userMain__formGroup--input', autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
+        .userMain__formGroup
+          = f.label :password_confirmation, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          = f.password_field :password_confirmation, class: 'userMain__formGroup--input', autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
+        .userMain__formGroup
+          = f.label :family_name, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          .userMain__formGroup__double
+            = f.text_field :family_name, class: 'userMain__formGroup--input double', autofocus: true, placeholder: "例)山田"
+            = f.text_field :first_name, class: 'userMain__formGroup--input double', autofocus: true, placeholder: "例)太郎"
+        .userMain__formGroup
+          = f.label :family_name_kana, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          .userMain__formGroup__double
+            = f.text_field :family_name_kana, class: 'userMain__formGroup--input double', autofocus: true, placeholder: "例)ヤマダ"
+            = f.text_field :first_name_kana, class: 'userMain__formGroup--input double', autofocus: true, placeholder: "例)タロウ"
+        .userMain__formGroup
+          = f.label :birthday, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+          %br/
+          .userMain__formGroup__triple
+          = f.date_select :birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)}, {class: 'userMain__formGroup--input triple'}
+        .userMain__actions
+          = f.submit "次へ進む", class: 'userMain__actions--Btn'
+  = render 'footer'
