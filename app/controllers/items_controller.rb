@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @product = Item.find(params[:id])
   end
 
   def create

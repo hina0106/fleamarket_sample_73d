@@ -4,20 +4,20 @@
     %section.product-show-product-box-container
       %h1
         .product-name
-          = @product.name
+          -# = @product.name
       .product-main-content
         .product-photo
           //メイン画像
           .image
-            = image_tag @image.image.to_s, size: "300x300"
-            - unless @product.status == 0
+            -# = image_tag @image.image.to_s, size: "300x300"
+            -# - unless @product.status == 0
               .product-tag-sold-out-top
                 .sold-out-text-top SOLD
             - else
               .none-sold
           //サムネイル画像
           .owl-dot
-            - @product.images.each.with_index do |image, index|
+            -# - @product.images.each.with_index do |image, index|
               - if image.present?
                 .owl-dot__product.current
                   .owl-dot__product__box
@@ -26,7 +26,7 @@
                 .owl-dot__product
                   .owl-dot__product__box
                     = image_tag image.image, class: "image-sub"
-            - if @product.images.length > 5
+            -# - if @product.images.length > 5
               - for i in 1..(10 - @product.images.length)
                 .owl-dot__dummy
         %table.product-detail-table
@@ -34,32 +34,32 @@
             %tr
               %th 出品者
               %td
-                = link_to "#{@product.user.nickname}", mypages_path, class: "user-name-string";
+                -# = link_to "#{@product.user.nickname}", mypages_path, class: "user-name-string";
                 .product-user-ratings
                   .product-user-rating
                     = image_tag("")
-                    = fa_icon "smile-o"
+                    -# = fa_icon "smile-o"
                     %span 0
                   .product-user-rating
                     = image_tag("")
-                    = fa_icon "meh-o"
+                    -# = fa_icon "meh-o"
                     %span 0
                   .product-user-rating
                     = image_tag("")
-                    = fa_icon "frown-o"
+                    -# = fa_icon "frown-o"
                     %span 0
             %tr
               %th カテゴリー
               %td
                 .product-detail-table-sub
-                  = @sub2_category.sub_category.main_category.name
+                  -# = @sub2_category.sub_category.main_category.name
                 .product-detail-table-sub
                 .product-detail-table-sub__sub
                   >
-                  = @sub2_category.sub_category.name
+                  -# = @sub2_category.sub_category.name
                 .product-detail-table-sub__sub__sub
                   >
-                  = @sub2_category.name
+                  -# = @sub2_category.name
             %tr
               %th ブランド
               %td
@@ -70,12 +70,12 @@
               %th 商品の状態
               %td
                 .product-detail
-                  = @product.state
+                  -# = @product.state
             %tr
               %th 配送料の負担
               %td
                 .product-detail
-                  = @product.fee_payer
+                  -# = @product.fee_payer
             %tr
               %th 配送の方法
               %td
@@ -84,18 +84,18 @@
               %th 発送元地域
               %td
                 .product-detail.prefecture-name
-                  = @product.city
+                  -# = @product.city
             %tr
               %th 配送日の目安
               %td
                 .product-detail
-                  = @product.delivery_time
+                  -# = @product.delivery_time
       .product-price-box
         %span.product-price 
-          ¥ #{@product.price}
+          -# ¥ #{@product.price}
         %span.product-tax (税込)
         %span.product-fee_payer
-      -if user_signed_in?
+      -# -if user_signed_in?
         -if @product.user_id == current_user.id
           = link_to edit_product_path(@product), data: {turbolinks: false} do
             .product-edit-btn 商品の編集
@@ -115,7 +115,7 @@
             .product-buy-btn 購入画面に進む
         -else
           .product-buy-btn-sold 売り切れました
-      -unless user_signed_in? && @product.user_id == current_user.id
+      -# -unless user_signed_in? && @product.user_id == current_user.id
         .product-description
           %p.product-description__inner
             = @product.detail
@@ -159,7 +159,7 @@
                           = fa_icon "trash"
                   %i.icon-ballon
         .product-message-form
-          = form_for(@comment, url:"/products/#{@product.id}/comments") do |f|
+          -# = form_for(@comment, url:"/products/#{@product.id}/comments") do |f|
             %p.attention 
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             =f.text_field :text, class:"message-form"
@@ -167,21 +167,21 @@
               = f.submit "コメントする", class:"comment-button"
       .nav-product-link
         .previous-product.items-link_to
-          =fa_icon "chevron-left"
+          -# =fa_icon "chevron-left"
           = link_to "前の商品へ", "#"
           .next-product.items-link_to
             = link_to "次の商品へ", "#"
-            = fa_icon "chevron-right"
+            -# = fa_icon "chevron-right"
         .product-social-media-box
           .text-center
           %ul.social-media-box
             %li
               = link_to "#", target: "_blank", class: "share-btn" do
-                = fa_icon "facebook-square"
+                -# = fa_icon "facebook-square"
             %li
               = link_to "#", target: "_blank", class: "share-btn" do
-                = fa_icon "twitter-square"
+                -# = fa_icon "twitter-square"
             %li
-              = link_to "#", target: "_blank", class: "share-btn" do
+              -# = link_to "#", target: "_blank", class: "share-btn" do
                 = fa_icon "pinterest-square"
   = render "footer"
