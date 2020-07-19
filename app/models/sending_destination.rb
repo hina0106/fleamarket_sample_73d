@@ -13,13 +13,19 @@ class SendingDestination < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
-  validates :destination_first_name,
-            :destination_family_name,
-            :destination_first_name_kana,
-            :destination_family_name_kana,
-            :post_code,
+  validates :post_code,
             :prefecture_code,
             :city,
             :house_number,
             presence: true
+  validates :destination_family_name, presence: true, presence: {message: '姓を入力してください'}
+  validates :destination_first_name, presence: true, presence: {message: '名を入力してください'}
+  validates :destination_family_name_kana, presence: true, presence: {message: '姓カナを入力してください'}
+  validates :destination_first_name_kana, presence: true, presence: {message: '名カナを入力してください'}
+  # validates :phone_number,
+  #           :post_code,
+  #           format: {
+  #             with: /[0-9]+/,
+  #             message: '半角数字で入力してください'
+  #           }
 end

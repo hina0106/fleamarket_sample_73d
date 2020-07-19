@@ -21,7 +21,6 @@
     %h2.userContainer__userMain__title お届け先住所
     .userMain
       = form_for @sendingDestination do |f|
-        = render "devise/shared/error_messages", resource: @sendingDestination
         .userMain__formGroup
           = f.label :destination_family_name, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
@@ -30,6 +29,10 @@
           .userMain__formGroup__double
             = f.text_field :destination_family_name, class: 'userMain__formGroup--input double', placeholder: "例)山田"
             = f.text_field :destination_first_name, class: 'userMain__formGroup--input double', placeholder: "例)太郎"
+          %p.userMain__formGroup__errorMsg.double
+            =@sendingDestination.errors.messages[:destination_family_name][0]
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:destination_first_name][0]
         .userMain__formGroup
           = f.label :destination_family_name_kana, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
@@ -38,42 +41,58 @@
           .userMain__formGroup__double
             = f.text_field :destination_family_name_kana, class: 'userMain__formGroup--input double', placeholder: "例)ヤマダ"
             = f.text_field :destination_first_name_kana, class: 'userMain__formGroup--input double', placeholder: "例)タロウ"
+          %p.userMain__formGroup__errorMsg.double
+            =@sendingDestination.errors.messages[:destination_family_name_kana][0]
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:destination_first_name_kana][0]
         .userMain__formGroup
           = f.label :post_code, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
             必須
           %br/
           = f.text_field :post_code, id: 'postcode', class: 'userMain__formGroup--input', placeholder: "例)6330003"
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:post_code][0]
         .userMain__formGroup
           = f.label :prefecture_code, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
             必須
           %br/
           = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, id: 'address_prefecture_code', include_blank: '都道府県'
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:prefecture_code][0]
         .userMain__formGroup
           = f.label :city, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
             必須
           %br/
           = f.text_field :city, id:'address_city', class: 'userMain__formGroup--input', placeholder: "例)桜井市朝倉台東"
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:city][0]
         .userMain__formGroup
           = f.label :house_number, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
             必須
           %br/
           = f.text_field :house_number, id: 'address_street', class: 'userMain__formGroup--input', placeholder: "例)5-334-25"
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:house_number][0]
         .userMain__formGroup
           = f.label :building_name, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require.arbitrary
             任意
           %br/
           = f.text_field :building_name, class: 'userMain__formGroup--input', placeholder: "例)マンション405号室"
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:building_name][0]
         .userMain__formGroup
           = f.label :phone_number, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require.arbitrary
             任意
           %br/
           = f.text_field :phone_number, class: 'userMain__formGroup--input', placeholder: "例)09012345678"
+          %p.userMain__formGroup__errorMsg
+            =@sendingDestination.errors.messages[:phone_number][0]
         .userMain__actions
           = f.submit "登録する", class: 'userMain__actions--Btn'
   = render 'footer'
