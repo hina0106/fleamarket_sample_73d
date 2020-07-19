@@ -7,13 +7,17 @@ class User < ApplicationRecord
 
   validates :nickname,
             :birthday, presence: true
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true, presence: true
   devise :validatable, password_length: 7..128
   validates :first_name,
             :family_name,
             :first_name_kana,
-            :family_name_kana, presence: true,
+            :family_name_kana,
             format: {
               with: /[^ -~｡-ﾟ]+/
-            }
+            }, allow_blank: true
+  validates :first_name,
+            :family_name,
+            :first_name_kana,
+            :family_name_kana, presence: true
 end
