@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @product = Item.find(params[:id])
   end
 
   def create
