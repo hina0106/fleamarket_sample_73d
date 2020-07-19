@@ -8,6 +8,9 @@
 @import "mixins/vendor_prefix";
 @import "mixins/decoration";
 
+@import "modules/price";
+@import "modules/detail";
+@import "modules/new-header";
 @import "modules/header";
 @import "modules/main";
 @import "modules/app_banner";
