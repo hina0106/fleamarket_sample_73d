@@ -58,7 +58,7 @@
           %span.userMain__formGroup__require
             必須
           %br/
-          = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '都道府県'},{id: 'address_prefecture_code', class: 'userMain__formGroup--input double select'}
+          = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '都道府県'},id: 'address_prefecture_code', class: 'userMain__formGroup--input double select'
           %p.userMain__formGroup__errorMsg
             =@sendingDestination.errors.messages[:prefecture_code][0]
         .userMain__formGroup
