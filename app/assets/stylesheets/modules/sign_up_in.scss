@@ -163,6 +163,9 @@
           &:hover {
             cursor: pointer;
           }
+          & a {
+            display: block;
+          }
         }
       }
     }
