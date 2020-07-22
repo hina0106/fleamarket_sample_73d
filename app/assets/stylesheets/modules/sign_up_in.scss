@@ -164,6 +164,9 @@
       .signInMsg {
         display: inline-block;
         margin-top: 4px;
+        &:hover {
+          color: $lightBlue;
+        }
         &--label:hover {
           cursor: pointer;
           color: $lightBlue;
