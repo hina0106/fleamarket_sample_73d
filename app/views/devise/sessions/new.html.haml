@@ -9,6 +9,9 @@
     .userMain
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .userMain__formGroup
+          %p.userMain__formGroup__errorMsg
+            = flash[:alert]
+        .userMain__formGroup
           = f.label :email, class: 'userMain__formGroup__label'
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email", class: 'userMain__formGroup--input', placeholder: "例)aaa.gmail.com"
