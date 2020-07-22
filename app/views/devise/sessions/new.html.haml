@@ -12,9 +12,6 @@
           = f.label :email, class: 'userMain__formGroup__label'
           %br/
           = f.email_field :email, autofocus: true, autocomplete: "email", class: 'userMain__formGroup--input', placeholder: "例)aaa.gmail.com"
-          -# %p.userMain__formGroup__errorMsg
-          -#   - binding.pry
-          -#   = @user.errors[:email][0]
         .userMain__formGroup
           = f.label :password, class: 'userMain__formGroup__label'
           %br/
