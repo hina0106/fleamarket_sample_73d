@@ -37,7 +37,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # バリデーションチェックが完了した情報と、sessionで保持していた情報とあわせ、ユーザー情報として保存する
     @user.build_sending_destination(@sendingDestination.attributes)
-    binding.pry
     @user.save
 
     # sessionを削除する
