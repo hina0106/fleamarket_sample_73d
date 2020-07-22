@@ -141,13 +141,6 @@
             margin-right: 60px;
           }
         }
-        .signInMsg {
-          display: block;
-          margin-top: 4px;
-          &:hover {
-            color: $lightBlue;
-          }
-        }
       }
       &__actions {
         margin-top: 35px;
@@ -166,6 +159,14 @@
           & a {
             display: block;
           }
+        }
+      }
+      .signInMsg {
+        display: inline-block;
+        margin-top: 4px;
+        &--label:hover {
+          cursor: pointer;
+          color: $lightBlue;
         }
       }
     }
