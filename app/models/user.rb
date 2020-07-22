@@ -7,15 +7,13 @@ class User < ApplicationRecord
 
   validates :nickname,
             :email,
-            :password,
-            :password_confirmation,
             :birthday, presence: true
+  devise    :validatable, password_length: 7..128
   validates :family_name, presence: true, presence: {message: '姓を入力してください'}
   validates :first_name, presence: true, presence: {message: '名を入力してください'}
   validates :family_name_kana, presence: true, presence: {message: '姓カナを入力してください'}
   validates :first_name_kana, presence: true, presence: {message: '名カナを入力してください'}
   validates :email, uniqueness: true
-  validates :password, :password_confirmation, length: { minimum: 7 }
   validates :first_name,
             :family_name,
             :first_name_kana,

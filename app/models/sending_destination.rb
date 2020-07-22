@@ -22,10 +22,4 @@ class SendingDestination < ApplicationRecord
   validates :destination_first_name, presence: true, presence: {message: '名を入力してください'}
   validates :destination_family_name_kana, presence: true, presence: {message: '姓カナを入力してください'}
   validates :destination_first_name_kana, presence: true, presence: {message: '名カナを入力してください'}
-  # validates :phone_number,
-  #           :post_code,
-  #           format: {
-  #             with: /[0-9]+/,
-  #             message: '半角数字で入力してください'
-  #           }
 end
