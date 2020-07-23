@@ -26,3 +26,15 @@
     }
   }
 }
+@mixin requireLbl {
+  background-color: $lightBlue;
+  padding: 2px 4px;
+  margin-left: 8px;
+  color: $white;
+  font-size: 13px;
+  vertical-align: top;
+  border-radius: 2px;
+  &.arbitrary {
+    background-color: $paleGray;
+  }
+}

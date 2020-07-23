@@ -39,9 +39,9 @@
 
           .sell-title
             %h3.sell-title__text
-              商品の状態
-              %span.sell-title__require
-                必須
+              ブランド
+              %span.sell-title__require.arbitrary
+                任意
           .sell-collection_select
             = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
           .error-messages#error-condition

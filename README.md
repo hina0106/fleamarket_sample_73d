@@ -9,7 +9,7 @@
 |name|string|null: false|
 |ancestry|string|
 ### Association
-- has_many :items
+- has_many :item
 
 
 ## favoritesテーブル
@@ -117,7 +117,7 @@
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites
-- has_many :item_imgs, dependent: :destroy
+- has_many :item_img, dependent: :destroy
 - has_one :user_evaluation
 - belongs_to :category
 - belongs_to_active_hash :size
