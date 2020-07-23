@@ -1,7 +1,8 @@
 .userContainer {
   background-color: $lightGray;
   color: $lightBlack;
-  min-height: 100vh;
+  min-height: 100%;
+  width: 100%;
   position: relative;
   padding-bottom: 130px;
   box-sizing: border-box;
@@ -172,6 +173,9 @@
           color: $lightBlue;
         }
       }
+    }
+    &.test{
+      margin-bottom: 330px;
     }
   }
   &__userFooter {
