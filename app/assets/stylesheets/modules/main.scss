@@ -58,7 +58,7 @@
       margin: 0 auto;
       .intro__list{
         width: calc(1 / 3 * 100%);
-        margin: 16px 5% 0 0;
+        margin: 16px 2% 0 2%;
         text-align: left;
         @include flexbox();
         flex-direction: column;
@@ -98,9 +98,6 @@
           font-size: 18px;
           line-height: 1.5;
           margin: 16px 0 0;
-        }
-        &.last {
-          margin-right: 0;
         }
       }
     }
@@ -214,16 +211,19 @@
         }
       }
       &__lists {
-        width: 780px;
+        max-width: 1000px;
+        width: 100%;
+        height: 100%;
         @include flexbox();
         justify-content: space-around;
         margin: 24px auto 0;
         .product {
-          width: 220px;
+          width: calc(1 / 4 * 100%);
           display: inline-block;
           text-align: center;
+          padding: 0 6px;
           &__img {
-            width: 220px;
+            width: 100%;
             height: 150px;
             margin: 0;
             overflow: hidden;
@@ -232,11 +232,6 @@
             .img {
               width: 100%;
               height: 100%;
-              position: absolute;
-              top: 0;
-              left: 0;
-              right: 0;
-              bottom: 0;
               object-fit: cover;
             }
           }
