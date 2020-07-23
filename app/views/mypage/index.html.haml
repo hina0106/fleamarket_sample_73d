@@ -3,7 +3,7 @@
   .userContainer__userMain.test
     %h2.userContainer__userMain__title マイページ
     .userMain
-      .userMain__actions--Btn
-        = link_to root_path do
+      .userMain__actions
+        = link_to root_path, class:'userMain__actions--Btn' do
           トップへ戻る
   = render 'items/footer'
