@@ -54,12 +54,7 @@
     }
   }
   &__userMain {
-    width: 700px;
-    height: 100%;
-    margin: 0 auto;
-    background-color: $white;
-    padding-bottom: 70px;
-    margin-bottom:  40px;
+    @include pageMain();
     &__title {
       @include pageTitle();
     }
@@ -156,9 +151,6 @@
           color: $lightBlue;
         }
       }
-    }
-    &.test{
-      margin-bottom: 330px;
     }
   }
   &__userFooter {

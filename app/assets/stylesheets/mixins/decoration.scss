@@ -26,6 +26,7 @@
     }
   }
 }
+// ロゴのみのヘッダー
 @mixin pageHeader {
   padding: 40px 0;
   width: 700px;
@@ -38,14 +39,26 @@
     }
   }
 }
+// ページのメイン部分の雛形
+@mixin pageMain {
+  width: 700px;
+  height: 100%;
+  margin: 0 auto;
+  background-color: $white;
+  padding-bottom: 70px;
+  margin-bottom:  40px;
+}
+// ページのタイトル部分
 @mixin pageTitle {
   font-size: 22px;
   font-weight: bold;
   padding: 32px;
   text-align: center;
+  border-top: solid 1.5px $lightGray;
   border-bottom: solid 1.5px $lightGray;
   margin-bottom: 40px;
 }
+// ロゴのみのフッター
 @mixin pageFooter {
   width: 100%;
   height: 80px;

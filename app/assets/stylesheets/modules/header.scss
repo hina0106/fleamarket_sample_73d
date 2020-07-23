@@ -1,11 +1,12 @@
 .header {
   padding: 0 60px;
+  background-color: $white;
   &__headerInner {
     max-width: 1040px;
     width: 100%;
     min-height: 82px;
     margin: 0 auto;
-    padding-top: 15px;
+    padding: 15px 0 10px 0;
     &__mainHeader {
       position: relative;
       @include flexbox();
@@ -55,7 +56,6 @@
     &__nav {
       font-size: 14px;
       @include flexbox();
-      margin-bottom: 10px;
       & ul {
         list-style: none;
       }
