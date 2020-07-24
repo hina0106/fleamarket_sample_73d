@@ -1,7 +1,7 @@
 class Size < ActiveHash::Base
   include ActiveHash::Associations
 
-  has_many :item
+  has_many :items
 
   self.data = [
     # 洋服のサイズ

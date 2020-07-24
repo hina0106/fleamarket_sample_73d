@@ -9,7 +9,7 @@
 |name|string|null: false|
 |ancestry|string|
 ### Association
-- has_many :item
+- has_many :items
 
 
 ## favoritesテーブル
@@ -111,13 +111,13 @@
 |preparation_day|references|null: false, foreign_key: true|
 |postage_type|references|null: false, foreign_key: true|
 |category|references|null: false, foreign_key: true|
-|trading_status|enum|null: false|
+|trading_status|integer|null: false|
 |seller|references|null: false, foreign_key: true|
 |buyer|references|foreign_key: true|
 ### Association
 - has_many :comments, dependent: :destroy
 - has_many :favorites
-- has_many :item_img, dependent: :destroy
+- has_many :item_imgs, dependent: :destroy
 - has_one :user_evaluation
 - belongs_to :category
 - belongs_to_active_hash :size

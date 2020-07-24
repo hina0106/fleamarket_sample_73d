@@ -4,7 +4,7 @@
       = image_tag 'material_2/logo.png', alt: 'FURIMA', height: '49', width: '185'
   %main
     %section.sell-container
-      = form_with model: @post do |f|
+      = form_for(@item, url: items_path) do |f|
 
         -# 画像部分
         .sell-container__content
@@ -18,7 +18,7 @@
             .sell-container__content__upload__items
               .sell-container__content__upload__items__box
                 %ul#output-box
-                  %div#image-input{tabindex:"0"}
+                  %div#image-input
                     = f.label :images, for: "item_images0", class: 'sell-container__content__upload__items__box__label', data: {label_id: 0 } do 
                       = f.file_field :images, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images0", style: 'display: none;'
                       %pre

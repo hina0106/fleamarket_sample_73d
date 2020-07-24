@@ -1,7 +1,7 @@
 .sell
   .sell-container
-    .sell-container__content
-      = form_with model: @post do |f|
+    = form_for(@item, url: items_path) do |f|
+      .sell-container__content
         .sell-title
           %h3.sell-title__text
             商品名
@@ -15,7 +15,7 @@
             商品の説明
             %span.sell-title__require
               必須
-        = f.text_area :text,{class: 'sell-container__content__description', required: "required", rows: '7', maxlength: '1000', placeholder: '商品説明'}
+        = f.text_area :introduction,{class: 'sell-container__content__description', required: "required", rows: '7', maxlength: '1000', placeholder: '商品説明'}
         -# placeholderでtems_helperを呼び出す
         .sell-container__content__word-count
           %span#word-count
@@ -23,9 +23,8 @@
           &#47;1000
         .error-messages#error-text
 
-    -# 詳細部分
-    .sell-container__content
-      = form_with model: @post do |f|
+      -# 詳細部分
+      .sell-container__content
         %h3.sell-sub-head 商品の詳細
         .sell-container__content__details
           .sell-title
@@ -34,7 +33,8 @@
               %span.sell-title__require
                 必須
           .sell-collection_select
-            = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+            -# = f.select :category_id, Category.all.map { |i| [i.name] }, {} ,{class: 'sell-collection_select__label'}
+            = f.text_field :category_id, {class:'sell-container__content__name', required: "required"}
           .error-messages#error-category
 
           .sell-title
@@ -43,7 +43,7 @@
               %span.sell-title__require.arbitrary
                 任意
           .sell-collection_select
-            = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+            = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "--"} ,{class: 'sell-collection_select__label'}
           .error-messages#error-condition
 
           .sell-title
@@ -52,12 +52,11 @@
               %span.sell-title__require
                 必須
           .sell-collection_select
-            = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+            = f.select :item_condition_id, ItemCondition.all.map { |i| [i.name] }, {}, {class: 'sell-collection_select__label'}
           .error-messages#error-condition
 
-    -# 配送部分
-    .sell-container__content
-      = form_with model: @post do |f|
+      -# 配送部分
+      .sell-container__content
         %h3.sell-sub-head
           %p 配送について
         .sell-container__content__delivery
@@ -67,7 +66,7 @@
               %span.sell-title__require
                 必須
           .sell-collection_select
-            = f.select :budget_d, [["選択してください", 0],["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]], {} ,{class: 'sell-collection_select__label'}
+            = f.select :postage_payer_id, PostagePayer.all.map { |p| [p.name] }, {} ,{class: 'sell-collection_select__label'}
           .error-messages#error-deliverycost
 
           .sell-title
@@ -76,7 +75,7 @@
               %span.sell-title__require
                 必須
         .sell-collection_select
-          = f.select :budget_d, [["選択してください", 0],["1~2日で発送", 1],["2~3日で発送", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+          = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '都道府県'}, class: 'sell-collection_select__label'
         .error-messages#error-pref
 
         .sell-title
@@ -85,5 +84,5 @@
             %span.sell-title__require
               必須
         .sell-collection_select
-          = f.select :budget_d, [["選択してください", 0],["¥~999", 1],["¥1,000~¥1,999", 2],["¥2,000~¥2,999",3],["¥3,000~",4]], {} ,{class: 'sell-collection_select__label'}
+          = f.select :preparation_day_id, PreparationDay.all.map { |p| [p.value] }, {} ,{class: 'sell-collection_select__label'}
         .error-messages#error-delivery_days

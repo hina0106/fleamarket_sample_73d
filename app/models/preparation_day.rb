@@ -1,4 +1,4 @@
-class Preparation_day < ActiveHash::Base
+class PreparationDay < ActiveHash::Base
   include ActiveHash::Associations
   has_many :item
 
