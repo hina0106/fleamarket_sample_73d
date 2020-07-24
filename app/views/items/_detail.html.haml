@@ -1,6 +1,6 @@
 .sell
   .sell-container
-    = form_for@item do |f|
+    = form_for @item do |f|
       -# 画像部分
       .sell-container__content
         .sell-title
@@ -14,12 +14,8 @@
             .sell-container__content__upload__items__box
               %ul#output-box
                 %div#image-input
-                  = f.label :images, for: "item_images0", class: 'sell-container__content__upload__items__box__label', data: {label_id: 0 } do 
-                    = f.file_field :url, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images0", style: 'display: none;'
-                    %pre
-                      %i.fas.fa-camera.fa-lg
-                      ドラッグアンドドロップ
-                      またはクリックしてファイルをアップロード
+                  = f.fields_for :item_imgs do |image|
+                    = image.file_field :url, accept: "image/*", class: "sell-container__content__upload__items__box__input", id: "item_images0", data: {index: image.index}
         .error-messages#error-image
       -# 商品概要部分
       .sell-container__content
@@ -37,7 +33,6 @@
             %span.sell-title__require
               必須
         = f.text_area :introduction,{class: 'sell-container__content__description', required: "required", rows: '7', maxlength: '1000', placeholder: '商品説明'}
-        -# placeholderでtems_helperを呼び出す
         .sell-container__content__word-count
           %span#word-count
             0

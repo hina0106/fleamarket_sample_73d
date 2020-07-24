@@ -14,6 +14,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :preparation_day
   belongs_to :seller, class_name: "User"
   belongs_to :buyer, class_name: "User", optional: true
+  accepts_nested_attributes_for :item_imgs, allow_destroy: true, update_only: true
 
   validates :brand_id,
             :buyer_id,
