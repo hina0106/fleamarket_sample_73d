@@ -1,6 +1,27 @@
 .sell
   .sell-container
-    = form_for(@item, url: items_path) do |f|
+    = form_for@item do |f|
+      -# 画像部分
+      .sell-container__content
+        .sell-title
+          %h3.sell-title__text
+            出品画像
+            %span.sell-title__require
+              必須
+        .sell-container__content__max-sheet 最大10枚までアップロードできます
+        .sell-container__content__upload
+          .sell-container__content__upload__items
+            .sell-container__content__upload__items__box
+              %ul#output-box
+                %div#image-input
+                  = f.label :images, for: "item_images0", class: 'sell-container__content__upload__items__box__label', data: {label_id: 0 } do 
+                    = f.file_field :url, multiple: true, class: "sell-container__content__upload__items__box__input", id: "item_images0", style: 'display: none;'
+                    %pre
+                      %i.fas.fa-camera.fa-lg
+                      ドラッグアンドドロップ
+                      またはクリックしてファイルをアップロード
+        .error-messages#error-image
+      -# 商品概要部分
       .sell-container__content
         .sell-title
           %h3.sell-title__text
@@ -33,9 +54,17 @@
               %span.sell-title__require
                 必須
           .sell-collection_select
-            -# = f.select :category_id, Category.all.map { |i| [i.name] }, {} ,{class: 'sell-collection_select__label'}
             = f.text_field :category_id, {class:'sell-container__content__name', required: "required"}
           .error-messages#error-category
+
+          .sell-title
+            %h3.sell-title__text
+              サイズ
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.collection_select :size_id, Size.all, :id, :value, {prompt: "--"} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-condition
 
           .sell-title
             %h3.sell-title__text
@@ -62,6 +91,15 @@
         .sell-container__content__delivery
           .sell-title
             %h3.sell-title__text
+              配送方法
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.select :postage_type_id, PostageType.all.map { |p| [p.name] }, {} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-deliverycost
+
+          .sell-title
+            %h3.sell-title__text
               配送料の負担
               %span.sell-title__require
                 必須
@@ -74,15 +112,47 @@
               発送元の地域
               %span.sell-title__require
                 必須
-        .sell-collection_select
-          = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '都道府県'}, class: 'sell-collection_select__label'
-        .error-messages#error-pref
+          .sell-collection_select
+            = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '都道府県'}, class: 'sell-collection_select__label'
+          .error-messages#error-pref
 
-        .sell-title
-          %h3.sell-title__text
-            発送までの日数
-            %span.sell-title__require
-              必須
-        .sell-collection_select
-          = f.select :preparation_day_id, PreparationDay.all.map { |p| [p.value] }, {} ,{class: 'sell-collection_select__label'}
-        .error-messages#error-delivery_days
+          .sell-title
+            %h3.sell-title__text
+              発送までの日数
+              %span.sell-title__require
+                必須
+          .sell-collection_select
+            = f.select :preparation_day_id, PreparationDay.all.map { |p| [p.value] }, {} ,{class: 'sell-collection_select__label'}
+          .error-messages#error-delivery_days
+      -# 価格部分
+      .sell-container__content
+        %h3.sell-sub-head
+          %p 販売価格(300〜9,999,999)
+        .sell-container__content__price
+          .sell-title
+            %h3.sell-title__text
+              販売価格
+              %span.sell-title__require
+                必須
+          .sell-container__content__price__form
+            = f.label :price, class: 'sell-container__content__price__form__label' do
+              ¥
+              = f.number_field :price, {placeholder: '0', value: '', autocomplete:"off", class: 'sell-container__content__price__form__box', required: "required"}
+        .error-messages#error-price
+
+        .sell-container__content__commission
+          .sell-container__content__commission__left
+            販売手数料 （10%）
+          .sell-container__content__commission__right ー
+        .sell-container__content__profit
+          .sell-container__content__profit__left
+            販売利益
+          .sell-container__content__profit__right ー
+
+      .submit-btn
+        = f.submit '出品する', class: 'submit-btn__sell-btn'
+        = link_to 'もどる', root_path, class: 'submit-btn__return-btn'
+      .attention-box
+        %p
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物
+          などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。

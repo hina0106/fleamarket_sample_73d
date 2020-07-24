@@ -4,7 +4,7 @@ class Item < ApplicationRecord
   include JpPrefecture
   jp_prefecture :prefecture_code
 
-  belongs_to :brand
+  belongs_to :brand, optional: true
   has_many :item_imgs, dependent: :destroy
   belongs_to :category
   belongs_to_active_hash :size
@@ -13,5 +13,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_type
   belongs_to_active_hash :preparation_day
   belongs_to :seller, class_name: "User"
-  belongs_to :buyer, class_name: "User"
+  belongs_to :buyer, class_name: "User", optional: true
+
+  validates :brand_id,
+            :buyer_id,
+            :trading_status, allow_blank: true, numericality: {only_integer: true}
+
 end
