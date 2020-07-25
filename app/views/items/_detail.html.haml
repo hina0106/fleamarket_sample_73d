@@ -15,7 +15,9 @@
               %ul#output-box
                 %div#image-input
                   = f.fields_for :item_imgs do |image|
-                    = image.file_field :url, accept: "image/*", class: "sell-container__content__upload__items__box__input", id: "item_images0", data: {index: image.index}
+                    = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}
+                    %br/
+                    %span.js-remove 削除
         .error-messages#error-image
       -# 商品概要部分
       .sell-container__content
