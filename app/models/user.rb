@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :sending_destination, dependent: :destroy
-  belongs_to :"Item"
+  # belongs_to :item
 
   validates :nickname,
             :email,

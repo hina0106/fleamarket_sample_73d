@@ -17,7 +17,22 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :item_imgs, allow_destroy: true, update_only: true
 
   validates :brand_id,
-            :buyer_id,
+            # :buyer_id,
             :trading_status, allow_blank: true, numericality: {only_integer: true}
+  validates :name,
+            :introduction,
+            :category_id,
+            :item_condition_id,
+            :postage_payer_id,
+            :prefecture_code,
+            :preparation_day_id,
+            :price,
+            :size_id,
+            :postage_type_id,
+            :seller_id,
+            presence: true
+
+  validates_associated :item_imgs
+  validates :item_imgs, presence: true
 
 end
