@@ -1,0 +1,26 @@
+.userContainer
+  %header.userContainer__userHeader
+    .userHeader
+      .userHeader__logo
+        = link_to '#' do
+          = image_tag 'material/logo.png'
+      .userHeader__progressBar
+        %ol
+          %li.progressBar
+            %p.progressBar__cap.user#p_active 会員情報
+            .progressBar__status#status_active
+            .progressBar__bar#status_active
+          %li.progressBar
+            %p#p_active お届け先住所
+            .progressBar__status#status_active
+            .progressBar__bar#status_active
+          %li.progressBar
+            %p.progressBar__cap.finish#p_active 完了
+            .progressBar__status#status_active
+  .userContainer__userMain
+    %h2.userContainer__userMain__title 登録が完了しました
+    .userMain
+      .userMain__actions--Btn
+        = link_to root_path do
+          トップへ戻る
+  = render 'footer'
