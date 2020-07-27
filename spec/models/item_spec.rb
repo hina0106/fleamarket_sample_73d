@@ -79,14 +79,7 @@ RSpec.describe Item, type: :model do
       expect(item.errors[:category_id]).to include("必須入力です")
     end
 
-    # # 12
-    # it "trading_statusがない場合は登録できないこと" do
-    #   item = build(:item, trading_status: nil)
-    #   item.valid?
-    #   expect(item.errors[:trading_status]).to include("必須入力です")
-    # end
-
-    # 13
+    # 12
     it "seller_idがない場合は登録できないこと" do
       item = build(:item, seller_id: nil)
       item.valid?
