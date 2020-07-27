@@ -13,6 +13,8 @@ FactoryBot.define do
     category_id        {create(:category).id}
     trading_status     {"0"}
     seller_id          {create(:user).id}
-    # url                {"aaa.jpg"}
+    after(:build) do |item|
+      item.item_imgs << build(:item_img)
+    end
   end
 end

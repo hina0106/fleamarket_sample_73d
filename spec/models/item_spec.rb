@@ -4,11 +4,10 @@ RSpec.describe Item, type: :model do
   # pending "add some examples to (or delete) #{__FILE__}"
 
   describe '#create' do
-    # #1
-    # it "必須項目が全て存在すれば登録できること" do
-    #   binding.pry
-    #   expect(build(:item)).to be_valid
-    # end
+    #1
+    it "必須項目が全て存在すれば登録できること" do
+      expect(build(:item)).to be_valid
+    end
 
     # 2
     it "nameがない場合は登録できないこと" do

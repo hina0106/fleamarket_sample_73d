@@ -17,7 +17,6 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :item_imgs, allow_destroy: true, update_only: true
 
   validates :brand_id,
-            # :buyer_id,
             :trading_status, allow_blank: true, numericality: {only_integer: true}
   validates :name,
             :introduction,

@@ -1,7 +1,6 @@
 require 'faker'
 FactoryBot.define do
   factory :item_img do
-    item_id {create(:item).id}
-    url   {"item.jpg"}
+    url   {"spec/fixtures/test_image.png"}
   end
 end
