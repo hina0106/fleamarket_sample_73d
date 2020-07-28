@@ -10,8 +10,8 @@
       .sell-container__content__max-sheet 最大10枚までアップロードできます
       .sell-container__content__box
         %ul.output-box
-          = f.fields_for :item_imgs do |image|
-            %div#image-input
+          %div#image-input
+            = f.fields_for :item_imgs do |image|
               = image.label :url, id: 'image-input__label' do
                 = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, required: "required", style: 'display: none;'
                 %pre
