@@ -1,8 +1,12 @@
 $(document).on('turbolinks:load', ()=> {
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
-    const html = `<label id="image-input__label">
-                    <input accept="image/*" class="js-file" data-index="${index}" style="display: none;", type="file" name="item[item_imgs_attributes][${index}][url]" id="item_item_imgs_attributes_${index}_url">`;
+    const html = `<input accept="image/*" class="js-file" data-index="${index}" style="display: none;", type="file" name="item[item_imgs_attributes][${index}][url]" id="item_item_imgs_attributes_${index}_url">`;
+    return html;
+  }
+  // プレビュー用のimgタグを生成する関数
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
     return html;
   }
 
@@ -10,31 +14,17 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
   $('#image-input').on('change', '.js-file', function(e) {
-    console.log("12行目イベント発火");
-    // $('#image-input__label:first').remove();
+    // labelタグのfor属性を変更
+    $('#image-input__label').attr('for', 'item_item_imgs_attributes_' + fileIndex[0] + '_url');
     // fileIndexの先頭の数字を使ってinputを作る
     $('#image-input').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-  });
-
-  $('#image-input').on('click', '.js-remove', function() {
-    $(this).parent().remove();
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-input').append(buildFileField(fileIndex[0]));
-  });
-
-  var file_field = document.querySelector('input[type=file]')
-  $('.js-file').change(function(){
-    console.log("27行目イベント発火");
-    var file = $('input[type="file"]').prop('files')[0];
-    var fileReader = new FileReader();
-    fileReader.onloadend = function(){
-      var src = fileReader.result
-      var html= `<img src="${src}" width="114" height="80">`
-      $('#image-input').before(html);
-    }
-    fileReader.readAsDataURL(file);
+    const targetIndex = $(this).parent().data('index');
+    // ファイルのブラウザ上でのURLを取得する
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
+    $('#image-input').before(buildImg(targetIndex, blobUrl));
   });
 });
