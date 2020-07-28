@@ -12,7 +12,7 @@
         %ul.output-box
           = f.fields_for :item_imgs do |image|
             %div#image-input
-              = image.label :url, class: 'image-input__label' do
+              = image.label :url, id: 'image-input__label' do
                 = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, required: "required", style: 'display: none;'
                 %pre
                   %i.fas.fa-camera.fa-lg
