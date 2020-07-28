@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     get 'sending_destinations', to: 'users/registrations#newSendingDestination'
     post 'sending_destinations', to: 'users/registrations#createSendingDestination'
   end
-  root "items#index"
-  resources :items,only: [:new, :show] 
+  root "items#show"
+  resources :items, only: [:new, :show]
 end
