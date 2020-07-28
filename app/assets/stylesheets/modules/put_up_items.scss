@@ -1,0 +1,207 @@
+img {
+  vertical-align: middle;
+}
+.error-messages{
+  color: $Scarlet;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin: 5px 0 16px 0;
+  display: inline-block;
+}
+
+.sell {
+  position: relative;
+  color: $lightBlack;
+  background-color: $lightGray;
+  font-size: 14px;
+  line-height: 1;
+  .sell-container{
+    max-width: 700px;
+    width: 100%;
+    margin: 0px auto;
+    background-color: $white;
+    &__content{
+      height: auto;
+      padding: 40px;
+      border-bottom: 1px;
+      border-bottom-color: #efefef;
+      border-bottom-style: solid;
+      .sell-sub-head{
+        color: $darkGray;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 1.4em;
+        margin-bottom: 24px;
+        @include flexbox();
+      }
+      .sell-collection_select{
+        margin-top: 16px;
+        &__label{
+          display: inline-block;
+          position: relative;
+          width: 100%;
+          height: 45px;
+          .fas.fa-chevron-down{
+            pointer-events: none;
+            position: absolute;
+            right: 16px;
+            top: 40%;
+            color: $darkGray;
+            height: 48px;
+          }
+        }
+        &__input{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-color: $white;
+        border: 1px solid $paleGray;
+        border-radius: 4px;
+        color: #222;
+        font-size: 16px;
+        height: 48px;
+        line-height: 1;
+        margin: 0;
+        outline: none;
+        padding: 0 56px 0 16px;
+        width: 100%;
+        }
+      }
+      &__name{
+        margin-top: 16px;
+        border: 1px solid $paleGray;
+        border-radius: 4px;
+        height: 48px;
+        padding: 0 16px;
+        width: 100%;
+      }
+      &__description{
+        margin-top: 16px;
+        border: 1px solid $paleGray;
+        border-radius: 4px;
+        padding: 16px;
+        width: 100%;
+        font-size: 16px;
+        display: block;
+      }
+      &__word-count{
+        text-align: right;
+        color: #888;
+        font-size: 12px;
+        line-height: 1.4em;
+        @include flexbox();
+        justify-content: space-between;
+      }
+      &__price{
+        -webkit-box-align: center;
+        align-items: center;
+        @include flexbox();
+        height: 46px;
+        justify-content:space-between;
+        &__form__label{
+          font-size: 14px;
+        }
+        &__form__box{
+          border: 1px solid $paleGray;
+          border-radius: 4px;
+          height: 48px;
+          margin-left: 8px;
+          padding: 0 16px;
+          width: 300px;
+          align-items: center;
+          display: inline-flex;
+          text-align: right;
+        }
+      }
+      #error-price{
+        text-align: right;
+      }
+      &__commission{
+        @include flexbox();
+        justify-content:space-between;
+        height: 70px;
+        padding: 12px 0px;
+        align-items: center;
+        border-bottom: 1px;
+        border-bottom-color: #efefef;
+        border-bottom-style: solid;
+      }
+      .sell-title{
+        align-items: center;
+        margin: 0!important;
+        &__text{
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4em;
+        }
+        &__require{
+          @include requireLbl();
+        }
+      }
+      &__max-sheet{
+        margin-top: 16px;
+      }
+      &__box{
+        margin-top: 16px;
+        @include flexbox();
+        height: auto;
+        width: 100%;
+        align-content: center;
+        align-items: center;
+        cursor: pointer;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        border-width: 1px;
+        .output-box{
+          @include flexbox();
+          flex-wrap: wrap;
+          width: 100%;
+          height: auto;
+          #image-input{
+            height: 100%;
+            -webkit-flex: 1;
+            flex: 1;
+            margin-top: 8px;
+            .image-input__label{
+              background-color: rgb(245, 245, 245);
+              height: 150px;
+              border-width: 1px;
+              border-style: dashed;
+              border-color: rgb(204, 204, 204);
+              text-align: center;
+              @include flexbox();
+              align-items: center;
+              justify-content: center;
+              i{
+                margin-bottom: 8px;
+              }
+              &:hover{
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+    .submit-btn{
+      font-weight: 600;
+      margin: 0 auto;
+      width: 360px;
+      @include longBtn();
+      &--Btn.return{
+        background-color: $paleGray;
+        color: $lightBlack;
+        display: inline-block;
+        text-align: center;
+        margin: 10px 0 32px 0;
+      }
+    }
+    .attention-box{
+      font-size: 8px;
+      line-height: 1.4em;
+      word-break: keep-all;
+      text-align: center;
+    }
+  }
+}

@@ -1,13 +1,8 @@
 $(document).on('turbolinks:load', ()=> {
-  console.log("OK");
   // 画像用のinputを生成する関数
   const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"
-                    name="item[item_imgs_attributes][${index}][url]"
-                    id="item_item_imgs_attributes_${index}_url"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
+    const html = `<label class="image-input__label">
+                    <input accept="image/*" class="js-file" data-index="${index}" style="display: none;", type="file" name="item[item_imgs_attributes][${index}][url]" id="item_item_imgs_attributes_${index}_url">`;
     return html;
   }
 
@@ -15,7 +10,6 @@ $(document).on('turbolinks:load', ()=> {
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
 
   $('#image-input').on('change', '.js-file', function(e) {
-    console.log("OK");
     // fileIndexの先頭の数字を使ってinputを作る
     $('#image-input').append(buildFileField(fileIndex[0]));
     fileIndex.shift();
@@ -27,5 +21,17 @@ $(document).on('turbolinks:load', ()=> {
     $(this).parent().remove();
     // 画像入力欄が0個にならないようにしておく
     if ($('.js-file').length == 0) $('#image-input').append(buildFileField(fileIndex[0]));
+  });
+
+  var file_field = document.querySelector('input[type=file]')
+  $('.js-file').change(function(){
+    var file = $('input[type="file"]').prop('files')[0];
+    var fileReader = new FileReader();
+    fileReader.onloadend = function(){
+      var src = fileReader.result
+      var html= `<img src="${src}" width="114" height="80">`
+      $('#image-input').before(html);
+    }
+    fileReader.readAsDataURL(file);
   });
 });
