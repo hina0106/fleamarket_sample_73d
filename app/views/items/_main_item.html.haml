@@ -14,7 +14,7 @@
         %p
           (税込み)
 .product
-  = link_to '#' do
+  = link_to item_path(item.id) do
     .product__img
       = image_tag "material/IMG_2.png", class: "img"
     .product__body

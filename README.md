@@ -44,8 +44,8 @@
 |prefecture_code|integer|null: false|
 |city|string|null:false|
 |house_number|string|null:false|
-|building_name|string| |
-|phone_number|string|unique:true|
+|building_name|string|
+|phone_number|string|
 |user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
@@ -107,7 +107,7 @@
 |item_condition|references|null: false,foreign_key: true|
 |postage_payer|references|null: false,foreign_key: true|
 |prefecture_code|integer|null: false|
-|size|reference|null: false, foreign_key: true|
+|size|references|null: false, foreign_key: true|
 |preparation_day|references|null: false, foreign_key: true|
 |postage_type|references|null: false, foreign_key: true|
 |category|references|null: false, foreign_key: true|
