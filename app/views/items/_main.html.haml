@@ -104,9 +104,10 @@
       .products__head
       .products__lists
         = render partial: 'main_item'
-  .main__purchaseBtn
-    = link_to new_item_path do
-      .purchaseBtn
-        %span.purchaseBtn__text
-          出品する
-        = icon('fa', 'camera' ,class: 'purchaseBtn__icon')
+  - if user_signed_in?
+    .main__purchaseBtn
+      = link_to new_item_path do
+        .purchaseBtn
+          %span.purchaseBtn__text
+            出品する
+          = icon('fa', 'camera' ,class: 'purchaseBtn__icon')

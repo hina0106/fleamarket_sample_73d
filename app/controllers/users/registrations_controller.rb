@@ -13,7 +13,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # 1ページ目で入力した情報のバリデーションチェック
     unless @user.valid?
-      flash.now[:alert] = @user.errors.full_messages
       render :new and return
     end
 
@@ -31,7 +30,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # 2ページ目で入力した住所情報のバリデーションチェック
     @sendingDestination = SendingDestination.new(sendingDestinationParams)
     unless @sendingDestination.valid?
-      flash.now[:alert] = @sendingDestination.errors.full_messages
       render :newSendingDestination and return
     end
 

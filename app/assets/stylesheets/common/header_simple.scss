@@ -1,0 +1,16 @@
+.headerSimpleWrapper {
+  background-color: $lightGray;
+  padding: 40px 90px 40px 90px;
+  .headerSimple{
+    height: 50px;
+    margin: auto 0;
+    display: flex;
+    justify-content: center;
+    &__logo {
+      img {
+        width: 185px;
+        height: 49px;
+      }
+    }
+  }
+}
