@@ -112,34 +112,34 @@
       -else
         -# -if @item.status == 0
           = link_to "/users/sign_in" do
-            .product-buy-btn 購入画面に進む
+            .item-buy-btn 購入画面に進む
         -else
-          .product-buy-btn-sold 売り切れました
+          .item-buy-btn-sold 売り切れました
       -unless user_signed_in? && @product.user_id == current_user.id
-        .product-description
+        .item-description
           %p.product-description__inner
             -# = @product.detail
-        .product-button-container.clearfix
-          .product-button-left
-            .product-button-like
-              %button{type: "button", name: "like!", class: "product-button"}
+        .item-button-container.clearfix
+          .item-button-left
+            .item-button-like
+              %button{type: "button", name: "like!", class: "item-button"}
                 -# = fa_icon "heart"
                 %span.fade-in-down いいね!
                 %span.fade-in-down 0
-          .product-button__report
-            = link_to "", class: "product-button__report" do
+          .item-button__report
+            = link_to "", class: "item-button__report" do
               -# = fa_icon "flag"
               %span.fade-in-down 不適切な商品の報告            
-          .product-button-right
+          .item-button-right
             = link_to 'https://www.mercari.com/jp/safe/description/', target: "_blank", class: "safe-description" do
               -# = fa_icon "lock"
               あんしん・あんぜんへの取り組み
     .message-content
     .message-content__box__form
-      .product-message-content
+      .item-message-content
         -if @comments 
           -@comments.each do |comment| 
-            .product-message-comment
+            .item-message-comment
               .message-items
                 .message-user
                   = image_tag 'mypage/user-icon.png', size: '30x30', alt: 'user-icon', class:"user-icon"
@@ -155,24 +155,24 @@
                         1時間
                     .message-icon-right
                       .message-delete
-                        = link_to("/products/#{@product.id}/comments/#{comment.id}",{method:"delete"}) do
+                        = link_to("/products/#{@item.id}/comments/#{comment.id}",{method:"delete"}) do
                           = fa_icon "trash"
                   %i.icon-ballon
-        .product-message-form
+        .item-message-form
           -# = form_for(@comment, url:"/items/#{@item.id}/comments") do |f|
             %p.attention 
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             =f.text_field :text, class:"message-form"
             .message-submit__details
               = f.submit "コメントする", class:"comment-button"
-      .nav-product-link
-        .previous-product.items-link_to
+      .nav-item-link
+        .previous-item.items-link_to
           -# =fa_icon "chevron-left"
           = link_to "前の商品へ", "#"
-          .next-product.items-link_to
+          .next-item.items-link_to
             = link_to "次の商品へ", "#"
             -# = fa_icon "chevron-right"
-        .product-social-media-box
+        .item-social-media-box
           .text-center
           %ul.social-media-box
             %li
