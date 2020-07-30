@@ -14,8 +14,12 @@
     .header__headerInner__nav
       %ul.header__headerInner__nav__listsLeft
         %li.header__headerInner__nav__listsLeft__item
-          = link_to '#', id: 'catBtn' do
-            カテゴリー
+          #category-area
+            カテゴリ
+            = render "layouts/category"
+          .headder__nav-tree-display
+            %ul.headder__nav-categorytree
+              %li.headder__nav-categorytree-item
         %li.header__headerInner__nav__listsLeft__item.header__headerInner__nav__listsLeft__item--brand
           = link_to '#' do
             ブランド
