@@ -23,6 +23,11 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
+    # @images = @item.images
+    # @image = @images.first
+    # @comment = Comment.new
+    # @comments = Comment.where(product_id: @product.id)
   end
 
   def create
@@ -35,9 +40,49 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if item.user_id == current_user.id
+      item.update(items_params)
+      redirect_to root_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    if @item.user_id == current_user.id
+      @item.destroy
+      redirect_to edit_sell_path #仮のpath
+    else
+      redirect_to root_path #仮のpath
+    end
+  end
+
+
     private
 
   def item_params
     params.require(:item).permit(:name, :text, :category, :price, :status, :deliverycost, :pref, :delivery_days, images: []).merge(user_id: current_user.id)
   end
+
+  def set_product
+    @item = Item.find(params[:id])
+  end
+
+  def set_user
+    @user = User.find(@item.user_id)
+  end
+
+  def correct_user
+    @item = Item.find(params[:id])
+    if @item.user_id != current_user.id
+      redirect_to root_path
+    end
+  end
+
 end
