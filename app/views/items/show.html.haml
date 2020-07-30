@@ -10,14 +10,14 @@
           //メイン画像
           .image
             -# = image_tag @image.image.to_s, size: "300x300"
-            - unless @product.status == 0
+            -# - unless @product.status == 0
               .product-tag-sold-out-top
                 .sold-out-text-top SOLD
             - else
               .none-sold
           //サムネイル画像
           .owl-dot
-            - @product.images.each.with_index do |image, index|
+            -# - @product.images.each.with_index do |image, index|
               - if image.present?
                 .owl-dot__product.current
                   .owl-dot__product__box
@@ -26,7 +26,7 @@
                 .owl-dot__product
                   .owl-dot__product__box
                     = image_tag image.image, class: "image-sub"
-            - if @product.images.length > 5
+            -# - if @product.images.length > 5
               - for i in 1..(10 - @product.images.length)
                 .owl-dot__dummy
         %table.product-detail-table
@@ -34,7 +34,7 @@
             %tr
               %th 出品者
               %td
-                = link_to "#{@product.user.nickname}", mypages_path, class: "user-name-string";
+                -# = link_to "#{@product.user.nickname}", mypages_path, class: "user-name-string";
                 .product-user-ratings
                   .product-user-rating
                     = image_tag("")
@@ -110,7 +110,7 @@
           -else
             .product-buy-btn-sold 売り切れました
       -else
-        -if @product.status == 0
+        -# -if @product.status == 0
           = link_to "/users/sign_in" do
             .product-buy-btn 購入画面に進む
         -else
@@ -118,21 +118,21 @@
       -unless user_signed_in? && @product.user_id == current_user.id
         .product-description
           %p.product-description__inner
-            = @product.detail
+            -# = @product.detail
         .product-button-container.clearfix
           .product-button-left
             .product-button-like
               %button{type: "button", name: "like!", class: "product-button"}
-                = fa_icon "heart"
+                -# = fa_icon "heart"
                 %span.fade-in-down いいね!
                 %span.fade-in-down 0
           .product-button__report
             = link_to "", class: "product-button__report" do
-              = fa_icon "flag"
+              -# = fa_icon "flag"
               %span.fade-in-down 不適切な商品の報告            
           .product-button-right
             = link_to 'https://www.mercari.com/jp/safe/description/', target: "_blank", class: "safe-description" do
-              = fa_icon "lock"
+              -# = fa_icon "lock"
               あんしん・あんぜんへの取り組み
     .message-content
     .message-content__box__form

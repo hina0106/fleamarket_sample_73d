@@ -87,12 +87,14 @@
     %h2.main__contents__head
       ピックアップカテゴリー
     .products
+      - @items.each do |item|
       .products__head
         = link_to '#' do
           %h3.products__head__title
             新規投稿商品
       .products__lists
-        = render partial: 'main_item'
+        = render partial: "main_item"
+        -# = render partial: 'main_item'
   .main__contents
     %h2.main__contents__head
       ピックアップブランド
