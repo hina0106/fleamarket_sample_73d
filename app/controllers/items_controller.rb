@@ -1,9 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item,    only: [:show,:destroy,:edit,:update]
-  before_action :set_category, except:[:show,:destroy,:index]
-  before_action :move_to_sign_in,except: [:index,:show]
 
   def index
+    @parents = Category.where(ancestry: nil)
   end
 
   def new

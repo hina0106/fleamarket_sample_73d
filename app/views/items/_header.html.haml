@@ -14,12 +14,27 @@
     .header__headerInner__nav
       %ul.header__headerInner__nav__listsLeft
         %li.header__headerInner__nav__listsLeft__item
-          #category-area
-            カテゴリ
-            = render "layouts/category"
-          .headder__nav-tree-display
-            %ul.headder__nav-categorytree
-              %li.headder__nav-categorytree-item
+          .categories
+            %ul
+              %li
+                = link_to "#", class: "category__search search__btn" do
+                  %i.fas.fa-bars.category__icon
+                    カテゴリー
+                %ul.category__parent.category__list
+                  - @parents.each do |parent|
+                    %li
+                      = link_to "#", class: "category__parent--name" do
+                        = parent.name
+                      %ul.category__child.category__list
+                        - parent.children.each do |child|
+                          %li
+                            = link_to "#", class: "category__child--name" do
+                              = child.name
+                            %ul.category__grandchild.category__list
+                              - child.children.each do |grandchild|
+                                %li
+                                  = link_to "#", class: " category__child--name" do
+                                    = grandchild.name 
         %li.header__headerInner__nav__listsLeft__item.header__headerInner__nav__listsLeft__item--brand
           = link_to '#' do
             ブランド
