@@ -26,8 +26,8 @@ class ItemsController < ApplicationController
     # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
     # @images = @item.images
     # @image = @images.first
-    # @comment = Comment.new
-    # @comments = Comment.where(product_id: @product.id)
+    @comment = Comment.new
+    @comments = Comment.where(item_id: @item.id)
   end
 
   def create

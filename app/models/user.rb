@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :sending_destination, dependent: :destroy
+  has_many :comments
 
   validates :nickname,
             :email,

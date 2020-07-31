@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
   
   has_many_attached :images
+  has_many :comments
   
   #imageのバリデーション
   # def itemimages_presence
