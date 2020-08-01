@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_140949) do
     t.bigint "category_id", null: false
     t.bigint "seller_id", null: false
     t.bigint "buyer_id"
-    t.integer "trading_status", null: false
+    t.integer "trading_status", default: 0, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
