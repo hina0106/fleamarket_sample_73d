@@ -185,7 +185,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|customer_id|string| |
-|card_id|string| |
+|customer_id|string| null: false|
+|card_id|string| null: false|
 ### Association
 - belongs_to :user
