@@ -1,24 +1,39 @@
 .parent,.child,.grandchild{
   display: none;
 }
+.category{
+  &:hover {
+  color:$lightOrange;
+}}
 #category-area{
-  margin-top: 9px;
   position: relative;
-	z-index: 2;
+  z-index: 2;
+  cursor: pointer;
+
   .category-box{
     position: absolute;
-    height: 670px;
+    height: 730px;
     background-color: white;
     .parent,.child,.grandchild{
-      box-shadow: 1px 1px 4px;
       height: 100%;
       background-color: white;
+      // box-shadow: 1px 1px 4px;
     }
-    .parent-content,.child-content,.grandchild-content{
-      padding: 6px;
+    .parent-content{
+      padding: 12px;
       &:hover{
         &:hover{
-          background-color:#3CCA;
+          background-color:lightgrey;
+          color: black;
+        }
+      }
+    }
+    
+    .child-content,.grandchild-content{
+      padding: 0;
+      &:hover{
+        &:hover{
+          background-color:lightgrey;
           color: black;
         }
       }
