@@ -12,7 +12,7 @@
 
   .category-box{
     position: absolute;
-    height: 730px;
+    height: 765px;
     background-color: white;
     .parent,.child,.grandchild{
       height: 100%;
@@ -20,7 +20,7 @@
       // box-shadow: 1px 1px 4px;
     }
     .parent-content{
-      padding: 12px;
+      padding: 14px;
       &:hover{
         &:hover{
           background-color:lightgrey;
@@ -30,7 +30,7 @@
     }
     
     .child-content,.grandchild-content{
-      padding: 0;
+      padding: 0px;
       &:hover{
         &:hover{
           background-color:lightgrey;
