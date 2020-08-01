@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "item_id"
@@ -31,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
-    t.integer "prefecture_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"
@@ -41,8 +46,13 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
     t.integer "preparation_day_id", null: false
     t.integer "postage_type_id", null: false
     t.bigint "category_id", null: false
+    t.bigint "seller_id", null: false
+    t.bigint "buyer_id"
+    t.integer "trading_status", default: 0, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -81,5 +91,8 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
   end
 
   add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
   add_foreign_key "sending_destinations", "users"
 end

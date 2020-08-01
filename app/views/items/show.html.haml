@@ -17,7 +17,7 @@
           %tr
             %th 出品者
             %td
-              -# = link_to "#{@item.user.name}", '#', class: "user-name-string";
+              = link_to "#{@item.user.name}", '#', class: "user-name-string";
               %div
                 .itembuy-user-ratings{ id: 'itembuy-icon-good' }
                   %i.fas.fa-smile
