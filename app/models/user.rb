@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :sending_destination, dependent: :destroy
   has_many :comments
-  belongs_to :item
-
+  # belongs_to :item
+  
   validates :nickname,
             :email,
             :birthday, presence: true
