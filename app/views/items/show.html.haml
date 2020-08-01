@@ -1,5 +1,5 @@
 .itembuy-container
-  = render 'header'
+  = render 'common/header'
   %section.itembuy-content
     %h1.itembuy-content__name
       = @item.name
@@ -7,11 +7,9 @@
       .itembuy-content__photo
         .itembuy-content__auter
           .itembuy-content__owl-carousel{ id: 'main' }
-      -#     = @item.images.each do |image|
-      -#       = image_tag image, class: 'owl-carousel', size: '300x300'
+            = image_tag "material/IMG_1.jpeg", class: 'owl-carousel', size: '300x300' #あとで上段に= @item.images.each do |image|入れてJPEG部分はimageに変更
       .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
-      -#   = @item.images.each do |image|
-      -#     = image_tag image, class: 'owl-carousel-sub', size: '60x60'
+        = image_tag "material/IMG_1.jpeg", class: 'owl-carousel-sub', size: '60x60' # あとで上段に= @item.images.each do |image|入れて、JPEG部分はimageに変更
         .itembuy-content__owl-stage
         .itembuy-content__owl-bots
       %table.itembuy-content__table
@@ -49,6 +47,11 @@
             %td
               = link_to '/' do
                 -# = @item.brand
+          %tr  
+            %th  サイズ
+            %td
+              = link_to '/' do
+                = @item.size
           %tr
             %th 商品の状態
             %td
@@ -90,7 +93,7 @@
           -else
             .item-buy-btn-sold 売り切れました
       -else
-        -if @item.status == 0
+        -# -if @item.status == 0
           = link_to "/users/sign_in" do
             .item-buy-btn 購入画面に進む
         -else
@@ -104,7 +107,7 @@
             .item-button-like
               %button{ type: 'button', name: 'like!', class: 'i far fa-heart' }
                 %i.far.heart
-                %span.fade-in-down いいね!
+                %span.fade-in-down お気に入り
                 %span.fade-in-down 0
           .item-button__report
             = link_to "", class: "item-button__report" do
@@ -135,7 +138,7 @@
                         1時間
                     .message-icon-right
                       .message-delete
-                        = link_to("/products/#{@item.id}/comments/#{comment.id}",{method:"delete"}) do
+                        = link_to("/items/#{@item.id}/comments/#{comment.id}",{method:"delete"}) do
                           = fa_icon "trash"
                   %i.icon-ballon
         .item-message-form
@@ -164,4 +167,4 @@
             %li
               = link_to "#", target: "_blank", class: "share-btn" do
                 %i.fab.fa-pinterest-square
-  = render "footer"
+  = render "common/footer"

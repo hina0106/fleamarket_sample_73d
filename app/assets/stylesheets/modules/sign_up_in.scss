@@ -3,15 +3,14 @@
   color: $lightBlack;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 130px;
-  box-sizing: border-box;
   &__userHeader {
-    padding: 40px 90px 40px 90px;
+    padding: 40px 10px 40px 10px;
     .userHeader{
       height: 50px;
       margin: auto 0;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       &__logo {
         img {
           width: 185px;
@@ -93,16 +92,7 @@
           font-weight: bold;
         }
         &__require {
-          background-color: $lightBlue;
-          padding: 2px 4px;
-          margin-left: 8px;
-          color: $white;
-          font-size: 13px;
-          vertical-align: top;
-          border-radius: 2px;
-          &.arbitrary {
-            background-color: $paleGray;
-          }
+          @include requireLbl();
         }
         &--input {
           width: 100%;
@@ -143,23 +133,7 @@
         }
       }
       &__actions {
-        margin-top: 35px;
-        &--Btn {
-          width: 100%;
-          height: 48px;
-          line-height: 48px;
-          background-color: $lightBlue;
-          color: $white;
-          border-radius: 5px;
-          text-align: center;
-          border: none;
-          &:hover {
-            cursor: pointer;
-          }
-          & a {
-            display: block;
-          }
-        }
+        @include longBtn();
       }
       .signInMsg {
         display: inline-block;
@@ -170,23 +144,6 @@
         &--label:hover {
           cursor: pointer;
           color: $lightBlue;
-        }
-      }
-    }
-  }
-  &__userFooter {
-    .userFooter {
-      width: 100%;
-      height: 80px;
-      text-align: center;
-      color: $darkGray;
-      font-size: 12px;
-      position: absolute;
-      bottom: 0;
-      &__logo {
-        img {
-          color: $darkGray;
-          height: 45px;
         }
       }
     }
