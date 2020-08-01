@@ -1,4 +1,8 @@
 class ItemsController < ApplicationController
+
+before_action :category_parent_array, only: [:new, :create, :edit]
+before_action :set_item, only: [:show, :edit, :update, :destroy]
+before_action :show_all_instance, only: [:show, :edit, :destroy]
   
   def index
   end
