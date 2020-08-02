@@ -80,7 +80,7 @@
         %span.item-fee_payer
       -if user_signed_in?
         -if @item.user_id == current_user.id
-          = link_to '#', data: {turbolinks: false} do
+          = link_to edit_item_path, data: {turbolinks: false} do
             .item-edit-btn 商品の編集
             .item-btn-or or
             .item-stop-btn 出品を一旦停止する
