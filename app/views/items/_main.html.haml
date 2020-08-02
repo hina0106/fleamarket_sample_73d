@@ -88,9 +88,8 @@
       ピックアップカテゴリー
     .products
       .products__head
-        = link_to '#' do
-          %h3.products__head__title
-            新規投稿商品
+        %h3.products__head__title
+          新規投稿商品
       .products__lists
         = render partial: "main_item"
   .main__contents
@@ -103,7 +102,8 @@
             アーカイバ
       .products__head
       .products__lists
-        = render partial: 'main_item'
+        - @items.each do |item|
+          = render partial: "main_item", locals: {item: item.id}
   - if user_signed_in?
     .main__purchaseBtn
       = link_to new_item_path do
