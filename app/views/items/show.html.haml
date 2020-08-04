@@ -12,12 +12,18 @@
         = image_tag "material/IMG_1.jpeg", class: 'owl-carousel-sub', size: '60x60' # あとで上段に= @item.images.each do |image|入れて、JPEG部分はimageに変更
         .itembuy-content__owl-stage
         .itembuy-content__owl-bots
+      .item-price-box
+        %span.item-price-box__bold<
+          = @item.price
+        %span.item-tax (税込)
+        %span.item-fee_payer
+
       %table.itembuy-content__table
         %tbody
           %tr
             %th 出品者
             %td
-              = link_to "#{@item.user.name}", '#', class: "user-name-string";
+              -# = link_to "#{@item.user.name}", '#', class: "user-name-string";
               %div
                 .itembuy-user-ratings{ id: 'itembuy-icon-good' }
                   %i.fas.fa-smile
@@ -46,40 +52,36 @@
             %th  ブランド
             %td
               = link_to '/' do
-                -# = @item.brand
+                = @item.brand.name
           %tr  
             %th  サイズ
             %td
               = link_to '/' do
-                = @item.size
+                = @item.size.value
           %tr
-            %th 商品の状態
+            %th 商品の状態            
             %td
-              -# = @condition.value
+              = @item.item_condition.name
+             
           %tr
             %th 配送料の負担
             %td
-              -# = @delivery_charge.value
+              = @item.postage_payer.name
           %tr
             %th 配送の方法
             %td
-              -# = @delivery_way.value
+              = @item.postage_type.name
           %tr
             %th 配送元地域
             %td
               = link_to '/' do
-                -# = @prefecture.name
+                = @item.prefecture.name
           %tr
             %th 発送日の目安
             %td
-              -# = @delivery_days.value
-      .item-price-box
-        %span.item-price-box__bold<
-          -# = @item.jpy
-        %span.item-tax (税込)
-        %span.item-fee_payer
+              = @item.preparation_day.value
       -if user_signed_in?
-        -if @item.user_id == current_user.id
+        -if @item.seller_id == current_user.id
           = link_to edit_item_path, data: {turbolinks: false} do
             .item-edit-btn 商品の編集
             .item-btn-or or
@@ -87,21 +89,21 @@
           = link_to '#', method: :delete, data: { turbolinks: false} do
             .item-stop-btn この商品を削除する   
         -else 
-          -# -if @item.status == 0
+          -if @item.status == 0
             = link_to item_card_confirmation_path(@item), data: {turbolinks: false} do
               .item-buy-btn 購入画面に進む
           -else
             .item-buy-btn-sold 売り切れました
       -else
-        -# -if @item.status == 0
+        -if @item.status == 0
           = link_to "/users/sign_in" do
             .item-buy-btn 購入画面に進む
         -else
           .item-buy-btn-sold 売り切れました
-      -unless user_signed_in? && @item.user_id == current_user.id
+      -unless user_signed_in? && @item.seller_id == current_user.id
         .item-text
           %p.item-text__inner
-            -# = @item.text
+            = @item.introduction
         .item-button-container.clearfix
           .item-button-left
             .item-button-like
@@ -142,7 +144,7 @@
                           = fa_icon "trash"
                   %i.icon-ballon
         .item-message-form
-          -# = form_for(@comment, url:"/items/#{@item.id}/comments") do |f|
+          = form_for(@comment, url:"/items/#{@item.id}/comments") do |f|
             %p.attention 
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             =f.text_field :text, class:"message-form"

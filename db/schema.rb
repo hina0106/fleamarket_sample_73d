@@ -14,7 +14,6 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ancestry"
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2020_07_30_154807) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
+    t.integer "prefecture_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "brand_id"

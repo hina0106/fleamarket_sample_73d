@@ -32,5 +32,10 @@ class Item < ApplicationRecord
   validates_associated :item_imgs
   validates :item_imgs, presence: true
   has_many :comments
+
+  def jpy
+    "¥#{self.price.to_s(:delimited, delimiter: ',')}"
+  end
+  
 end
 

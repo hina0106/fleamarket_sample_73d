@@ -1,18 +1,19 @@
 .product
-  = link_to item_path(item.id) do
-    .product__img
-      = image_tag "material/IMG_1.jpeg", class: "img"
-    .product__body
-      %h3.product__body__name
-        ee
-      .product__body__details
-        %ul
-          %li
-            1000円
-          %li
-            = icon('fa', 'star' ,class: 'linkeIcon')
-        %p
-          (税込み)
+  - @items.each do |item|
+    = link_to item_path(item.id) do
+      .product__img
+        = image_tag "material/IMG_1.jpeg", class: "img"
+      .product__body
+        %h3.product__body__name
+          ee
+        .product__body__details
+          %ul
+            %li
+              1000円
+            %li
+              = icon('fa', 'star' ,class: 'linkeIcon')
+          %p
+            (税込み)
 .product
   = link_to '#' do
     .product__img

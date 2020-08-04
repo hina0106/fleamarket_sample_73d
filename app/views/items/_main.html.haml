@@ -102,8 +102,7 @@
             アーカイバ
       .products__head
       .products__lists
-        - @items.each do |item|
-          = render partial: "main_item", locals: {item: item.id}
+        = render partial: "main_item"
   - if user_signed_in?
     .main__purchaseBtn
       = link_to new_item_path do
