@@ -23,7 +23,7 @@
           %tr
             %th 出品者
             %td
-              -# = link_to "#{@item.user.name}", '#', class: "user-name-string";
+              = @user.nickname
               %div
                 .itembuy-user-ratings{ id: 'itembuy-icon-good' }
                   %i.fas.fa-smile
@@ -169,4 +169,5 @@
             %li
               = link_to "#", target: "_blank", class: "share-btn" do
                 %i.fab.fa-pinterest-square
+  = render 'app_banner'         
   = render "common/footer"

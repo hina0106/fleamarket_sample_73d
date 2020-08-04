@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :destroy]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
+  before_action :set_user, only: [:show, :edit, :change_status]
   
   def index
     @items = Item.limit(10).order('created_at DESC')
@@ -82,7 +83,7 @@ class ItemsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(@item.user_id)
+    @user = User.find(@item.seller_id)
   end
 
 
