@@ -9,10 +9,10 @@
   position: relative;
   z-index: 2;
   cursor: pointer;
-
+  
   .category-box{
     position: absolute;
-    height: 765px;
+    height: 780px;
     background-color: white;
     .parent,.child,.grandchild{
       height: 100%;
@@ -20,7 +20,7 @@
       // box-shadow: 1px 1px 4px;
     }
     .parent-content{
-      padding: 14px;
+      padding: 14px 0;
       &:hover{
         &:hover{
           background-color:lightgrey;
