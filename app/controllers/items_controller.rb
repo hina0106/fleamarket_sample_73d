@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
   
   def index
-    @items = Item.all.order(id: "DESC")
-    
+    @items = Item.where("buyer_id IS NULL AND category_id < 200").order(created_at: "DESC")
+    @item_imgs = ItemImg.where(item_id: Item.where("buyer_id IS NULL AND category_id < 200").select(:id)).select(:url)
+    binding.pry
   end
 
   def new
