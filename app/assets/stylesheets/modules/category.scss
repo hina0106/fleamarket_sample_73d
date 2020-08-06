@@ -1,0 +1,71 @@
+.parent,.child,.grandchild{
+  display: none;
+}
+.category{
+  &:hover {
+  color:$lightOrange;
+}}
+#category-area{
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  
+  .category-box{
+    position: absolute;
+    height: 780px;
+    background-color: white;
+    .parent,.child,.grandchild{
+      height: 100%;
+      background-color: white;
+      // box-shadow: 1px 1px 4px;
+    }
+    .parent-content{
+      padding: 14px 0;
+      &:hover{
+        &:hover{
+          background-color:lightgrey;
+          color: black;
+        }
+      }
+    }
+    
+    .child-content,.grandchild-content{
+      padding: 0px;
+      &:hover{
+        &:hover{
+          background-color:lightgrey;
+          color: black;
+        }
+      }
+    }
+  }
+  &:hover{
+    .parent{
+      display: block;
+      .parent-content{
+        width: 260px;
+        &:hover{
+          .child{
+            width: 260px;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 259px;
+            .child-content{
+              display: block;
+              &:hover{
+                .grandchild{
+                  width: 260px;
+                  display: block;
+                  position: absolute;
+                  top: 0;
+                  left: 259px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
