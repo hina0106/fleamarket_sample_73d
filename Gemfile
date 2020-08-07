@@ -91,3 +91,8 @@ gem 'active_hash'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'sqlite3', '~> 1.3.6'
+
+# s3に画像アップロード
+gem "aws-sdk-s3", require: false
+gem 'mini_magick'
