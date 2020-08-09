@@ -5,13 +5,22 @@ class ItemsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :change_status]
   
   def index
+    @parents = Category.where(ancestry: nil)
     @items = Item.limit(10).order('created_at DESC')
   end
 
   def new
     @item = Item.new
-    @item.item_imgs.new
-    # @category_parent =  Category.where("ancestry is null")
+    @item.images.build
+    def get_category_child
+      @category_child = Category.find(params[:parent_id]).children
+      render json: @category_child
+    end
+  
+    def get_category_grandchild
+      @category_grandchild = Category.find(params[:child_id]).children
+      render json: @category_grandchild
+    end
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -33,6 +42,7 @@ class ItemsController < ApplicationController
     # @image = @images.first
     @comment = Comment.new
     @comments = Comment.where(item_id: @item.id)
+    @prefectures = Prefecture.all
   end
 
   def create
@@ -49,6 +59,15 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    def get_category_child
+      @category_child = Category.find(params[:parent_id]).children
+      render json: @category_child
+    end
+  
+    def get_category_grandchild
+      @category_grandchild = Category.find(params[:child_id]).children
+      render json: @category_grandchild
+    end
   end
 
   def update
@@ -86,7 +105,6 @@ class ItemsController < ApplicationController
     @user = User.find(@item.seller_id)
   end
 
-
   def correct_user
     @item = Item.find(params[:id])
     if @item.user_id != current_user.id
@@ -104,6 +122,10 @@ class ItemsController < ApplicationController
     @delivery_charge = PostagePayer.find(@item.postage_payer_id)
     @delivery_way = PostageType.find(@item.postage_type_id)
     @delivery_days = PreparationDay.find(@item.preparation_day_id)
+  end
+
+  def set_category
+    @category_parent = Category.where(ancestry: nil)
   end
 
 end
