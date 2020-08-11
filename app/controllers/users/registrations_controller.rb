@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # 1ページ目で入力した情報のバリデーションチェック
     unless @user.valid?
-      binding.pry
+      # binding.pry
       render :new and return
     end
 

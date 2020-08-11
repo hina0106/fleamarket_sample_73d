@@ -49,11 +49,13 @@
       .sell-container__content__details
         .sell-title
           %h3.sell-title__text
-            カテゴリー
-            %span.sell-title__require
-              必須
-        .sell-collection_select
-          = f.collection_select :category_id, Category.all, :id, :name, {prompt: "--"} ,{class: 'sell-collection_select__label'}
+            = f.label :category_id do
+              カテゴリー
+              %span.sell-title__require
+                必須
+            %div{ id: ‘sell-main__select-category--wrapper’ }
+            .sell-main__select-wrap
+            = f.collection_select :category_id, Category.where(sub: '0'), :id, :name, {prompt: "--"} ,{class: 'sell-collection_select__label', id: 'sell-main__select-category--main'}
         .error-messages
           %p
             =@item.errors.messages[:category_id][0]

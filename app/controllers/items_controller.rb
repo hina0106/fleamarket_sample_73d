@@ -11,16 +11,17 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images.build
+    # @item.images.build
     def get_category_child
       @category_child = Category.find(params[:parent_id]).children
       render json: @category_child
     end
-  
+
     def get_category_grandchild
       @category_grandchild = Category.find(params[:child_id]).children
       render json: @category_grandchild
     end
+    @category_parent = Category.where(ancestry: nil)
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -42,7 +43,7 @@ class ItemsController < ApplicationController
     # @image = @images.first
     @comment = Comment.new
     @comments = Comment.where(item_id: @item.id)
-    @prefectures = Prefecture.all
+    @parents = Category.all.order("id ASC").limit(1000) 
   end
 
   def create
