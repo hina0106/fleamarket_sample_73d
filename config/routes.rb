@@ -7,19 +7,19 @@ Rails.application.routes.draw do
     post 'sending_destinations', to: 'users/registrations#createSendingDestination'
   end
   root "items#index"
-  resources :items, only: [:new, :create, :update, :show, :edit] 
+  resources :items, only: [:new, :create, :update, :show, :edit] do
 
   # resources :items do
-  #   collection do
-  #     get 'get_category_child', to: 'items#get_category_child', defaults: { format: 'json' }
-  #     get 'get_category_grandchild', to: 'items#get_category_grandchild', defaults: { format: 'json' }
-  #   end
-  #   member do
-  #     get 'get_category_child', to: 'items#get_category_child', defaults: { format: 'json' }
-  #     get 'get_category_grandchild', to: 'items#get_category_grandchild', defaults: { format: 'json' }
-  #   end
-  # end
-# resources :purchases,only:[:new]
+    collection do
+      get 'get_category_child', to: 'items#get_category_child', defaults: { format: 'json' }
+      get 'get_category_grandchild', to: 'items#get_category_grandchild', defaults: { format: 'json' }
+    end
+    # member do
+    #   get 'get_category_child', to: 'items#get_category_child', defaults: { format: 'json' }
+    #   get 'get_category_grandchild', to: 'items#get_category_grandchild', defaults: { format: 'json' }
+    # end
+  end
+#   resources :purchases,only:[:new]
 #   resources :buyers, only: [:index]
 #   resources :cards,only:[:new,:create]
 #   resources :mypages_cards,only:[:index,:new]

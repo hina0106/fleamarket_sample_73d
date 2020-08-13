@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # @item.images.new
+    @item.item_imgs.new
     category_parent = Category.where(ancestry: nil)
     # 親カテゴリーが選択された後に動くアクション
     def get_category_child
@@ -41,15 +41,21 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    
-    unless @item.valid?
-      @item.item_imgs.new
-      render :new and return
+    if @item.save
+      redirect_to root_path  
+    else
+      redirect_to new_item_path unless @item.valid?    
     end
-    
-    @item.save
-    redirect_to root_path
   end
+    
+    # unless @item.valid?
+    #   @item.item_imgs.new
+    #   render :new and return
+    # end
+    
+    # @item.save
+    # redirect_to root_path
+  # end
 
   def edit
     @item = Item.find(params[:id])
