@@ -37,6 +37,9 @@
           %tr
             %th カテゴリー
             %td
+              - @parents.each do |parent|
+                - if @item.category_id == parent.id
+                  = parent.name
               -# = link_to  '/' do
               -#   = @bigcategory.name
               -# - if @category.present?

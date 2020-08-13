@@ -3,37 +3,27 @@ class ItemsController < ApplicationController
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
+  before_action :set_category, except:[:show,:destroy,:index]
   
   def index
-    @parents = Category.where(ancestry: nil)
+    # @category_parent = Category.where(ancestry: nil)
     @items = Item.limit(10).order('created_at DESC')
   end
 
   def new
     @item = Item.new
-    # @item.images.build
+    category_parent = Category.where(ancestry: nil)
+    # 親カテゴリーが選択された後に動くアクション
     def get_category_child
-      @category_child = Category.find(params[:parent_id]).children
-      render json: @category_child
+      @category_child = Category.find("#{params[:parent_id]}").children
+      #親カテゴリーに紐付く子カテゴリーを取得
     end
 
+    # 子カテゴリーが選択された後に動くアクション
     def get_category_grandchild
-      @category_grandchild = Category.find(params[:child_id]).children
-      render json: @category_grandchild
+      @category_grandchild = Category.find("#{params[:child_id]}").children
+      #子カテゴリーに紐付く孫カテゴリーの配列を取得
     end
-    @category_parent = Category.where(ancestry: nil)
-  end
-
-  # 親カテゴリーが選択された後に動くアクション
-  def category_children
-    @category_children = Category.find("#{params[:parent_id]}").children
-    #親カテゴリーに紐付く子カテゴリーを取得
-  end
-
-  # 子カテゴリーが選択された後に動くアクション
-  def category_grandchildren
-    @category_grandchildren = Category.find("#{params[:child_id]}").children
-    #子カテゴリーに紐付く孫カテゴリーの配列を取得
   end
 
   def show

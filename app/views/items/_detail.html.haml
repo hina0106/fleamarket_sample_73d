@@ -7,7 +7,7 @@
           出品画像
           %span.sell-title__require
             必須
-      -# .sell-container__content__max-sheet 最大10枚までアップロードできます
+      .sell-container__content__max-sheet 最大10枚までアップロードできます
       .sell-container__content__box
         %ul.output-box
           %div#image-input
@@ -49,16 +49,15 @@
       .sell-container__content__details
         .sell-title
           %h3.sell-title__text
-            = f.label :category_id do
-              カテゴリー
-              %span.sell-title__require
-                必須
-            %div{ id: ‘sell-main__select-category--wrapper’ }
-            .sell-main__select-wrap
-            = f.collection_select :category_id, Category.where(sub: '0'), :id, :name, {prompt: "--"} ,{class: 'sell-collection_select__label', id: 'sell-main__select-category--main'}
-        .error-messages
-          %p
-            =@item.errors.messages[:category_id][0]
+            カテゴリー
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.label :category_id, {class: 'sell-collection_select__label'} do
+            .select_collection_select-category
+              = f.collection_select :category_id, @category_parent,:id, :name, {prompt: "--"},{ class: 'sell-collection_select__input', id: 'parent_category', required: "required"}
+              %i.fas.fa-chevron-down
+        .error-messages#error-category
 
         .sell-title
           %h3.sell-title__text
