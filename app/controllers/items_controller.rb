@@ -12,16 +12,19 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    # @item.images.new
     category_parent = Category.where(ancestry: nil)
     # 親カテゴリーが選択された後に動くアクション
     def get_category_child
       @category_child = Category.find("#{params[:parent_id]}").children
+      render json: @category_child
       #親カテゴリーに紐付く子カテゴリーを取得
     end
 
     # 子カテゴリーが選択された後に動くアクション
     def get_category_grandchild
       @category_grandchild = Category.find("#{params[:child_id]}").children
+      render json: @category_grandchild
       #子カテゴリーに紐付く孫カテゴリーの配列を取得
     end
   end
