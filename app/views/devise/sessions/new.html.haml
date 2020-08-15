@@ -1,9 +1,5 @@
 .userContainer
-  %header.userContainer__userHeader
-    .userHeader
-      .userHeader__logo
-        = link_to '#' do
-          = image_tag 'material/logo.png'
+  = render 'common/header_simple'
   .userContainer__userMain
     %h2.userContainer__userMain__title ログイン
     .userMain
@@ -27,4 +23,4 @@
           = f.submit "ログイン", class: 'userMain__actions--Btn'
         %p
           = render "devise/shared/links"
-  = render 'devise/registrations/footer'
+  = render 'common/footer_simple'

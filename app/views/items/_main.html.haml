@@ -20,7 +20,7 @@
         .intro__list__picture
           .picture__num
             1
-          = image_tag "material/reason.jpg"
+          = image_tag "material/pict-reason-01.jpg"
         %h3.intro__list__text
           ３分
           %span.intro__list__text--black ですぐに出品
@@ -64,21 +64,21 @@
     .main__features__items
       .item
         .item__img
-          = image_tag asset_path("fleamarketsample1.svg"), class: "img"
+          = image_tag "material/icon-01", class: "img"
         %h3.item__subtitle
           簡単に売り買いできる
         %p.item__detail
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       .item
         .item__img
-          = image_tag asset_path("fleamarketsample2.svg"), class: "img"
+          = image_tag "material/icon-03", class: "img"
         %h3.item__subtitle
           売上金は即日振込みに対応
         %p.item__detail
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       .item
         .item__img
-          = image_tag asset_path("fleamarketsample3.svg"), class: "img"
+          = image_tag "material/icon-04", class: "img"
         %h3.item__subtitle
           様々な支払いに対応
         %p.item__detail
@@ -92,7 +92,23 @@
           %h3.products__head__title
             新規投稿商品
       .products__lists
-        = render partial: 'main_item'
+        - @items_category.first(4).each do |item, i|
+          .product
+            = link_to '#' do
+              .product__img
+                = image_tag item.item_imgs[0].url.url, class: "img"
+              .product__body
+                %h3.product__body__name
+                  = item.name
+                .product__body__details
+                  %ul
+                    %li
+                      = item.price
+                      円
+                    %li
+                      = icon('fa', 'star' ,class: 'linkeIcon')
+                  %p
+                    (税込み)
   .main__contents
     %h2.main__contents__head
       ピックアップブランド
@@ -103,13 +119,30 @@
             アーカイバ
       .products__head
       .products__lists
-        = render partial: 'main_item'
-  .main__purchaseBtn
-    = link_to new_item_path do
-      .purchaseBtn
-        %span.purchaseBtn__text
-          出品する
-        = icon('fa', 'camera' ,class: 'purchaseBtn__icon')
+        - @items_brand.first(4).each do |item, i|
+          .product
+            = link_to '#' do
+              .product__img
+                = image_tag item.item_imgs[0].url.url, class: "img"
+              .product__body
+                %h3.product__body__name
+                  = item.name
+                .product__body__details
+                  %ul
+                    %li
+                      = item.price
+                      円
+                    %li
+                      = icon('fa', 'star' ,class: 'linkeIcon')
+                  %p
+                    (税込み)
+  - if user_signed_in?
+    .main__purchaseBtn
+      = link_to new_item_path do
+        .purchaseBtn
+          %span.purchaseBtn__text
+            出品する
+          = icon('fa', 'camera' ,class: 'purchaseBtn__icon')
   %aside.main__appBanner
     .main__appBanner__inner
       %h2.main__appBanner__inner__title だれでもかんたん、人生を変えるフリマアプリ

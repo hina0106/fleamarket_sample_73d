@@ -111,7 +111,7 @@
 |preparation_day|references|null: false, foreign_key: true|
 |postage_type|references|null: false, foreign_key: true|
 |category|references|null: false, foreign_key: true|
-|trading_status|enum|null: false|
+|trading_status|integer|null: false|
 |seller|references|null: false, foreign_key: true|
 |buyer|references|foreign_key: true|
 ### Association
@@ -184,9 +184,8 @@
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|payjp|references|null:false|
-|expiration_year|integer|null:false|
-|expiration_month|integer|null:false|
 |user|references|null: false, foreign_key: true|
+|customer_id|string| null: false|
+|card_id|string| null: false|
 ### Association
 - belongs_to :user

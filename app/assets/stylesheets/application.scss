@@ -8,10 +8,11 @@
 @import "mixins/vendor_prefix";
 @import "mixins/decoration";
 
-@import "modules/price";
-@import "modules/detail";
-@import "modules/new-header";
-@import "modules/header";
+@import "common/header_simple";
+@import "common/footer_simple";
+@import "common/header";
+@import "common/footer";
+
 @import "modules/main";
 @import "modules/footer";
 @import "modules/sign_up_in";
