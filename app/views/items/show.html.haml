@@ -4,18 +4,17 @@
     %section.item-show-product-box-container
       %h1.itembuy-content__name
         = @item.name
-      .itembuy-content__clearfix
         .item-main-content
-        .item-photo
-        -#   //メイン画像
-        -#   .itembuy-content__owl-carousel{ id: 'main' }
-        -#     = @item.item_imgs.each do |image|
-        -#       = image_tag image, class: 'owl-carousel', size: '300x300'
-        -# .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
-        -#   = @item.item_imgs.each do |image|
-        -#     = image_tag image, class: 'owl-carousel-sub', size: '60x60'
-        .itembuy-content__owl-stage
-        .itembuy-content__owl-bots
+          .item-photo
+          -#   //メイン画像
+          -#   .itembuy-content__owl-carousel{ id: 'main' }
+          -#     = @item.item_imgs.each do |image|
+          -#       = image_tag image, class: 'owl-carousel', size: '300x300'
+          -# .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
+          -#   = @item.item_imgs.each do |image|
+          -#     = image_tag image, class: 'owl-carousel-sub', size: '60x60'
+          .itembuy-content__owl-stage
+          .itembuy-content__owl-bots
 
         .item-price-box
           %span.item-price-box__bold
@@ -30,9 +29,8 @@
             %tr
               %th 出品者
               %td
-                -# = link_to "#{@product.user.nickname}", mypages_path, class: "user-name-string";
                 .itembuy-content
-                  = @user.nickname
+                  = link_to "#{@user.nickname}", '#', class: "user-name-string";
             %tr
               %th カテゴリー
               %td
@@ -93,7 +91,7 @@
             .item-btn-or or
             .item-stop-btn 出品を一旦停止する
           = link_to '#', method: :delete, data: { turbolinks: false} do
-            .item-stop-btn この商品を削除する   
+            .item-delete-btn この商品を削除する   
         -else 
           -if @item.trading_status == 0
             = link_to '#', data: {turbolinks: false} do
@@ -142,9 +140,9 @@
                   %i.icon-ballon
         .item-message-form
           = form_for(@comment, url:"/items/#{@item.id}/comments") do |f|
+            =f.text_field :text, class:"message-form"
             %p.attention 
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            =f.text_field :text, class:"message-form"
             .message-submit__details
               = f.submit "コメントする", class:"comment-button"
       .nav-item-link
