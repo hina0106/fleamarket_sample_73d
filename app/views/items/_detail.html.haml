@@ -55,7 +55,7 @@
         .sell-collection_select
           = f.label :category_id, {class: 'sell-collection_select__label'} do
             .select_collection_select-category
-              = f.collection_select :category_id, @category_parent,:id, :name, {prompt: "--"},{class: 'sell-collection_select__input', id:'parent_category'} 
+              = f.collection_select :category_id, @category_parent,:id, :name, {prompt: "--"},{class: 'sell-collection_select__label', id:'parent_category'} 
         .error-messages#error-category
 
         .sell-title
