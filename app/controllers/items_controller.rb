@@ -1,12 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :destroy]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
   before_action :set_category, except:[:show,:destroy,:index]
   
   def index
-    # @category_parent = Category.where(ancestry: nil)
     @items = Item.limit(10).order('created_at DESC')
   end
 
@@ -30,10 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
-    # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
-    # @images = @item.images
-    # @image = @images.first
     @comment = Comment.new
     @comments = Comment.where(item_id: @item.id)
     @parents = Category.all.order("id ASC").limit(1000) 
@@ -47,18 +42,8 @@ class ItemsController < ApplicationController
       redirect_to new_item_path unless @item.valid?    
     end
   end
-    
-    # unless @item.valid?
-    #   @item.item_imgs.new
-    #   render :new and return
-    # end
-    
-    # @item.save
-    # redirect_to root_path
-  # end
 
   def edit
-    @item = Item.find(params[:id])
     def get_category_child
       @category_child = Category.find(params[:parent_id]).children
       render json: @category_child
@@ -71,7 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
     if item.user_id == current_user.id
       item.update(items_params)
       redirect_to root_path
@@ -97,7 +81,7 @@ class ItemsController < ApplicationController
   end
 
   # 商品情報
-  def set_product
+  def set_item
     @item = Item.find(params[:id])
   end
 
