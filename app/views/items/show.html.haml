@@ -26,16 +26,6 @@
             %th 出品者
             %td
               = @user.nickname
-              %div
-                .itembuy-user-ratings{ id: 'itembuy-icon-good' }
-                  %i.fas.fa-smile
-                  %span 22
-                .itembuy-user-ratings
-                  %i.fas.fa-meh
-                  %span 25
-                .itembuy-user-ratings
-                  %i.fas.fa-frown
-                  %span 5000
           %tr
             %th カテゴリー
             %td
@@ -91,21 +81,12 @@
           = link_to '#', method: :delete, data: { turbolinks: false} do
             .item-stop-btn この商品を削除する   
         -else 
-          -if @item.status == 0
-            = link_to item_card_confirmation_path(@item), data: {turbolinks: false} do
+          -if @item.trading_status == 0
+            = link_to '#', data: {turbolinks: false} do
               .item-buy-btn 購入画面に進む
           -else
             .item-buy-btn-sold 売り切れました
-      -else
-        -if @item.status == 0
-          = link_to "/users/sign_in" do
-            .item-buy-btn 購入画面に進む
-        -else
-          .item-buy-btn-sold 売り切れました
       -unless user_signed_in? && @item.seller_id == current_user.id
-        .item-text
-          %p.item-text__inner
-            = @item.introduction
         .item-button-container.clearfix
           .item-button-left
             .item-button-like
