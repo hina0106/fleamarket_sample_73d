@@ -88,7 +88,6 @@ before_action :show_all_instance, only: [:show, :edit, :destroy]
 
 
   private
-
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
   end
@@ -111,7 +110,4 @@ before_action :show_all_instance, only: [:show, :edit, :destroy]
     @category_child = Category.find(@category_id).parent
     @category_grandchild = Category.find(@category_id)
   end
-
-end
-
 end
