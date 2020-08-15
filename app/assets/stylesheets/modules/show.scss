@@ -97,13 +97,13 @@
       height: 375px;
       width: 100%;
       border-collapse: collapse;
-      border: 1px solid #f5f5f5;
+      border: 1px solid #dedede;;
       margin: 0 auto;
       & th {
         width: 39%;
         text-align: center;
         font-weight: 400;
-        background: #fafafa;
+        background: #eee;
         border: 1px solid #f5f5f5;
         padding: 8px;
         border-collapse: collapse;
@@ -178,7 +178,7 @@
     .item-buy-btn {
       background: $lightBlue;
       cursor: not-allowed;
-      margin: 16px 0 0;
+      margin: 20px 0 0;
       color: #fff;
       text-align: center;
       font-weight: 600;
@@ -228,6 +228,7 @@
   justify-content: space-between;
   display: flex; 
   vertical-align: center;
+  margin-top: 15px;
   .item-button-left {
     background: #f5f5f5;
     border-radius: 40px;
@@ -416,65 +417,6 @@
     }
   }
 }
-
-.item-social-media-box{
-  margin: 32px 0 24px;
-  padding: 0;
-  width: 700px;
-  height: 138px;
-  background: #fff;
-  height: 82px;
-  .text-center {
-    float: right;
-    width: 700px;
-    height: 14px;
-  }
-  .social-media-box {
-    margin: 16px 0 0;
-    text-align: center;
-    font-weight: bold;
-    & li {
-      display: inline-block;
-      margin: 0 8px 8px 0;
-      vertical-align: middle;
-      text-align: center;
-      & a {
-        display: block;
-      }
-    }
-    & i {
-      display: inline-block;
-      font-style: normal;
-      font-weight: 400;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      font-size: 29px;
-      width: 44px;
-      height: 44px;
-      border-radius: 4px;
-      line-height: 44px;
-    }
-    .fa-facebook-square {
-      color: #fff;
-      background: #385185;
-      font-size: 26px;
-      height: 44px;
-      width: 44px;
-    }
-    .fa.fa-twitter-square {
-      color: #fff;
-      background: #5d9dc9;
-      font-size: 24px;
-    }
-    .fa.fa-pinterest-square {
-      color: #fff;
-      background: #aa262a;
-      font-size: 20px;
-    }
-  }
-}
-
 
 .item-in-user-profile{
   width: 700px;
@@ -683,17 +625,15 @@
 }
 
 .previous-item.items-link_to{
-  font-size: 14px;
+  font-size: 16px;
   color:#0099e8;
+  padding-bottom: 100px;
+  padding-top: 15px;
 }
 .next-item.items-link_to{
-  font-size: 14px;
+  font-size: 16x;
   float: right;
   color:#0099e8;
-}
-
-.brand-name{
-  font-size: 14px;
 }
 
 .item-btn-or{
