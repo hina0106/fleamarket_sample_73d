@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_imgs.new
-    # @category_parent =  Category.where("ancestry is null")
+    @category_parent =  Category.where("ancestry is null")
   end
 
   # 親カテゴリーが選択された後に動くアクション
