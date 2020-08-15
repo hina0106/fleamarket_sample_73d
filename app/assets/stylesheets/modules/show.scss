@@ -192,17 +192,17 @@
       margin: 14px 0 0;
       color: #fff;
       text-align: center;
-      font-size: 14px;
+      font-size: 18px;
       height: 60px;
       line-height: 60px;
     }
     .item-stop-btn {
       background: $lightBlue;
       cursor: not-allowed;
-      margin: 14px 0 0;
+      margin: 16px 0 0;
       color: #fff;
       text-align: center;
-      font-size: 14px;
+      font-size: 18px;
       height: 60px;
       line-height: 60px;
     }
@@ -212,7 +212,7 @@
       margin: 14px 0 0;
       color: #fff;
       text-align: center;
-      font-size: 14px;
+      font-size: 18px;
       height: 60px;
       line-height: 60px;
     }
@@ -230,13 +230,13 @@
   vertical-align: center;
   margin-top: 15px;
   .item-button-left {
+    border: 1px solid #f5f5f5;
     background: #f5f5f5;
     border-radius: 40px;
     padding: 4px 8px;
     margin: 8px 0 0;
     height: 31px;
     width: 190px;
-    border: 1px solid #ffb340;
     .item-button {
       background: white;
       border-radius: 40px;
@@ -244,7 +244,6 @@
       padding: 4px 16px;
       text-align: center;
       .fa_icon-heart {
-        color: #3CCACE;
         border: 1px solid;
         background-color: #f5f5f5;
       }
@@ -358,12 +357,12 @@
         }
       }
     }
-    .product-show-message-form p {
+    .item-show-message-form p {
         padding: 8px;
         font-size: 14px;
         background: #fff6de;
     }
-    .product-show-message-form.textarea-default {
+    .item-show-message-form.textarea-default {
       margin: 8px 0 0;
       display: block;
       width: 100%;
@@ -377,7 +376,7 @@
     .textarea-default:disabled {
       background: #f5f5f5;
     }
-    .product-show-message-submit {
+    .item-show-message-submit {
       width: 100%;
       margin: 8px 0 0;
       text-align: center;
@@ -397,7 +396,7 @@
     }
   }
 }
-.nav-product-link{
+.nav-item-link{
   margin: 0 auto;
   width: 700px;
   display: flex;
