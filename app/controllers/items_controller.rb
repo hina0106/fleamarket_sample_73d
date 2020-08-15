@@ -29,8 +29,8 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
-    # @images = @item.images
-    # @image = @images.first
+    @images = @item.item_imgs
+    # @image = @item.item_imgs.first
     @comment = Comment.new
     @comments = Comment.where(item_id: @item.id)
   end

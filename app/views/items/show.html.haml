@@ -1,77 +1,91 @@
 .itembuy-container
   = render 'common/header'
-  %section.itembuy-content
-    %h1.itembuy-content__name
-      = @item.name
-    .itembuy-content__clearfix
-      .itembuy-content__photo
-        .itembuy-content__auter
-          .itembuy-content__owl-carousel{ id: 'main' }
-            = image_tag "material/IMG_1.jpeg", class: 'owl-carousel', size: '300x300' #あとで上段に= @item.images.each do |image|入れてJPEG部分はimageに変更
-      .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
-        = image_tag "material/IMG_1.jpeg", class: 'owl-carousel-sub', size: '60x60' # あとで上段に= @item.images.each do |image|入れて、JPEG部分はimageに変更
+  .item-show-main-background
+    %section.item-show-product-box-container
+      %h1.itembuy-content__name
+        = @item.name
+      .itembuy-content__clearfix
+        .item-main-content
+        .item-photo
+        -#   //メイン画像
+        -#   .itembuy-content__owl-carousel{ id: 'main' }
+        -#     = @item.item_imgs.each do |image|
+        -#       = image_tag image, class: 'owl-carousel', size: '300x300'
+        -# .itembuy-content__owl-carousel-thumb{id: 'thumbs'}
+        -#   = @item.item_imgs.each do |image|
+        -#     = image_tag image, class: 'owl-carousel-sub', size: '60x60'
         .itembuy-content__owl-stage
         .itembuy-content__owl-bots
-      .item-price-box
-        %span.item-price-box__bold<
-          = @item.price
-        %span.item-tax (税込)
-        %span.item-fee_payer
-      .item-text
-        =@item.introduction
 
-      %table.itembuy-content__table
-        %tbody
-          %tr
-            %th 出品者
-            %td
-              = @user.nickname
-          %tr
-            %th カテゴリー
-            %td
-              -# = link_to  '/' do
-              -#   = @bigcategory.name
-              -# - if @category.present?
+        .item-price-box
+          %span.item-price-box__bold
+            ¥ #{@item.price}
+          %span.item-tax (税込)
+          %span.item-fee_payer
+        .item-text
+          %p.item-text__inner
+            =@item.introduction
+        %table.itembuy-content__table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                -# = link_to "#{@product.user.nickname}", mypages_path, class: "user-name-string";
+                .itembuy-content
+                  = @user.nickname
+            %tr
+              %th カテゴリー
+              %td
+                -# = link_to  '/' do
+                -#   = @bigcategory.name
+                -# - if @category.present?
+                  -# = link_to '/' do
+                    .itembuy-content__table-sub
+                    -#   %i.fas.fa-chevron-right
+                    -#   = @category.name
                 -# = link_to '/' do
-                  -# .itembuy-table-sub
-                  -#   %i.fas.fa-chevron-right
-                  -#   = @category.name
-              -# = link_to '/' do
-              -#   .itembuy-table-sub
-              -#     %i.fas.fa-chevron-right
-              -#     = @smallcategory.name
-          %tr
-            %th  ブランド
-            %td
-              = link_to '/' do
-                = @item.brand.name
-          %tr  
-            %th  サイズ
-            %td
-              = link_to '/' do
-                = @item.size.value
-          %tr
-            %th 商品の状態            
-            %td
-              = @item.item_condition.name
-             
-          %tr
-            %th 配送料の負担
-            %td
-              = @item.postage_payer.name
-          %tr
-            %th 配送の方法
-            %td
-              = @item.postage_type.name
-          %tr
-            %th 配送元地域
-            %td
-              = link_to '/' do
-                = @item.prefecture.name
-          %tr
-            %th 発送日の目安
-            %td
-              = @item.preparation_day.value
+                  .itembuy-content__table-sub
+                -#     %i.fas.fa-chevron-right
+                -#     = @smallcategory.name
+            %tr
+              %th  ブランド
+              %td
+                = link_to '/' do
+                  .brand-name
+                    = @item.brand.name
+            %tr  
+              %th  サイズ
+              %td
+                = link_to '/' do
+                  .itembuy-content
+                    = @item.size.value
+            %tr
+              %th 商品の状態            
+              %td
+                .itembuy-content
+                  = @item.item_condition.name
+              
+            %tr
+              %th 配送料の負担
+              %td
+                .itembuy-content
+                  = @item.postage_payer.name
+            %tr
+              %th 配送の方法
+              %td
+                .itembuy-content
+                  = @item.postage_type.name
+            %tr
+              %th 配送元地域
+              %td
+                .itembuy-content.prefecture-name
+                  = link_to '/' do
+                    = @item.prefecture.name
+            %tr
+              %th 発送日の目安
+              %td
+                .itembuy-content
+                  = @item.preparation_day.value
       -if user_signed_in?
         -if @item.seller_id == current_user.id
           = link_to edit_item_path, data: {turbolinks: false} do
