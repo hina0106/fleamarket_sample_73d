@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   root "items#index"
   resources :items,only: [:new, :create, :update]
   resources :mypage, only: [:index]
+  resources :logout, only: [:index]
 end
