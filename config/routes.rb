@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   end
   resources :mypage, only: [:index]
   resources :logout, only: [:index]
-  resources :cards, only: [:index, :new]
+  resources :cards, only: [:index, :new, :create]
 end

@@ -13,7 +13,7 @@ $(function() {
         cvc: $("#cvc_form").val()
     };
 
-    // 入力値をトークンを生成するメソッドを用いてトークンを発行し、PAYJP側に送る(response.idがトークンになる)
+    // トークンを発行する(response.idがトークンになる)
     Payjp.createToken(card, function(status, response) {
       if (status === 200) {
         $("#card_number_form").removeAttr("name");
