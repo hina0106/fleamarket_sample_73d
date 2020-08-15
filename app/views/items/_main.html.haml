@@ -92,7 +92,23 @@
           %h3.products__head__title
             新規投稿商品
       .products__lists
-        = render partial: 'main_item'
+        - @items_category.first(4).each do |item, i|
+          .product
+            = link_to '#' do
+              .product__img
+                = image_tag item.item_imgs[0].url.url, class: "img"
+              .product__body
+                %h3.product__body__name
+                  = item.name
+                .product__body__details
+                  %ul
+                    %li
+                      = item.price
+                      円
+                    %li
+                      = icon('fa', 'star' ,class: 'linkeIcon')
+                  %p
+                    (税込み)
   .main__contents
     %h2.main__contents__head
       ピックアップブランド
@@ -103,7 +119,23 @@
             アーカイバ
       .products__head
       .products__lists
-        = render partial: 'main_item'
+        - @items_brand.first(4).each do |item, i|
+          .product
+            = link_to '#' do
+              .product__img
+                = image_tag item.item_imgs[0].url.url, class: "img"
+              .product__body
+                %h3.product__body__name
+                  = item.name
+                .product__body__details
+                  %ul
+                    %li
+                      = item.price
+                      円
+                    %li
+                      = icon('fa', 'star' ,class: 'linkeIcon')
+                  %p
+                    (税込み)
   - if user_signed_in?
     .main__purchaseBtn
       = link_to new_item_path do

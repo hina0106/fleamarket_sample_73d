@@ -5,6 +5,8 @@ before_action :set_item, only: [:show, :edit, :update, :destroy]
 before_action :show_all_instance, only: [:show, :edit, :destroy]
   
   def index
+    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
+    @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
   def new
