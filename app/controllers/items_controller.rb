@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
     @images = @item.item_imgs
     # @image = @item.item_imgs.first
     @comment = Comment.new
-    @comments = Comment.where(item_id: @item.id)
+    @commentALL = @item.comments
   end
 
   def create
