@@ -7,21 +7,19 @@ $(document).on('turbolinks:load', function(){
     }
     // 子カテゴリーの表示作成
     function appendChidrenBox(insertHTML){
-      var childSelectHtml = '';
-      childSelectHtml = `<select class="sell-collection_select__label category" id="child_category" name="item[category_id]">
-                          <option value="">選択してください</option>
-                          ${insertHTML}
-                        <select>`;
+      const childSelectHtml = `<select class="sell-collection_select__label category" id="child_category" name="item[category_id]">
+                                <option value="">選択してください</option>
+                                  ${insertHTML}
+                              <select>`;
       $('.select_collection_select-category').append(childSelectHtml);
     }
 
     // 孫カテゴリーの表示作成
     function appendGrandchidrenBox(insertHTML){
-      var grandchildSelectHtml = '';
-      grandchildSelectHtml = `<select class="sell-collection_select__label category" id="grandchild_category" name="item[category_id]">
-                                <option value="">選択してください</option>
-                                ${insertHTML}
-                              <select>`;
+      const grandchildSelectHtml = `<select class="sell-collection_select__label category" id="grandchild_category" name="item[category_id]">
+                                      <option value="">選択してください</option>
+                                        ${insertHTML}
+                                    <select>`;
       $('.select_collection_select-category').append(grandchildSelectHtml);
     }
 
