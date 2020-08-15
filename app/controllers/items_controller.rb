@@ -56,8 +56,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if item.user_id == current_user.id
-      item.update(items_params)
+    if item.user_id == current_user.id && item.update(items_params)
       redirect_to root_path
     else
       render 'edit'
@@ -65,8 +64,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user_id == current_user.id
-      @item.destroy
+    if @item.user_id == current_user.id && @item.destroy
       redirect_to edit_sell_path #仮のpath
     else
       redirect_to root_path #仮のpath
