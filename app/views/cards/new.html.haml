@@ -1,0 +1,8 @@
+.mypageWrapper
+  = render 'common/header'
+  .mypageMain
+    %h2.mypageMain--title クレジットカード情報
+    = form_for @card, url: cards_path do |f|
+      .mypageMain__main
+        = f.label :カード番号
+  = render 'common/footer'

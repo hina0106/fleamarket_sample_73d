@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   resources :items,only: [:new, :create, :update]
   resources :mypage, only: [:index]
   resources :logout, only: [:index]
+  resources :cards, only: [:index, :new]
 end
