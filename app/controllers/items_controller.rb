@@ -7,6 +7,8 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.limit(10).order('created_at DESC')
+    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
+    @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
   def new
