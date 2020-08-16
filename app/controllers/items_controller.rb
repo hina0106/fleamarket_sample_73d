@@ -29,7 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
     @images = @item.item_imgs
     @image = @images.first
     @comment = Comment.new
@@ -50,11 +49,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if item.user_id == current_user.id
       item.update(items_params)
       redirect_to root_path
@@ -64,7 +61,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user_id == current_user.id
+    if @item.user_id == current_user.id && @item.destroy
       @item.destroy
       redirect_to edit_sell_path #仮のpath
     else
