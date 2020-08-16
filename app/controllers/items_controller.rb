@@ -62,7 +62,6 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.user_id == current_user.id && @item.destroy
-      @item.destroy
       redirect_to edit_sell_path #仮のpath
     else
       redirect_to root_path #仮のpath
