@@ -9,7 +9,7 @@
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.text_field :number, class: 'userMain__formGroup--input', id: "card_number_form", name: "number", maxlength: "16", autofocus: true, placeholder: "カード番号", value: 4242424242424242
+          = f.text_field :number, class: 'userMain__formGroup--input', id: "card_number_form", name: "number", maxlength: "16", placeholder: "カード番号", value: 4242424242424242
           %br/
           = image_tag 'material/card_type.png', class:"userMain__formGroup--image"
         .userMain__formGroup
@@ -27,7 +27,7 @@
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.text_field :cvc, class: 'userMain__formGroup--input', id: "cvc_form", name: "cvc", maxlength: "3", autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号", value: 123
+          = f.text_field :cvc, class: 'userMain__formGroup--input', id: "cvc_form", name: "cvc", maxlength: "3", placeholder: "カード背面4桁もしくは3桁の番号", value: 123
         .userMain__actions
           %button{type: "submit", class: 'userMain__actions--Btn', id: "regist_card"} 登録する
           = link_to mypage_index_path, class: 'userMain__actions--link' do
