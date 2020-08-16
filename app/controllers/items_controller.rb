@@ -28,12 +28,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
     @images = @item.item_imgs
     @image = @images.first
     @comment = Comment.new
     @commentALL = @item.comments
+    @parents = Category.all.order("id ASC").limit(1000)
   end
 
   def create

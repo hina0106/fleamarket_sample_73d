@@ -48,17 +48,16 @@
             %tr
               %th カテゴリー
               %td
-                -# = link_to  '/' do
-                -#   = @bigcategory.name
-                -# - if @category.present?
-                  -# = link_to '/' do
-                    .itembuy-content__table-sub
-                    -#   %i.fas.fa-chevron-right
-                    -#   = @category.name
-                -# = link_to '/' do
-                  .itembuy-content__table-sub
-                -#     %i.fas.fa-chevron-right
-                -#     = @smallcategory.name
+                - @parents.each do |parent|
+                  - if @item.category_id == parent.id
+                    = link_to "#" do
+                      = parent.parent.parent.name #親カテゴリー
+                      %br
+                    = link_to "#" do
+                      = parent.parent.name #子カテゴリー
+                      %br
+                    = link_to "#" do
+                      = parent.name #孫カテゴリー
             %tr
               %th  ブランド
               %td
