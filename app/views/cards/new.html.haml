@@ -3,16 +3,27 @@
   .userContainer__userMain
     %h2.userContainer__userMain__title クレジットカード情報
     .userMain
-      = form_for {action: "/cards", method: "POST"} do |f|
-        %span.charge-errors
-        = f.label :カード番号, class: 'userMain__formGroup__label'
-        %br/
-        
-        %input.number{maxlength: "16", name: "number", placeholder: "カード番号", type: "text",id: "payment_card_no", value: 4242424242424242}/
-        %label CVC
-        %input.cvc{maxlength: "3", name: "cvc", placeholder: "CVC", type: "text",id: "payment_card_security_code", value: 123}/
-        %label 有効期限
-        %input.exp_month{maxlength: "2", name: "exp_month", placeholder: "月", type: "text",id: "payment_card_expire_mm", value: 12}/
-        %input.exp_year{maxlength: "4", name: "exp_year", placeholder: "年", type: "text",id: "payment_card_expire_yy", value: 2022}/
-        %button{type: "submit", id: "card-save"} 登録
+      = form_with(model: @card, url: cards_path, local: true) do |f|
+        .userMain__formGroup
+          = f.label :カード番号, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+            %br/
+          = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_no", name: "number", maxlength: "16", autofocus: true, placeholder: "カード番号", value: 4242424242424242
+          %br/
+        .userMain__formGroup
+          = f.label :有効期限, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+            %br/
+          = f.date_select :expirationDate, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10,order:[:month,:year,:day], discard_day: true, use_month_numbers:true}, {class: 'userMain__formGroup--input triple select'}
+          %br/
+        .userMain__formGroup
+          = f.label :セキュリティコード, class: 'userMain__formGroup__label'
+          %span.userMain__formGroup__require
+            必須
+            %br/
+          = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_security_code", name: "cvc", maxlength: "3", autofocus: true, placeholder: "CVC", value: 123
+        .userMain__actions
+          %button{type: "submit", class: 'userMain__actions--Btn', id: "card-save"} 登録
   = render 'common/footer'

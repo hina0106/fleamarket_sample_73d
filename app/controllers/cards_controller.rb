@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   end
 
   def new
+    @card = CreditCard.new
   end
 
   def create
@@ -16,7 +17,6 @@ class CardsController < ApplicationController
     )
     
     # 取得した情報でインスタンス作成
-    binding.pry
     @card = CreditCard.new(
       card_id: customer.default_card,
       customer_id: customer.id,
