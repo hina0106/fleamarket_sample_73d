@@ -1,5 +1,30 @@
-.mypageWrapper {
-  &__cardMain {
-    height: 500px;
+.userContainer{
+  &__userMain {
+    .userMain {
+      &__formGroup{
+        &--image {
+          width: 280px;
+        }
+        &--input {
+          &.card {
+            width: 36%;
+          }
+        }
+        &__carDel {
+          display: inline-block;
+          width: 42px;
+          text-align: center;
+        }
+      }
+      &__actions{
+        text-align: center;
+        &--link {
+          display: inline-block;
+          text-align: center;
+          color: $lightBlue;
+          margin-top: 20px;
+        }
+      }
+    }
   }
 }

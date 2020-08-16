@@ -11,19 +11,25 @@
             %br/
           = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_no", name: "number", maxlength: "16", autofocus: true, placeholder: "カード番号", value: 4242424242424242
           %br/
+          = image_tag 'material/card_type.png', class:"userMain__formGroup--image"
         .userMain__formGroup
           = f.label :有効期限, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.date_select :expirationDate, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10,order:[:month,:year,:day], discard_day: true, use_month_numbers:true}, {class: 'userMain__formGroup--input triple select'}
+          = f.date_select :expirationDate, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, discard_year: true, discard_day: true}, {class: 'userMain__formGroup--input card select'}
+          %span.userMain__formGroup__carDel 月
+          = f.date_select :expirationDate, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, discard_month: true, discard_day: true}, {class: 'userMain__formGroup--input card select'}
+          %span.userMain__formGroup__carDel 年
           %br/
         .userMain__formGroup
           = f.label :セキュリティコード, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_security_code", name: "cvc", maxlength: "3", autofocus: true, placeholder: "CVC", value: 123
+          = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_security_code", name: "cvc", maxlength: "3", autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号", value: 123
         .userMain__actions
-          %button{type: "submit", class: 'userMain__actions--Btn', id: "card-save"} 登録
+          %button{type: "submit", class: 'userMain__actions--Btn', id: "card-save"} 登録する
+          = link_to mypage_index_path, class: 'userMain__actions--link' do
+            もどる
   = render 'common/footer'
