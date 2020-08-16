@@ -1,5 +1,6 @@
 .userContainer{
   &__userMain {
+    padding-bottom: 30px;
     .userMain {
       &__formGroup{
         &--image {
@@ -18,6 +19,9 @@
       }
       &__actions{
         text-align: center;
+        &--input {
+          z-index: 2;
+        }
         &--link {
           display: inline-block;
           text-align: center;

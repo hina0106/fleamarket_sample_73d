@@ -9,7 +9,7 @@
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_no", name: "number", maxlength: "16", autofocus: true, placeholder: "カード番号", value: 4242424242424242
+          = f.text_field :number, class: 'userMain__formGroup--input', id: "card_number_form", name: "number", maxlength: "16", autofocus: true, placeholder: "カード番号", value: 4242424242424242
           %br/
           = image_tag 'material/card_type.png', class:"userMain__formGroup--image"
         .userMain__formGroup
@@ -17,9 +17,9 @@
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.date_select :expirationDate, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, discard_year: true, discard_day: true}, {class: 'userMain__formGroup--input card select'}
+          = f.date_select :expirationMonth, {use_month_numbers: true, discard_year: true, discard_day: true}, {class: 'userMain__formGroup--input card select',id: 'exp_month_form'}
           %span.userMain__formGroup__carDel 月
-          = f.date_select :expirationDate, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, discard_month: true, discard_day: true}, {class: 'userMain__formGroup--input card select'}
+          = f.date_select :expirationYear, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, discard_month: true, discard_day: true}, {class: 'userMain__formGroup--input card select', id: 'exp_year_form'}
           %span.userMain__formGroup__carDel 年
           %br/
         .userMain__formGroup
@@ -27,9 +27,9 @@
           %span.userMain__formGroup__require
             必須
             %br/
-          = f.text_field :number, class: 'userMain__formGroup--input', id: "payment_card_security_code", name: "cvc", maxlength: "3", autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号", value: 123
+          = f.text_field :cvc, class: 'userMain__formGroup--input', id: "cvc_form", name: "cvc", maxlength: "3", autofocus: true, placeholder: "カード背面4桁もしくは3桁の番号", value: 123
         .userMain__actions
-          %button{type: "submit", class: 'userMain__actions--Btn', id: "card-save"} 登録する
+          %button{type: "submit", class: 'userMain__actions--Btn', id: "regist_card"} 登録する
           = link_to mypage_index_path, class: 'userMain__actions--link' do
             もどる
   = render 'common/footer'
