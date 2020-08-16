@@ -184,9 +184,8 @@
 ## credit_cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|payjp|references|null:false|
-|expiration_year|integer|null:false|
-|expiration_month|integer|null:false|
 |user|references|null: false, foreign_key: true|
+|customer_id|string| null: false|
+|card_id|string| null: false|
 ### Association
 - belongs_to :user
