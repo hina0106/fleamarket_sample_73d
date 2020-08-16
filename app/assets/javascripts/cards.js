@@ -8,10 +8,10 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
     // 入力されたカード情報の値を取得
     var card = {
-        number: $("#card_number_form").val(),
-        exp_month: $("#exp_month_form").val(),
+        number: Number($("#card_number_form").val()),
+        exp_month: Number($("#exp_month_form").val()),
         exp_year: Number($("#exp_year_form").val())+2000,
-        cvc: $("#cvc_form").val()
+        cvc: Number($("#cvc_form").val())
     };
 
     // トークンを発行する(response.idがトークンになる)
