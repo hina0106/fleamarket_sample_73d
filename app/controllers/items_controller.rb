@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     # @sub2_category = Sub2Category.includes(sub_category: :main_category).find(@item.category)
     @images = @item.item_imgs
-    # @image = @item.item_imgs.first
+    @image = @images.first
     @comment = Comment.new
     @commentALL = @item.comments
   end
