@@ -1,8 +1,9 @@
 class ItemsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :destroy]
+  before_action :set_item, only: [:show, :edit, :destroy, :update]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
+  before_action :set_category, except:[:show,:destroy,:index]
   
   def index
     @items = Item.limit(10).order('created_at DESC')
@@ -13,7 +14,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_imgs.new
-    @category_parent = Category.where(ancestry: nil)
     # 親カテゴリーが選択された後に動くアクション
     def get_category_child
       @category_child = Category.find("#{params[:parent_id]}").children
@@ -49,15 +49,23 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    def get_category_child
+      @category_child = Category.find(params[:parent_id]).children
+      render json: @category_child
+    end
+  
+    def get_category_grandchild
+      @category_grandchild = Category.find(params[:child_id]).children
+      render json: @category_grandchild
+    end
   end
 
   def update
-    if item.user_id == current_user.id
-      item.update(items_params)
-      redirect_to root_path
-    else
-      render 'edit'
-    end
+    if @item.update(item_params)
+      redirect_to edit_item_path
+   else
+    redirect_to edit_item_path(@item)
+   end
   end
 
   def destroy
@@ -76,7 +84,7 @@ class ItemsController < ApplicationController
   end
 
   # 商品情報
-  def set_product
+  def set_item
     @item = Item.find(params[:id])
   end
 
@@ -102,6 +110,10 @@ class ItemsController < ApplicationController
     @delivery_charge = PostagePayer.find(@item.postage_payer_id)
     @delivery_way = PostageType.find(@item.postage_type_id)
     @delivery_days = PreparationDay.find(@item.preparation_day_id)
+  end
+
+  def set_category
+    @category_parent = Category.where(ancestry: nil)
   end
 
 end
