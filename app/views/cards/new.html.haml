@@ -29,7 +29,7 @@
             %br/
           = f.text_field :cvc, class: 'userMain__formGroup--input', id: "cvc_form", name: "cvc", maxlength: "3", placeholder: "カード背面4桁もしくは3桁の番号", value: 123
         .userMain__actions
-          %button{type: "submit", class: 'userMain__actions--Btn', id: "regist_card"} 登録する
+          = f.submit "登録する", class: 'userMain__actions--Btn', id: "regist_card"
           = link_to mypage_index_path, class: 'userMain__actions--link' do
             もどる
   = render 'common/footer'

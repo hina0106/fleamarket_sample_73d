@@ -2,6 +2,7 @@ $(document).on('turbolinks:load', function(){
   if (!$('#regist_card')[0]) return false;
 
   Payjp.setPublicKey("pk_test_5cd49315ed1b34f0340edd67");
+  Payjp.getPublicKey();
 
   $("#regist_card").on("click", function(e) {
     e.preventDefault();
@@ -9,12 +10,13 @@ $(document).on('turbolinks:load', function(){
     var card = {
         number: $("#card_number_form").val(),
         exp_month: $("#exp_month_form").val(),
-        exp_year: $("#exp_year_form").val(),
+        exp_year: Number($("#exp_year_form").val())+2000,
         cvc: $("#cvc_form").val()
     };
 
     // トークンを発行する(response.idがトークンになる)
     Payjp.createToken(card, function(status, response) {
+      console.log(response.error);
       if (status === 200) {
         $("#card_number_form").removeAttr("name");
         $("#exp_month_form").removeAttr("name");
