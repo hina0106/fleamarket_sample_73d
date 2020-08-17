@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   root "items#index"
 
-  resources :items, only: [:new, :create, :update, :show, :edit] do
+  resources :items, only: [:new, :create, :update, :show, :edit, :destroy] do
     collection do
       get 'get_category_child', to: 'items#get_category_child', defaults: { format: 'json' }
       get 'get_category_grandchild', to: 'items#get_category_grandchild', defaults: { format: 'json' }

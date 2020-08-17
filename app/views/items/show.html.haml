@@ -63,7 +63,8 @@
               %td
                 = link_to '/' do
                   .brand-name
-                    = @item.brand.name
+                    - if @item.brand.present?
+                      = @item.brand.name
             %tr  
               %th  サイズ
               %td
@@ -103,7 +104,7 @@
             .item-edit-btn 商品の編集
             .item-btn-or or
             .item-stop-btn 出品を一旦停止する
-          = link_to '#', method: :delete, data: { turbolinks: false} do
+          = link_to item_path(@item), method: :delete, data: { turbolinks: false} do
             .item-delete-btn この商品を削除する   
         -else 
           -if @item.trading_status == 0
