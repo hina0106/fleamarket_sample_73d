@@ -63,7 +63,8 @@
               %td
                 = link_to '/' do
                   .brand-name
-                    = @item.brand.name
+                    - if @item.brand.present?
+                      = @item.brand.name
             %tr  
               %th  サイズ
               %td
