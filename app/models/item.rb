@@ -14,7 +14,8 @@ class Item < ApplicationRecord
   belongs_to :buyer, class_name: "User", optional: true
   accepts_nested_attributes_for :item_imgs, allow_destroy: true, update_only: true
 
-  validates :trading_status, allow_blank: true, numericality: {only_integer: true}
+  validates :brand_id,
+            :trading_status, allow_blank: true, numericality: {only_integer: true}
   validates :name,
             :introduction,
             :category_id,
