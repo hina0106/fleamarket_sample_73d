@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   before_action :set_category, except:[:show,:destroy,:index]
   
   def index
-    @items = Item.limit(10).order('created_at DESC')
     @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
@@ -69,10 +68,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.user_id == current_user.id && @item.destroy
-      redirect_to edit_sell_path #仮のpath
+    if @item.seller_id == current_user.id && @item.destroy
+      redirect_to action: 'index'
     else
-      redirect_to root_path #仮のpath
+      redirect_to action: 'show'
     end
   end
 
