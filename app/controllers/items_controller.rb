@@ -48,6 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
     def get_category_child
       @category_child = Category.find(params[:parent_id]).children
       render json: @category_child
