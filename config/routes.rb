@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     post 'sending_destinations', to: 'users/registrations#createSendingDestination'
   end
   root "items#index"
-
   resources :items, only: [:new, :create, :update, :show, :edit, :destroy] do
     collection do
       get 'get_category_child', to: 'items#get_category_child', defaults: { format: 'json' }
