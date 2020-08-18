@@ -8,10 +8,10 @@ $(document).on('turbolinks:load', function(){
     e.preventDefault();
     // 入力されたカード情報の値を取得
     var card = {
-        number: Number($("#card_number_form").val()),
-        exp_month: Number($("#exp_month_form").val()),
-        exp_year: Number($("#exp_year_form").val())+2000,
-        cvc: Number($("#cvc_form").val())
+        number: $("#card_number_form").val(),
+        exp_month: $("#exp_month_form").val(),
+        exp_year: $("#exp_year_form").val(),
+        cvc: $("#cvc_form").val()
     };
 
     // トークンを発行する(response.idがトークンになる)
@@ -24,9 +24,9 @@ $(document).on('turbolinks:load', function(){
         $("#cvc_form").removeAttr("name");
         // トークンを格納
         var token = response.id;
-        $("#card_token").append(`<input type="hidden" name="card_token" value=${token}>`)
+        $("#card_token").append(`<input type="hidden" id="card_token" name="card_token" value=${token}>`)
         // コントローラー側に送信
-        $("#card_form").get(0).submit();
+        $(".card-form").get(0).submit();
       } else {
         alert("カード情報が正しくありません。");
         $("#regist_card").prop('disabled', false);

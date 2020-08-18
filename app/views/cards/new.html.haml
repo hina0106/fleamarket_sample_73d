@@ -3,7 +3,7 @@
   .userContainer__userMain
     %h2.userContainer__userMain__title クレジットカード情報
     .userMain
-      = form_with(model: @card, url: cards_path, local: true) do |f|
+      = form_with(model: @card, url: cards_path, local: true, class: "card-form") do |f|
         .userMain__formGroup
           = f.label :カード番号, class: 'userMain__formGroup__label'
           %span.userMain__formGroup__require
@@ -19,7 +19,7 @@
             %br/
           = f.date_select :expirationMonth, {use_month_numbers: true, discard_year: true, discard_day: true}, {class: 'userMain__formGroup--input card select',id: 'exp_month_form'}
           %span.userMain__formGroup__carDel 月
-          = f.date_select :expirationYear, {use_month_numbers: true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, discard_month: true, discard_day: true}, {class: 'userMain__formGroup--input card select', id: 'exp_year_form'}
+          = f.date_select :expirationYear, {use_month_numbers: true, start_year:Time.now.year, end_year:Time.now.year+10, discard_month: true, discard_day: true}, {class: 'userMain__formGroup--input card select', id: 'exp_year_form'}
           %span.userMain__formGroup__carDel 年
           %br/
         .userMain__formGroup
