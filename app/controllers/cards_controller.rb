@@ -22,8 +22,10 @@ class CardsController < ApplicationController
       customer_id: customer.id,
       user_id: current_user.id
     )
-    @card.save
-    redirect_to mypage_index_path
+    if @card.save
+      flash[:notice] = 'クレジットカードの登録が完了しました'
+      redirect_to new_card_path
+    end
   end
 
   def show

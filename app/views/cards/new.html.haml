@@ -2,6 +2,9 @@
   = render 'common/header'
   .userContainer__userMain
     %h2.userContainer__userMain__title クレジットカード情報
+    .message
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
     .userMain
       = form_with(model: @card, url: cards_path, local: true, class: "card-form") do |f|
         .userMain__formGroup

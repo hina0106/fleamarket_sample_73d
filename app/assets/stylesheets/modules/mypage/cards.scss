@@ -1,4 +1,10 @@
 .userContainer{
+  .message {
+    color: $white;
+    text-align: center;  
+    background-color: $deepskyblue;
+    margin-bottom: 20px;
+  }
   &__userMain {
     padding-bottom: 30px;
     .userMain {
