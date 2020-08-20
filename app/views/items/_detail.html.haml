@@ -147,7 +147,7 @@
             販売価格
             %span.sell-title__require
               必須
-        .sell-container__content__price__form
+        .sell-container__content__price__form.sell-main__price-input
           = f.label :price, class: 'sell-container__content__price__form__label' do
             ¥
             = f.number_field :price, {placeholder: '0', value: '', autocomplete:"off", class: 'sell-container__content__price__form__box'}
