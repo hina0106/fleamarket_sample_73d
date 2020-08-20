@@ -9,6 +9,7 @@
             必須
       .sell-container__content__box
         %ul.output-box
+          = item_url
           %div#image-input
             = f.fields_for :item_imgs do |image|
               = image.label :url, id: 'image-input__label' do
