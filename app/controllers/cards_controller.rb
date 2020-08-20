@@ -22,14 +22,26 @@ class CardsController < ApplicationController
       customer_id: customer.id,
       user_id: current_user.id
     )
-    if @card.save
-      flash[:notice] = 'クレジットカードの登録が完了しました'
-      redirect_to new_card_path
-    end
+    @card.save
+    redirect_to card_path(current_user.id)
   end
 
   def show
-    @cards = CreditCard.where(user_id: current_user.id)
+    @card = CreditCard.where(user_id: current_user.id).first
+    unless @card.blank?
+      Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @card_information = customer.cards.retrieve(@card.card_id)
+    end
+  end
+
+  def destroy
+    card = CreditCard.find(params[:id])
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+    customer = Payjp::Customer.retrieve(card.customer_id)
+    customer.delete
+    card.delete
+    redirect_to action: "show"
   end
 
 end

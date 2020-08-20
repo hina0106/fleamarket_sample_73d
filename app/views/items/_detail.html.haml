@@ -84,7 +84,7 @@
             %span.sell-title__require
               必須
         .sell-collection_select
-          = f.select :item_condition_id, ItemCondition.all.map { |i| [i.name] }, {}, {class: 'sell-collection_select__label'}
+          = f.collection_select :item_condition_id, ItemCondition.all, :id, :name, {prompt: "--"} ,{class: 'sell-collection_select__label'}
         .error-messages
           %p
             =@item.errors.messages[:item_condition_id][0]
@@ -100,7 +100,7 @@
             %span.sell-title__require
               必須
         .sell-collection_select
-          = f.select :postage_type_id, PostageType.all.map { |p| [p.name] }, {} ,{class: 'sell-collection_select__label'}
+          = f.collection_select :postage_type_id, PostageType.all, :id, :name, {prompt: "--"},{class: 'sell-collection_select__label'}
         .error-messages
           %p
             =@item.errors.messages[:postage_type_id][0]
@@ -111,7 +111,7 @@
             %span.sell-title__require
               必須
         .sell-collection_select
-          = f.select :postage_payer_id, PostagePayer.all.map { |p| [p.name] }, {} ,{class: 'sell-collection_select__label'}
+          = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, {prompt: "--"},{class: 'sell-collection_select__label'}
         .error-messages
           %p
             =@item.errors.messages[:postage_payer_id][0]
@@ -133,7 +133,7 @@
             %span.sell-title__require
               必須
         .sell-collection_select
-          = f.select :preparation_day_id, PreparationDay.all.map { |p| [p.value] }, {} ,{class: 'sell-collection_select__label'}
+          = f.collection_select :preparation_day_id, PreparationDay.all, :id, :value, {prompt: "--"} ,{class: 'sell-collection_select__label'}
         .error-messages
           %p
             =@item.errors.messages[:preparation_day_id][0]

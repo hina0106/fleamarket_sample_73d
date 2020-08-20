@@ -3,4 +3,24 @@
   .userContainer__userMain
     %h2.userContainer__userMain__title お支払い方法
     .userMain
+      .userMain__formGroups
+        %h4.userMain__formGroup__label クレジットカード
+        - unless @card_information.blank?
+          .userMain__formGroup__cardData
+            .userMain__formGroup__cardData__info
+              .userMain__formGroup__cardData__info__checkBox
+                = image_tag 'material/checkbox_icon.png'
+              %ul
+                %li
+                  = "**** **** **** " + @card_information.last4
+                %li
+                  = "有効期限 " + @card_information.exp_month.to_s + " / " + @card_information.exp_year.to_s.slice(2,3)
+              %input{ type: "hidden", name: "card_id", value: "" }
+            .userMain__formGroup__cardData--Btn
+              = link_to card_path(@card.id), method: :delete do
+                削除する
+      - if @card_information.blank?
+        .userMain__actions--Btn
+          = link_to new_card_path do
+            新規登録する
   = render 'common/footer'

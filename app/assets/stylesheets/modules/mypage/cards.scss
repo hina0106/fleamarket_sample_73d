@@ -1,10 +1,4 @@
 .userContainer{
-  .message {
-    color: $white;
-    text-align: center;  
-    background-color: $deepskyblue;
-    margin-bottom: 20px;
-  }
   &__userMain {
     padding-bottom: 30px;
     .userMain {
@@ -21,6 +15,38 @@
           display: inline-block;
           width: 42px;
           text-align: center;
+        }
+        &__cardData {
+          padding: 32px 0;
+          display: flex;
+          justify-content: space-between;
+          &__info {
+            display: flex;
+            &__checkBox {
+              display: inline-block;
+              margin: auto 0;
+              img {
+                width: 40px;
+              }
+              &:hover{
+                cursor: pointer;
+              }
+            }
+          }
+          &--Btn{
+            margin: auto 0;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            border: solid 1px $lightBlue;
+            color: $lightBlue;
+            font-weight: bold;
+            & a {
+              display: block;
+            }
+          }
         }
       }
       &__actions{

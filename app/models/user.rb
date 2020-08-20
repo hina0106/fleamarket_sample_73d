@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :sending_destination, dependent: :destroy
-  has_many :credit_card, dependent: :destroy
+  has_one :credit_card, dependent: :destroy
   # belongs_to :item
 
   validates :nickname,

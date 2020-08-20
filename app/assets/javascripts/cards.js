@@ -27,6 +27,7 @@ $(document).on('turbolinks:load', function(){
         $("#card_token").append(`<input type="hidden" id="card_token" name="card_token" value=${token}>`)
         // コントローラー側に送信
         $(".card-form").get(0).submit();
+        alert("登録が完了しました");
       } else {
         alert("カード情報が正しくありません。");
         $("#regist_card").prop('disabled', false);
