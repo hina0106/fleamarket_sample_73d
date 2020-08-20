@@ -9,13 +9,19 @@
             必須
       .sell-container__content__box
         %ul.output-box
-          = item_url
+          - @images.each do |image|
+            %li.sell-main__upload-item
+              %figure.sell-main__upload-figure.sell-main__upload-figure--square
+                = image_tag item_url
+              .sell-main__upload-button
+                %span.sell-main__delete-image>
+                  削除
           %div#image-input
             = f.fields_for :item_imgs do |image|
               = image.label :url, id: 'image-input__label' do
                 = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, style: 'display: none;'
                 %pre
-                  %i.fas.fa-camera.fa-lg
+                %i.fas.fa-camera.fa-lg
       .error-messages
         %p
           =@item.errors.messages[:item_imgs][0]
