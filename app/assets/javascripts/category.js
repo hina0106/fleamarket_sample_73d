@@ -43,11 +43,7 @@ $(document).on('turbolinks:load', function(){
           });
           appendChidrenBox(insertHTML);
         })
-        .fail(function(jqXHR, textStatus, errorThrown){
-          console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
-          console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
-          console.log("errorThrown    : " + errorThrown.message);
-          console.log("parent_category_id    : " + parent_category_id);
+        .fail(function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{

@@ -16,7 +16,6 @@ $(document).on('turbolinks:load', function(){
 
     // トークンを発行する(response.idがトークンになる)
     Payjp.createToken(card, function(status, response) {
-      console.log(response.error);
       if (status === 200) {
         $("#card_number_form").removeAttr("name");
         $("#exp_month_form").removeAttr("name");
