@@ -1,0 +1,160 @@
+.itembuy-container
+  = render 'common/header'
+  .item-show-main-background
+    %section.item-show-product-box-container
+      %h1.itembuy-content__name
+        = @item.name
+        .item-main-content
+          .item-photo
+            //メイン画像
+            .image
+              .itembuy-content__owl-carousel{ id: 'main' }
+                = image_tag @image.url.url,  class: 'owl-carousel', size: '300x300'
+                - unless @item.trading_status == 0
+                  .item-tag-sold-out-top
+                    .sold-out-text-top SOLD
+                - else
+                  .none-sold
+              //サムネイル画像
+            .owl-dot
+              - @images.each.with_index do |image, index|
+                - if image.present?
+                  .owl-dot__item.current
+                    .owl-dot__item__box
+                      = image_tag image.url.url, class: "image-sub"
+                - else
+                  .owl-dot__item
+                    .owl-dot__item__box
+                      = image_tag image.image, class: "image-sub"
+              - if @item.item_imgs.length > 5
+                - for i in 1..(10 - @item.item_imgs.length)
+                  .owl-dot__dummy
+
+        .item-price-box
+          %span.item-price-box__bold
+            ¥ #{@item.price}
+          %span.item-tax (税込)
+          %span.item-fee_payer
+        .item-text
+          %p.item-text__inner
+            =@item.introduction
+        %table.itembuy-content__table
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                .itembuy-content
+                  = link_to "#{@user.nickname}", '#', class: "user-name-string";
+            %tr
+              %th カテゴリー
+              %td
+                - @parents.each do |parent|
+                  - if @item.category_id == parent.id
+                    = link_to "#" do
+                      = parent.parent.parent.name #親カテゴリー
+                      %br
+                    = link_to "#" do
+                      = parent.parent.name #子カテゴリー
+                      %br
+                    = link_to "#" do
+                      = parent.name #孫カテゴリー
+            %tr
+              %th  ブランド
+              %td
+                = link_to '/' do
+                  .brand-name
+                    - if @item.brand.present?
+                      = @item.brand.name
+            %tr  
+              %th  サイズ
+              %td
+                = link_to '/' do
+                  .itembuy-content
+                    = @item.size.value
+            %tr
+              %th 商品の状態            
+              %td
+                .itembuy-content
+                  = @item.item_condition.name
+              
+            %tr
+              %th 配送料の負担
+              %td
+                .itembuy-content
+                  = @item.postage_payer.name
+            %tr
+              %th 配送の方法
+              %td
+                .itembuy-content
+                  = @item.postage_type.name
+            %tr
+              %th 配送元地域
+              %td
+                .itembuy-content.prefecture-name
+                  = link_to '/' do
+                    = @item.prefecture.name
+            %tr
+              %th 発送日の目安
+              %td
+                .itembuy-content
+                  = @item.preparation_day.value
+      -if user_signed_in?
+        -if @item.seller_id == current_user.id
+          = link_to edit_item_path, data: {turbolinks: false} do
+            .item-edit-btn 商品の編集
+            .item-btn-or or
+            .item-stop-btn 出品を一旦停止する
+          = link_to item_path(@item), method: :delete, data: { turbolinks: false} do
+            .item-delete-btn この商品を削除する   
+        -else 
+          -if @item.trading_status == 0
+            = link_to '#', data: {turbolinks: false} do
+              .item-buy-btn 購入画面に進む
+          -else
+            .item-buy-btn-sold 売り切れました
+      -unless user_signed_in? && @item.seller_id == current_user.id
+        .item-button-container.clearfix
+          .item-button__report
+            = link_to "", class: "item-button__report" do
+              %i.far.fa-flag
+              %span.fade-in-down 不適切な商品の報告            
+    .message-content
+    .message-content__box__form
+      .item-message-content
+        -if @comments 
+          -@comments.each do |comment| 
+            .item-message-comment
+              .message-items
+                .message-user
+                  = image_tag 'mypage/user-icon.png', size: '30x30', alt: 'user-icon', class:"user-icon"
+                  .message-user-name
+                    %p
+                      = comment.user.nickname
+                .message-body
+                  = comment.text
+                  .message-icons
+                    .message-icon-left
+                      = fa_icon "history"
+                      %span
+                        1時間
+                    .message-icon-right
+                      .message-delete
+                        = link_to("/items/#{@item.id}/comments/#{comment.id}",{method:"delete"}) do
+                          = fa_icon "trash"
+                  %i.icon-ballon
+        .item-message-form
+          = form_for(@comment, url:"/items/#{@item.id}/comments") do |f|
+            =f.text_area :text, class:"message-form"
+            %p.attention 
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            .message-submit__details
+              = f.submit "コメントする", class:"comment-button"
+      .nav-item-link
+        .previous-item.items-link_to
+          %i.fas.fa-chevron-left
+          = link_to "前の商品へ", "#"
+          .next-item.items-link_to
+            = link_to "次の商品へ", "#"
+            %i.fas.fa-chevron-right
+  = render 'app_banner'         
+  = render "common/footer"
