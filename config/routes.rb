@@ -14,4 +14,7 @@ Rails.application.routes.draw do
       get 'get_category_grandchild', to: 'items#get_category_grandchild', defaults: { format: 'json' }
     end
   end
+  resources :mypage, only: [:index]
+  resources :logout, only: [:index]
+  resources :cards, only: [:index, :new, :create, :show, :destroy]
 end

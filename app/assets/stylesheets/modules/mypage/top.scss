@@ -1,0 +1,53 @@
+.mypageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: $lightGray;
+  .mypageMain {
+    @include pageMain();
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    &--title {
+      @include pageTitle();
+    }
+    &__listGroup {
+      height: 100%;
+      &--head {
+        display: block;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 40px 4% 0;
+      }
+      .listGroup--list {
+        border-top: 1px solid $lightGray;
+        &--link {
+          position: relative;
+          display: block;
+          min-height: 48px;
+          padding: 16px;
+          background: $white;
+          font-size: 14px;
+          color: $lightBlack;
+          }
+        &--iconArrow {
+          position: absolute;
+          height: 36px;
+          bottom: 20px;
+          right: 16px;
+          color: $darkGray;
+          display: inline-block;
+          font-family: 'icon-font';
+          font-style: normal;
+          display: inline-block;
+          font-size: 36px;
+          text-align: center;
+          &::before {
+            content: '›';
+          }
+        }
+      }
+    }
+  }
+}
