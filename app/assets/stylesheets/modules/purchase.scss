@@ -1,0 +1,53 @@
+.purchaseContainer {
+  background-color: $lightGray;
+  .purchaseMain {
+    background-color: $white;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    &--title {
+      @include pageTitle();
+    }
+    &__info {
+      &__data {
+        max-width: 375px;
+        margin: 0px auto;
+        padding: 25px 16px;
+        border-bottom: solid 2px $lightGray;
+        display: flex;
+        justify-content: space-between;
+        .title {
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        &__pic {
+          margin-right: 50px;
+          .itemPic {
+            width: 90px;
+          }
+        }
+        &__caption {
+          width: 100%;
+          text-align: left;
+        }
+        &.price {
+          .title {
+            font-size: 18px;
+          }
+          .price {
+            font-size: 26px;
+            font-weight: bold;
+          }
+        }
+        .new_card {
+          color: $lightBlue;
+        }
+      }
+    }
+    &__actions {
+      margin: 0 auto;
+      @include longBtn();
+    }
+  }
+}
