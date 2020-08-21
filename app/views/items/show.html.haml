@@ -108,7 +108,7 @@
             .item-delete-btn この商品を削除する   
         -else 
           -if @item.trading_status == 0
-            = link_to '#', data: {turbolinks: false} do
+            = link_to purchase_index_path, data: {turbolinks: false} do
               .item-buy-btn 購入画面に進む
           -else
             .item-buy-btn-sold 売り切れました

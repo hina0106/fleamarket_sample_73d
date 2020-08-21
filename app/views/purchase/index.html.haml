@@ -1,0 +1,38 @@
+.purchaseContainer
+  = render 'common/header_simple'
+  .purchaseMain
+    %h2.purchaseMain--title 購入内容の確認
+    .purchaseMain__info
+      .purchaseMain__info__data.contents
+        .purchaseMain__info__data__pic
+          = image_tag 'material/member_photo_noimage_thumb.png', class: "itemPic"
+        .purchaseMain__info__data__caption
+          %p デザインする技術 : よりよいデザインのための基礎知識
+      .purchaseMain__info__data.price
+        %p.title 支払い金額
+        %p.price
+          ¥300
+      .purchaseMain__info__data
+        %p.title 支払い方法
+        - if @card_information.blank?
+          = link_to "登録してください", new_card_path, class: "new_card"
+        - else
+          %ul
+            %li
+              = "**** **** **** " + @card_information.last4
+            %li
+              = "有効期限 " + @card_information.exp_month.to_s + " / " + @card_information.exp_year.to_s.slice(2,3)
+      .purchaseMain__info__data
+        %p.title 配送先
+        %ul
+          %li
+            = "〒" + @send_info[0].post_code.to_s
+          %li
+            = @send_info[0].city + @send_info[0].house_number + @send_info[0].building_name
+          %li
+            = @send_info[0].destination_family_name + @send_info[0].destination_first_name
+      .purchaseMain__actions
+        .purchaseMain__actions--Btn
+          = link_to new_card_path do
+            購入する
+  = render 'common/footer_simple'

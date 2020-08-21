@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index]
   resources :logout, only: [:index]
   resources :cards, only: [:index, :new, :create, :show, :destroy]
+  resources :purchase, only: [:index]
 end
