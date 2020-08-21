@@ -17,5 +17,9 @@ Rails.application.routes.draw do
   resources :mypage, only: [:index]
   resources :logout, only: [:index]
   resources :cards, only: [:index, :new, :create, :show, :destroy]
-  resources :purchase, only: [:show]
+  resources :purchase, only: [:show] do
+    collection do
+      post 'pay', to: 'purchase#pay'
+    end
+  end
 end

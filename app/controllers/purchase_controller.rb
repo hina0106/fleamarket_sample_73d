@@ -7,4 +7,8 @@ class PurchaseController < CardsController
     @pref = JpPrefecture::Prefecture.find @send_info[0].prefecture_code
     @item = Item.find(params[:id])
   end
+
+  def pay
+    
+  end
 end
