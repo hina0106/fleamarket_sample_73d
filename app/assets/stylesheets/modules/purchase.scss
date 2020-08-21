@@ -22,13 +22,14 @@
           margin-bottom: 10px;
         }
         &__pic {
-          margin-right: 15px;
+          margin-right: 50px;
           .itemPic {
             width: 90px;
           }
         }
-        &.contents {
-          font-size: 15px;
+        &__caption {
+          width: 100%;
+          text-align: left;
         }
         &.price {
           .title {
