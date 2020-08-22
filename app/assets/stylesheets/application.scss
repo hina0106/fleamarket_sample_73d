@@ -14,7 +14,12 @@
 @import "common/footer";
 
 @import "modules/main";
-@import "modules/app_banner";
 @import "modules/sign_up_in";
+@import "modules/toppage";
 @import "modules/put_up_items";
 @import "modules/show";
+@import "modules/purchase";
+
+@import "modules/mypage/top";
+@import "modules/mypage/cards";
+@import "modules/mypage/logout";

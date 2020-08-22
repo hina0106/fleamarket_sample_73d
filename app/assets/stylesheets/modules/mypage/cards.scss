@@ -1,0 +1,66 @@
+.userContainer{
+  &__userMain {
+    padding-bottom: 30px;
+    .userMain {
+      &__formGroup{
+        &--image {
+          width: 280px;
+        }
+        &--input {
+          &.card {
+            width: 36%;
+          }
+        }
+        &__carDel {
+          display: inline-block;
+          width: 42px;
+          text-align: center;
+        }
+        &__cardData {
+          padding: 32px 0;
+          display: flex;
+          justify-content: space-between;
+          &__info {
+            display: flex;
+            &__checkBox {
+              display: inline-block;
+              margin: auto 0;
+              img {
+                width: 40px;
+              }
+              &:hover{
+                cursor: pointer;
+              }
+            }
+          }
+          &--Btn{
+            margin: auto 0;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 5px;
+            border: solid 1px $lightBlue;
+            color: $lightBlue;
+            font-weight: bold;
+            & a {
+              display: block;
+            }
+          }
+        }
+      }
+      &__actions{
+        text-align: center;
+        &--input {
+          z-index: 2;
+        }
+        &--link {
+          display: inline-block;
+          text-align: center;
+          color: $lightBlue;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

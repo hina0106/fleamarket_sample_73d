@@ -108,7 +108,7 @@
             .item-delete-btn この商品を削除する   
         -else 
           -if @item.trading_status == 0
-            = link_to '#', data: {turbolinks: false} do
+            = link_to purchase_path(@item.id), data: {turbolinks: false} do
               .item-buy-btn 購入画面に進む
           -else
             .item-buy-btn-sold 売り切れました
@@ -156,5 +156,4 @@
           .next-item.items-link_to
             = link_to "次の商品へ", "#"
             %i.fas.fa-chevron-right
-  = render 'app_banner'         
   = render "common/footer"

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :destroy, :update]
+  before_action :set_categories, only: [:new, :create]
+  before_action :set_product, only: [:show, :edit, :destroy]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
@@ -13,18 +14,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.item_imgs.new
-    # 親カテゴリーが選択された後に動くアクション
-    def get_category_child
-      @category_child = Category.find("#{params[:parent_id]}").children
-      render json: @category_child
-      #親カテゴリーに紐付く子カテゴリーを取得
-    end
-    # 子カテゴリーが選択された後に動くアクション
-    def get_category_grandchild
-      @category_grandchild = Category.find("#{params[:child_id]}").children
-      render json: @category_grandchild
-      #子カテゴリーに紐付く孫カテゴリーの配列を取得
-    end
   end
 
   def show
@@ -45,6 +34,20 @@ class ItemsController < ApplicationController
     
     @item.save
     redirect_to root_path
+  end
+
+  # 親カテゴリーが選択された後に動くアクション
+  def get_category_child
+    @category_child = Category.find("#{params[:parent_id]}").children
+    render json: @category_child
+    #親カテゴリーに紐付く子カテゴリーを取得
+  end
+  
+  # 子カテゴリーが選択された後に動くアクション
+  def get_category_grandchild
+    @category_grandchild = Category.find("#{params[:child_id]}").children
+    render json: @category_grandchild
+    #子カテゴリーに紐付く孫カテゴリーの配列を取得
   end
 
   def edit
@@ -77,11 +80,14 @@ class ItemsController < ApplicationController
     end
   end
 
-
   private
 
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
+  end
+
+  def set_categories
+    @category_parent = Category.where(ancestry: nil)
   end
 
   # 商品情報
@@ -92,7 +98,6 @@ class ItemsController < ApplicationController
   def set_user
     @user = User.find(@item.seller_id)
   end
-
 
   def correct_user
     @item = Item.find(params[:id])

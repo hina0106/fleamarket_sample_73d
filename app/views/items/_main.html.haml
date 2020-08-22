@@ -29,7 +29,7 @@
         .intro__list__picture
           .picture__num
             2
-          = image_tag "material/simple.jpeg"
+          = image_tag "material/simple.jpg"
         %h3.intro__list__text
           シンプル
           %span.intro__list__text--black で使いやすい
@@ -38,7 +38,7 @@
         .intro__list__picture
           .picture__num
             3
-          = image_tag "material/coffee.jpeg"
+          = image_tag "material/coffee.jpg"
         %h3.intro__list__text
           手数料
           %span.intro__list__text--black 業界最安
@@ -142,3 +142,12 @@
           %span.purchaseBtn__text
             出品する
           = icon('fa', 'camera' ,class: 'purchaseBtn__icon')
+  %aside.main__appBanner
+    .main__appBanner__inner
+      %h2.main__appBanner__inner__title だれでもかんたん、人生を変えるフリマアプリ
+      %p.main__appBanner__inner__text 今すぐ無料ダウンロード！
+      .main__appBanner__inner__icon
+        = link_to '#', class: "main__appBanner__inner__icon__link" do
+          = image_tag "material/apple_app.png", class: "btn app"
+        = link_to '#', class: "main__appBanner__inner__icon__link" do
+          = image_tag "material/btn_googleplay.png", class: "btn goo"
