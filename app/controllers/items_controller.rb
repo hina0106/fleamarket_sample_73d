@@ -91,7 +91,7 @@ class ItemsController < ApplicationController
   end
 
   # 商品情報
-  def set_item
+  def set_product
     @item = Item.find(params[:id])
   end
 
