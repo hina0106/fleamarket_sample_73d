@@ -28,3 +28,12 @@ $(document).on('turbolinks:load', ()=> {
     $('#image-input').before(buildImg(targetIndex, blobUrl));
   });
 });
+
+$(document).on("click", '.sell-main__delete-image', function(){
+  //プレビュー要素を取得
+  var target_image = $(this).parent().parent()
+  //プレビューを削除
+  target_image.remove();
+  //inputタグに入ったファイルを削除
+  file_field.val("")
+})
