@@ -17,11 +17,10 @@
                 %span.sell-main__delete-image>
                   削除
           %div#image-input
-            %div#image-input__label
-              = f.fields_for :item_imgs do |image|
-                %label
+            %label#image-input__label
+                = f.fields_for :item_imgs do |image|
                   = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, style: 'display: none;'
-                  %i.fas.fa-camera.fa-lg
+                %i.fas.fa-camera.fa-lg
       .error-messages
         %p
           =@item.errors.messages[:item_imgs][0]
