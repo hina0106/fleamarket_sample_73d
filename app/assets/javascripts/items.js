@@ -6,9 +6,18 @@ $(document).on('turbolinks:load', ()=> {
   }
   // プレビュー用のimgタグを生成する関数
   const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    const html = `<div class="delete"><img data-index="${index}" src="${url}" width="100px" height="100px">
+                  <div class="imgdelete">削除</div></div>`;
     return html;
   }
+  $(document).on("click", '.imgdelete', function(){
+    //プレビュー要素を取得
+    var target_image = $(this).parent()
+    //プレビューを削除
+    target_image.remove();
+    //inputタグに入ったファイルを削除
+    file_field.val("")
+  })
 
   // file_fieldのnameに動的なindexをつける為の配列
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];

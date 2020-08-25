@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :set_categories, only: [:new, :create]
-  before_action :set_product, only: [:show, :edit, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit]
+  before_action :set_product, only: [:show, :edit, :destroy, :update]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
-  before_action :set_category, except:[:show,:destroy,:index]
-  
+    
   def index
     @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
@@ -66,7 +65,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to edit_item_path
+      redirect_to root_path
    else
     redirect_to edit_item_path(@item)
    end
