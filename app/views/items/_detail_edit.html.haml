@@ -59,7 +59,9 @@
               必須
         .sell-collection_select.category
           .select_collection_select-category
-            = f.collection_select :category_id, @category_parent,:id, :name, {prompt: "--"},{class: 'sell-collection_select__label', id:'parent_category'} 
+            = f.collection_select :category_id, Category.where(ancestry: nil).limit(13), :id,:name, {selected: @parent.id}, {class:'sell-collection_select__label category',id:'parent_category'} 
+            = f.collection_select :category_id, Category.where(ancestry: "#{@parent.id}"),:id, :name, {selected: @child.id}, {class:'sell-collection_select__label category',id: 'child_category'}
+            = f.collection_select :category_id, Category.where(ancestry: "#{@parent.id}/#{@child.id}"),:id, :name, {selected: @grandchild.id}, {class:'sell-collection_select__label category',id: 'grandchild_category'} 
         .error-messages
           %p
             =@item.errors.messages[:category_id][0]

@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   before_action :set_user, only: [:show, :edit, :change_status]
     
   def index
-    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
+    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 1339").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     @image = @images.first
     @comment = Comment.new
     @commentALL = @item.comments
-    @parents = Category.all.order("id ASC").limit(1000)
+    @parents = Category.all.order("id ASC").limit(1338)
   end
 
   def create
@@ -52,15 +52,11 @@ class ItemsController < ApplicationController
   def edit
     @item = Item.find(params[:id])
     @images = @item.item_imgs
-    def get_category_child
-      @category_child = Category.find(params[:parent_id]).children
-      render json: @category_child
-    end
-  
-    def get_category_grandchild
-      @category_grandchild = Category.find(params[:child_id]).children
-      render json: @category_grandchild
-    end
+    
+    @grandchild = @item.category
+    @child = @grandchild.parent
+    @parent = @child.parent
+
   end
 
   def update
@@ -116,10 +112,6 @@ class ItemsController < ApplicationController
     @delivery_charge = PostagePayer.find(@item.postage_payer_id)
     @delivery_way = PostageType.find(@item.postage_type_id)
     @delivery_days = PreparationDay.find(@item.preparation_day_id)
-  end
-
-  def set_category
-    @category_parent = Category.where(ancestry: nil)
   end
 
 end
