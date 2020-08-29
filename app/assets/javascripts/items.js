@@ -16,6 +16,13 @@ $(document).on('turbolinks:load', ()=> {
                   </div>`;
     return html;
   }
+  // プレビュー用のimgタグを生成する関数
+  const newBuildImg = (index, url)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <img data-index="${index}" src="${url}" width="100px" height="100px">
+                  </div>`;
+    return html;
+  }
   // $(document).on("click", '.imgdelete', function(){
   //   //プレビュー要素を取得
   //   var target_image = $(this).parent()
@@ -44,7 +51,13 @@ $(document).on('turbolinks:load', ()=> {
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-    $('#image-input').before(buildImg(targetIndex, blobUrl));
+
+    const url = location.href
+    if (url == "http://localhost:3000/items/new") {
+      $('#image-input').before(newBuildImg(targetIndex, blobUrl));
+    } else {
+      $('#image-input').before(buildImg(targetIndex, blobUrl));
+    }
   });
 
   $('.output-box').on('click', '.js-remove', function(){
