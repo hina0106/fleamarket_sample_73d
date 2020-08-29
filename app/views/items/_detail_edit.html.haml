@@ -1,0 +1,184 @@
+.sell-container
+  = form_for @item do |f|
+    -# 画像部分
+    .sell-container__content
+      .sell-title
+        %h3.sell-title__text
+          出品画像
+          %span.sell-title__require
+            必須
+      .sell-container__content__box
+        %ul.output-box
+          - @images.each_with_index do |image, i|
+            %li.sell-main__upload-item
+              %div.js-file_group{"data-index" => i}
+                = image_tag image.url.url
+                %div.js-remove 削除
+          %div#image-input
+            %label#image-input__label{"for" => "item_item_imgs_attributes_#{@item.item_imgs.count}_url"}
+              = f.fields_for :item_imgs do |image|
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy', style: 'display: none;'
+                .js-file_group{"data-index" => image.index}
+                  = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, style: 'display: none;'
+              .js-file_group{"data-index" => @item.item_imgs.count}
+                %input.js-file{:accept => "image/*", "data-index" => "1", "id" => "item_item_imgs_attributes_#{@item.item_imgs.count}_url", :name => "item[item_imgs_attributes][#{@item.item_imgs.count}][url]", :style => "display: none;", :type => "file"}/
+              %i.fas.fa-camera.fa-lg
+      .error-messages
+        %p
+          =@item.errors.messages[:item_imgs][0]
+    -# 商品概要部分
+    .sell-container__content
+      .sell-title
+        %h3.sell-title__text
+          商品名
+          %span.sell-title__require
+            必須
+      = f.text_field :name, {class: 'sell-container__content__name', maxlength: '40', placeholder: '商品名（必須 40文字まで)'}
+      .error-messages
+        %p
+          =@item.errors.messages[:name][0]
+
+      .sell-title
+        %h3.sell-title__text
+          商品の説明
+          %span.sell-title__require
+            必須
+      = f.text_area :introduction,{class: 'sell-container__content__description', rows: '7', maxlength: '1000', placeholder: '商品説明'}
+      .sell-container__content__word-count
+        %p.error-messages
+          =@item.errors.messages[:introduction][0]
+        %span#word-count
+          0&#47;1000
+
+    -# 詳細部分
+    .sell-container__content
+      %h3.sell-sub-head 商品の詳細
+      .sell-container__content__details
+        .sell-title
+          %h3.sell-title__text
+            カテゴリー
+            %span.sell-title__require
+              必須
+        .sell-collection_select.category
+          .select_collection_select-category
+            = f.collection_select :category_id, Category.where(ancestry: nil).limit(13), :id,:name, {selected: @parent.id}, {class:'sell-collection_select__label category',id:'parent_category'} 
+            = f.collection_select :category_id, Category.where(ancestry: "#{@parent.id}"),:id, :name, {selected: @child.id}, {class:'sell-collection_select__label category',id: 'child_category'}
+            = f.collection_select :category_id, Category.where(ancestry: "#{@parent.id}/#{@child.id}"),:id, :name, {selected: @grandchild.id}, {class:'sell-collection_select__label category',id: 'grandchild_category'} 
+        .error-messages
+          %p
+            =@item.errors.messages[:category_id][0]
+
+        .sell-title
+          %h3.sell-title__text
+            サイズ
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.collection_select :size_id, Size.all, :id, :value, {prompt: "--"} ,{class: 'sell-collection_select__label'}
+        .error-messages
+          %p
+            =@item.errors.messages[:size_id][0]
+
+        .sell-title
+          %h3.sell-title__text
+            ブランド
+            %span.sell-title__require.arbitrary
+              任意
+        .sell-collection_select
+          = f.collection_select :brand_id, Brand.all, :id, :name, {prompt: "--"} ,{class: 'sell-collection_select__label'}
+        .error-messages
+
+        .sell-title
+          %h3.sell-title__text
+            商品の状態
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.collection_select :item_condition_id, ItemCondition.all, :id, :name, {prompt: "--"}, {class: 'sell-collection_select__label'}
+        .error-messages
+          %p
+            =@item.errors.messages[:item_condition_id][0]
+
+    -# 配送部分
+    .sell-container__content
+      %h3.sell-sub-head
+        %p 配送について
+      .sell-container__content__details
+        .sell-title
+          %h3.sell-title__text
+            配送方法
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.collection_select :postage_type_id, PostageType.all, :id, :name, {prompt: "--"}, {class: 'sell-collection_select__label'}
+        .error-messages
+          %p
+            =@item.errors.messages[:postage_type_id][0]
+
+        .sell-title
+          %h3.sell-title__text
+            配送料の負担
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.collection_select :postage_payer_id, PostagePayer.all.map, :id, :name, {prompt: "--"}, {class: 'sell-collection_select__label'}
+        .error-messages
+          %p
+            =@item.errors.messages[:postage_payer_id][0]
+
+        .sell-title
+          %h3.sell-title__text
+            発送元の地域
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '--'}, class: 'sell-collection_select__label'
+        .error-messages
+          %p
+            =@item.errors.messages[:prefecture_code][0]
+
+        .sell-title
+          %h3.sell-title__text
+            発送までの日数
+            %span.sell-title__require
+              必須
+        .sell-collection_select
+          = f.collection_select :preparation_day_id, PreparationDay.all, :id, :value, {prompt: "--"}, {class: 'sell-collection_select__label'}
+        .error-messages
+          %p
+            =@item.errors.messages[:preparation_day_id][0]
+    -# 価格部分
+    .sell-container__content
+      %h3.sell-sub-head
+        %p 販売価格(300〜9,999,999)
+      .sell-container__content__price
+        .sell-title
+          %h3.sell-title__text
+            販売価格
+            %span.sell-title__require
+              必須
+        .sell-container__content__price__form
+          = f.label :price, class: 'sell-container__content__price__form__label' do
+            ¥
+            = f.number_field :price, {value: @item.price, autocomplete:"off", class: 'sell-container__content__price__form__box'}
+      .error-messages#error-price
+        =@item.errors.messages[:price][0]
+
+      .sell-container__content__commission
+        .sell-container__content__commission__left
+          販売手数料 （10%）
+        .sell-container__content__commission__right ー
+      .sell-container__content__commission
+        .sell-container__content__commission__left
+          販売利益
+        .sell-container__content__commission__right ー
+
+      .submit-btn
+        = f.submit '編集完了', class: 'submit-btn--Btn'
+      .submit-btn
+        = link_to 'もどる', root_path, class: 'submit-btn--Btn return'
+      .attention-box
+        %p
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物
+          などの販売は犯罪であり、法律により処罰される可能性があります。また、出品をもちまして加盟店規約に同意したことになります。

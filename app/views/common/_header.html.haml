@@ -2,7 +2,7 @@
   .header__headerInner
     .header__headerInner__mainHeader
       %h1.header__headerInner__mainHeader__icon
-        = link_to'#' do
+        = link_to root_path do
           = image_tag 'material/logo.png'
 
       .header__headerInner__mainHeader__searchBox
@@ -15,10 +15,10 @@
       %ul.header__headerInner__nav__listsLeft
         %li.header__headerInner__nav__listsLeft__item
           = link_to '#', id: 'catBtn' do
-            カテゴリー
+            /カテゴリー
         %li.header__headerInner__nav__listsLeft__item.header__headerInner__nav__listsLeft__item--brand
           = link_to '#' do
-            ブランド
+            /ブランド
       %ul.header__headerInner__nav__listsRight
         - if user_signed_in?
           %li.header__headerInner__nav__listsRight__item

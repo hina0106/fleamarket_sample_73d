@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :set_categories, only: [:new, :create]
-  before_action :set_product, only: [:show, :edit, :destroy]
+  before_action :set_categories, only: [:new, :create, :edit]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :update, :correct_user]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
-  
+
   def index
-    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 200").order(created_at: "DESC")
+    @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 1339").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
   end
 
@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
     @image = @images.first
     @comment = Comment.new
     @commentALL = @item.comments
-    @parents = Category.all.order("id ASC").limit(1000)
+    @parents = Category.all.order("id ASC").limit(1338)
   end
 
   def create
@@ -50,14 +50,17 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @images = @item.item_imgs
+    @grandchild = @item.category
+    @child = @grandchild.parent
+    @parent = @child.parent
   end
 
   def update
-    if item.user_id == current_user.id
-      item.update(items_params)
-      redirect_to root_path
+    if @item.update(item_params)
+      redirect_to item_path
     else
-      render 'edit'
+      redirect_to edit_item_path(@item.id)
     end
   end
 
@@ -72,7 +75,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :id]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :introduction, :price, :prefecture_code, :brand_id, :pref_id, :size_id, :item_condition_id, :postage_payer_id, :preparation_day_id, :postage_type_id, :category_id, :trading_status, item_imgs_attributes: [:url, :_destroy, :id]).merge(seller_id: current_user.id)
   end
 
   def set_categories
@@ -89,7 +92,6 @@ class ItemsController < ApplicationController
   end
 
   def correct_user
-    @item = Item.find(params[:id])
     if @item.user_id != current_user.id
       redirect_to root_path
     end
