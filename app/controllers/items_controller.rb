@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
   before_action :set_categories, only: [:new, :create, :edit]
-  before_action :set_product, only: [:show, :edit, :destroy, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :update, :correct_user]
   before_action :set_condition, only: [:show, :edit, :change_status]
   before_action :set_delivery, only: [:show, :edit, :change_status]
   before_action :set_user, only: [:show, :edit, :change_status]
-    
+
   def index
     @items_category = Item.where("buyer_id IS NULL AND trading_status = 0 AND category_id < 1339").order(created_at: "DESC")
     @items_brand = Item.where("buyer_id IS NULL AND  trading_status = 0 AND brand_id = 1").order(created_at: "DESC")
@@ -50,17 +50,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
     @images = @item.item_imgs
-    
     @grandchild = @item.category
     @child = @grandchild.parent
     @parent = @child.parent
-
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -96,7 +92,6 @@ class ItemsController < ApplicationController
   end
 
   def correct_user
-    @item = Item.find(params[:id])
     if @item.user_id != current_user.id
       redirect_to root_path
     end
