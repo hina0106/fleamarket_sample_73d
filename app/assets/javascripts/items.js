@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', ()=> {
     // 末尾の数に1足した数を追加する
     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     const url = location.href
-    if (url == "http://localhost:3000/items/new") {
+    if (url.endsWith('/items/new')) {
       $('#image-input').before(newBuildImg(targetIndex, blobUrl));
     } else {
       $('#image-input').before(buildImg(targetIndex, blobUrl));
