@@ -13,7 +13,7 @@
             %li.sell-main__upload-item
               %div#previews{"data-index" => i}
                 = image_tag image.url.url
-                %span.js-remove 削除
+                %div.js-remove 削除
           %div#image-input
             %label#image-input__label
               = f.fields_for :item_imgs do |image|
