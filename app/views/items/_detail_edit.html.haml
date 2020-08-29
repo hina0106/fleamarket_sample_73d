@@ -9,17 +9,22 @@
             必須
       .sell-container__content__box
         %ul.output-box
-          - @images.each do |image|
+          - @images.each_with_index do |image, i|
             %li.sell-main__upload-item
-              %figure.sell-main__upload-figure.sell-main__upload-figure--square
+              %div#previews{"data-index" => i}
                 = image_tag image.url.url
-              .sell-main__upload-button
-                %span.sell-main__delete-image
-                  削除
+                %span.js-remove 削除
           %div#image-input
             %label#image-input__label
               = f.fields_for :item_imgs do |image|
-                = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, style: 'display: none;'
+                .js-file_group{"data-index" => image.index}
+                  = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, style: 'display: none;'
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy', style: 'display: none;'
+              -# - if @item.persisted?
+              -#   .js-file_group{"data-index" => @item.item_imgs.count}
+              -#     = file_field :url, accept: "image/*", class: "js-file", style: 'display: none;', name: "item[item_imgs_attributes][#{@item.item_imgs.count}][url]"
+              -#     .js-remove 削除
               %i.fas.fa-camera.fa-lg
       .error-messages
         %p
