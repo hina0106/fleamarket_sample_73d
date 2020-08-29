@@ -22,7 +22,7 @@
                 .js-file_group{"data-index" => image.index}
                   = image.file_field :url, accept: "image/*", class: "js-file", data: {index: image.index}, style: 'display: none;'
               .js-file_group{"data-index" => @item.item_imgs.count}
-                %input.js-file{:accept => "image/*", "data-index" => "1", "id" => "item_item_imgs_attributes_#{@item.item_imgs.count}_url", :name => "item[item_imgs_attributes][#{@item.item_imgs.count}][url]", :style => "display: none;", :type => "file"}/
+                %input.js-file{:accept => "image/*", "data-index" => "#{@item.item_imgs.count}", "id" => "item_item_imgs_attributes_#{@item.item_imgs.count}_url", :name => "item[item_imgs_attributes][#{@item.item_imgs.count}][url]", :style => "display: none;", :type => "file"}/
               %i.fas.fa-camera.fa-lg
       .error-messages
         %p
