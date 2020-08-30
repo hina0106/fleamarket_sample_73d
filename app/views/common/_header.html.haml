@@ -12,13 +12,6 @@
             .header__headerInner__mainHeader__searchBox__icon
               = image_tag 'material/icon-search 1.png'
     .header__headerInner__nav
-      %ul.header__headerInner__nav__listsLeft
-        %li.header__headerInner__nav__listsLeft__item
-          = link_to '#', id: 'catBtn' do
-            /カテゴリー
-        %li.header__headerInner__nav__listsLeft__item.header__headerInner__nav__listsLeft__item--brand
-          = link_to '#' do
-            /ブランド
       %ul.header__headerInner__nav__listsRight
         - if user_signed_in?
           %li.header__headerInner__nav__listsRight__item

@@ -27,7 +27,6 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     
     unless @item.valid?
-      @item.item_imgs.new
       render :new and return
     end
     
