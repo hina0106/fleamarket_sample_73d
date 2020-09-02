@@ -17,7 +17,12 @@
                   %i.fas.fa-camera.fa-lg
       .error-messages
         %p
-          =@item.errors.messages[:item_imgs][0]
+          -# =@item.errors.messages[:item_imgs][0]
+        - if flash[:error].present?
+          - unless flash[:error]["item_imgs"].nil?
+            %ul.errors
+            - flash[:error]["item_imgs"].each do |err|
+              %li= err
     -# 商品概要部分
     .sell-container__content
       .sell-title
@@ -28,7 +33,11 @@
       = f.text_field :name, {class: 'sell-container__content__name', maxlength: '40', placeholder: '商品名（必須 40文字まで)'}
       .error-messages
         %p
-          =@item.errors.messages[:name][0]
+          - if flash[:error].present?
+            - unless flash[:error]["name"].nil?
+              %ul.errors
+              - flash[:error]["name"].each do |e|
+                %li= e
 
       .sell-title
         %h3.sell-title__text
@@ -38,7 +47,11 @@
       = f.text_area :introduction,{class: 'sell-container__content__description', rows: '7', maxlength: '1000', placeholder: '商品説明'}
       .sell-container__content__word-count
         %p.error-messages
-          =@item.errors.messages[:introduction][0]
+          - if flash[:error].present?
+            - unless flash[:error]["introduction"].nil?
+              %ul.errors
+              - flash[:error]["introduction"].each do |e|
+                %li= e
         %span#word-count
           0&#47;1000
 
@@ -56,7 +69,11 @@
             = f.collection_select :category_id, @category_parent,:id, :name, {prompt: "--"},{class: 'sell-collection_select__label', id:'parent_category'} 
         .error-messages
           %p
-            =@item.errors.messages[:category_id][0]
+          - if flash[:error].present?
+            - unless flash[:error]["category_id"].nil?
+              %ul.errors
+              - flash[:error]["category_id"].each do |e|
+                %li= e
 
         .sell-title
           %h3.sell-title__text
@@ -67,7 +84,11 @@
           = f.collection_select :size_id, Size.all, :id, :value, {prompt: "--"} ,{class: 'sell-collection_select__label'}
         .error-messages
           %p
-            =@item.errors.messages[:size_id][0]
+          - if flash[:error].present?
+            - unless flash[:error]["size_id"].nil?
+              %ul.errors
+              - flash[:error]["size_id"].each do |e|
+                %li= e
 
         .sell-title
           %h3.sell-title__text
@@ -87,7 +108,11 @@
           = f.collection_select :item_condition_id, ItemCondition.all, :id, :name, {prompt: "--"}, {class: 'sell-collection_select__label'}
         .error-messages
           %p
-            =@item.errors.messages[:item_condition_id][0]
+          - if flash[:error].present?
+            - unless flash[:error]["item_condition_id"].nil?
+              %ul.errors
+              - flash[:error]["item_condition_id"].each do |e|
+                %li= e
 
     -# 配送部分
     .sell-container__content
@@ -103,7 +128,11 @@
           = f.collection_select :postage_type_id, PostageType.all, :id, :name, {prompt: "--"}, {class: 'sell-collection_select__label'}
         .error-messages
           %p
-            =@item.errors.messages[:postage_type_id][0]
+          - if flash[:error].present?
+            - unless flash[:error]["postage_type_id"].nil?
+              %ul.errors
+              - flash[:error]["postage_type_id"].each do |e|
+                %li= e
 
         .sell-title
           %h3.sell-title__text
@@ -114,7 +143,11 @@
           = f.collection_select :postage_payer_id, PostagePayer.all, :id, :name, {prompt: "--"},{class: 'sell-collection_select__label'}
         .error-messages
           %p
-            =@item.errors.messages[:postage_payer_id][0]
+          - if flash[:error].present?
+            - unless flash[:error]["postage_payer_id"].nil?
+              %ul.errors
+              - flash[:error]["postage_payer_id"].each do |e|
+                %li= e
 
         .sell-title
           %h3.sell-title__text
@@ -125,7 +158,11 @@
           = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {include_blank: '--'}, class: 'sell-collection_select__label'
         .error-messages
           %p
-            =@item.errors.messages[:prefecture_code][0]
+          - if flash[:error].present?
+            - unless flash[:error]["prefecture_code"].nil?
+              %ul.errors
+              - flash[:error]["prefecture_code"].each do |e|
+                %li= e
 
         .sell-title
           %h3.sell-title__text
@@ -136,7 +173,11 @@
           = f.collection_select :preparation_day_id, PreparationDay.all, :id, :value, {prompt: "--"}, {class: 'sell-collection_select__label'}
         .error-messages
           %p
-            =@item.errors.messages[:preparation_day_id][0]
+          - if flash[:error].present?
+            - unless flash[:error]["preparation_day_id"].nil?
+              %ul.errors
+              - flash[:error]["preparation_day_id"].each do |e|
+                %li= e
     -# 価格部分
     .sell-container__content
       %h3.sell-sub-head
@@ -152,7 +193,11 @@
             ¥
             = f.number_field :price, {placeholder: '0', value: '', autocomplete:"off", class: 'sell-container__content__price__form__box'}
       .error-messages#error-price
-        =@item.errors.messages[:price][0]
+        - if flash[:error].present?
+          - unless flash[:error]["price"].nil?
+            %ul.errors
+            - flash[:error]["price"].each do |e|
+              %li= e
 
       .sell-container__content__commission
         .sell-container__content__commission__left
