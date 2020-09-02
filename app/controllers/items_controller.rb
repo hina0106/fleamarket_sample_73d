@@ -12,8 +12,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.item_imgs.build
-  
+    @item.item_imgs.new
   end
 
   def show
@@ -26,13 +25,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if 
-      @item.save
-      redirect_to root_path
-    else
-      @item.item_imgs.build
-      redirect_to new_item_path, flash: { error: @item.errors.messages}
+    unless @item.valid?
+      @item.item_imgs.new
+      render :new and return
     end
+    @item.save
+    redirect_to root_path
   end
 
   # 親カテゴリーが選択された後に動くアクション
@@ -61,7 +59,6 @@ class ItemsController < ApplicationController
       redirect_to item_path
     else
       redirect_to edit_item_path(@item.id)
-      @item.images.new
     end
   end
 
